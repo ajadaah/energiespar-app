@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Zähler --> 
+<array name="zaehler">
+<item>Gas</item>
+<item>Strom</item>
+<item>Wasser</item>
+<item>Strom bei Mama</item>
+<item>Wasser WG</item>
+<item>Wasser vergleich</item>
+<item>Strom bei Papa</item>
+</array>
+
+
+</resources>
