@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="mainTitle">Hauptmenü</string>
+    <string name="app_name">EnergiesparApp</string>
+    
+    <!-- Namen der Buttons im Hauptmenü -->
+    <string name="button1">Zählerstand erfassen</string>
+    <string name="button2">Verbrauchsstatistik</string>
+    <string name="button3">Verbrauchsrechner</string>
+    <string name="button4">Gerätevergeleich</string>
+    
+    <string name="zaehlerHinzufuegen">Zähler hinzufügen</string>
+    <string name="zaehlerUebersicht">Zählerübersicht:</string>
+
+</resources>
