@@ -12,5 +12,14 @@
     
     <string name="zaehlerHinzufuegen">Zähler hinzufügen</string>
     <string name="zaehlerUebersicht">Zählerübersicht:</string>
-
+    
+    <string name="zaehlerNummerHinzufuegen">Zählernummer eintippen</string>
+    <string name="rb_gas">Gas</string>
+    <string name="rb_strom">Strom</string>
+    <string name="rb_wasser">Wasser</string>
+    
+    <string name="aktionen">Aktionen</string>
+    <string name="loeschen">Zähler entfernen</string>
+        
+        
 </resources>
