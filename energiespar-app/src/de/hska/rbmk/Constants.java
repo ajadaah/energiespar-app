@@ -9,5 +9,6 @@ public class Constants {
 	public static final int OCR_SCAN_TYPE_VIDEO = 1;
 
 	public static final String METERNUMBER = "meternumber";
+	public static final String METERTYPE = "metertype";
 	public static final String METERVALUE = "metervalue";
 }
