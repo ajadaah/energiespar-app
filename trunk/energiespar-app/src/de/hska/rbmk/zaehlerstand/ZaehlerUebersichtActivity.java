@@ -121,22 +121,26 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		if(v instanceof TextView) {
-			String s = ((TextView)v).getText().toString();
+//		if(v instanceof TextView) {
+//			String s = ((TextView)v).getText().toString();
+			TextView tv_number = (TextView) v.findViewById(R.id.list_zaehlernummer);
+			TextView tv_type = (TextView) v.findViewById(R.id.temp_zaehlertyp); // TODO: zählertyp nicht von textview holen
 			try {
-				int number = Integer.parseInt(s);
+				int number = Integer.parseInt(tv_number.getText().toString());
+				int type = Integer.parseInt(tv_type.getText().toString());
 //				Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
 //				intent.putExtra(Constants.METERNUMBER, number);
 //				startActivity(intent);
 				Intent manualInputIntent = new Intent(getApplicationContext(), ZaehlerStandErfassenActivity.class);
 				manualInputIntent.putExtra(Constants.METERVALUE, "0");
 				manualInputIntent.putExtra(Constants.METERNUMBER, number);
+				manualInputIntent.putExtra(Constants.METERTYPE, type);
 				startActivityForResult(manualInputIntent, 0);
 				
 			} catch (NumberFormatException e) {
 				// TODO: handle exception
 			}
-		}
+//		}
 		super.onListItemClick(l, v, position, id);
 	}
 
@@ -170,20 +174,8 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 				MeterNumbersOpenHelper.KEY_NUMBER	// ORDER BY
 			);
 
-        try {
-			String test = cursor.getString(0);
-			Log.d("Get Column", test);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			Log.e("Get Column", e.toString());
-		}
-		
 		startManagingCursor(cursor);
-		
-
-        
-
-		
+			
 		SimpleCursorAdapter adapter =
 			new SimpleCursorAdapter(this, 
 					R.layout.list_item, 

@@ -6,23 +6,104 @@
     android:gravity="center_horizontal" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zählerstand eingeben"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <ImageView
-        android:padding="30dp"
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/android_wheel_time" />
-
-    <Button
-        android:id="@+id/button1"
+        android:id="@+id/lastSavedValueDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Speichern" />
+        android:layout_weight="0.1"
+        android:text="letzte werte" />
+
+    <TextView
+        android:id="@+id/pwd_status"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_weight="1"
+        android:text="bla bla bla"
+         /><!-- android:textSize="14sp" -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+      	<kankan.wheel.widget.WheelView android:id="@+id/w_1"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+		<kankan.wheel.widget.WheelView android:id="@+id/w_2"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+		<kankan.wheel.widget.WheelView android:id="@+id/w_3"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+		<kankan.wheel.widget.WheelView android:id="@+id/w_4"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+		<kankan.wheel.widget.WheelView android:id="@+id/w_5"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+		<kankan.wheel.widget.WheelView android:id="@+id/w_6"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+		<kankan.wheel.widget.WheelView android:id="@+id/w_7"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_weight="1"
+		/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_weight="1.00"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="Zurück"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:text="Speichern"
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
