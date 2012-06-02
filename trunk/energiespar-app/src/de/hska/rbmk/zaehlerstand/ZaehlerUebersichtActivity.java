@@ -13,6 +13,7 @@ import de.hska.info.electricMeter.wheel.WheelActivity;
 import de.hska.rbmk.R;
 
 import android.R.id;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -59,7 +60,10 @@ public class ZaehlerUebersichtActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.zaehler_erfassen_uebersicht);
-	
+		
+	    ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
+	    actionBar.setTitle(R.string.title_zaehleruebersicht);
 		
 		registerForContextMenu(getListView());
 		
@@ -156,7 +160,8 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 				MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME,							// Tabellenname
 				new String[] { 						// anzuzeigende Spalten
 						MeterNumbersOpenHelper.KEY_ID,
-						MeterNumbersOpenHelper.KEY_NUMBER
+						MeterNumbersOpenHelper.KEY_NUMBER,
+						MeterNumbersOpenHelper.KEY_METERTYPE
 				}, 
 				null, 								// WHERE (z.B. "_id = ?")
 				null, 								// WHERE-Argumente (für "?")
@@ -164,17 +169,31 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 				null, 								// HAVING
 				MeterNumbersOpenHelper.KEY_NUMBER	// ORDER BY
 			);
+
+        try {
+			String test = cursor.getString(0);
+			Log.d("Get Column", test);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			Log.e("Get Column", e.toString());
+		}
+		
 		startManagingCursor(cursor);
+		
+
+        
+
 		
 		SimpleCursorAdapter adapter =
 			new SimpleCursorAdapter(this, 
-					android.R.layout.simple_list_item_single_choice, 
+					R.layout.list_item, 
 					cursor, 
-					new String[] {MeterNumbersOpenHelper.KEY_NUMBER, MeterNumbersOpenHelper.KEY_ID},
+					new String[] {MeterNumbersOpenHelper.KEY_NUMBER, MeterNumbersOpenHelper.KEY_METERTYPE, MeterNumbersOpenHelper.KEY_ID},
 					new int[] {
-						android.R.id.text1
+						R.id.list_zaehlernummer, R.id.temp_zaehlertyp
 					}
 			);
+		
 		setListAdapter(adapter);
 	}
 	
