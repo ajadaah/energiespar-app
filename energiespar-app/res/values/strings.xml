@@ -23,6 +23,7 @@
     <string name="dialog_zaehlernummer">Zählernummer:</string>
     <string name="dialog_zaehlertyp">Zählerart:</string>
     <string name="menu_zaehlerHinzufuegen">Zähler hinzufügen</string>
+    <string name="title_zaehleruebersicht">Zählerübersicht</string>
         
         
 </resources>
