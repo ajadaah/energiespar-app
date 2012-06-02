@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_zaehler_hinzufuegen"
+          android:icon="@android:drawable/ic_menu_add"
+          android:title="@string/menu_zaehlerHinzufuegen"
+          android:showAsAction="ifRoom|withText" />
+</menu>

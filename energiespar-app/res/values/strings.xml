@@ -13,13 +13,16 @@
     <string name="zaehlerHinzufuegen">Zähler hinzufügen</string>
     <string name="zaehlerUebersicht">Zählerübersicht:</string>
     
-    <string name="zaehlerNummerHinzufuegen">Zählernummer eintippen</string>
+    <string name="dialog_title_zaehlerHinzufuegen">Zähler hinzufügen</string>
     <string name="rb_gas">Gas</string>
     <string name="rb_strom">Strom</string>
     <string name="rb_wasser">Wasser</string>
     
     <string name="aktionen">Aktionen</string>
     <string name="loeschen">Zähler entfernen</string>
+    <string name="dialog_zaehlernummer">Zählernummer:</string>
+    <string name="dialog_zaehlertyp">Zählerart:</string>
+    <string name="menu_zaehlerHinzufuegen">Zähler hinzufügen</string>
         
         
 </resources>

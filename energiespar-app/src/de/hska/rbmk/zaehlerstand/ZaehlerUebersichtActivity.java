@@ -2,6 +2,8 @@ package de.hska.rbmk.zaehlerstand;
 
 
 import de.hska.rbmk.Constants;
+import de.hska.rbmk.MainActivity;
+import de.hska.rbmk.R.menu;
 /*
 import de.hska.info.electricMeter.meterSelection.MeterNumbersOpenHelper;
 import de.hska.info.electricMeter.meterSelection.MeterSelectionActivity;
@@ -10,6 +12,7 @@ import de.hska.info.electricMeter.wheel.WheelActivity;
 
 import de.hska.rbmk.R;
 
+import android.R.id;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -23,6 +26,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -34,6 +39,7 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -58,16 +64,33 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 		registerForContextMenu(getListView());
 		
 		mHelper = new MeterNumbersOpenHelper(this);
-		
-		Button addButton = (Button) findViewById(R.id.btnZaehlerHinzufuegen);
-		
-		addButton.setOnClickListener(new OnClickListener() {
-			public void onClick(View arg0) {
-               showDialog(DIALOG_TEXT_ENTRY);
-			}
-		});
     }
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.zaehler_uebersicht_menu, menu);
+	    return true;
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.menu_zaehler_hinzufuegen:
+	        	showDialog(DIALOG_TEXT_ENTRY);
+	            return true;
+	        case android.R.id.home:
+	            // app icon in action bar clicked; go home
+	            Intent intent = new Intent(this, MainActivity.class);
+	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+	            startActivity(intent);
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
+
+	
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
@@ -163,30 +186,19 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	            LayoutInflater factory = LayoutInflater.from(this);
 	            final View textEntryView = factory.inflate(R.layout.dialog_zaehler_hinzugfuegen, null);
 	            final EditText et = (EditText) textEntryView.findViewById(R.id.eingetippte_zaehlernummer);
-	            final RadioButton rb0 = (RadioButton) textEntryView.findViewById(R.id.radio0);
-	            final RadioButton rb1 = (RadioButton) textEntryView.findViewById(R.id.radio1);
-	            final RadioButton rb2 = (RadioButton) textEntryView.findViewById(R.id.radio2);
+	            final Spinner auswahl = (Spinner) textEntryView.findViewById(R.id.zaehlerTypAuswahl);
 	            
 	            return new AlertDialog.Builder(ZaehlerUebersichtActivity.this)
 	                .setIcon(android.R.drawable.ic_dialog_alert)
-	                .setTitle(getString(R.string.zaehlerNummerHinzufuegen))
+	                .setTitle(getString(R.string.dialog_title_zaehlerHinzufuegen))
 	                .setView(textEntryView)
 	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
 	                    public void onClick(DialogInterface dialog, int whichButton) {
-	                    	
-	                    	int rb_checked;
-	                    	
-	                    	if (rb0.isChecked())
-	                    		rb_checked = 0;
-	                    	else if (rb1.isChecked())
-	                    		rb_checked = 1;
-	                    	else
-	                    		rb_checked = 2;
-	                    	
+
 	        				ContentValues values = new ContentValues();
 	        				values.put(MeterNumbersOpenHelper.KEY_NUMBER, et.getText().toString());
-	        				values.put(MeterNumbersOpenHelper.KEY_METERTYPE, rb_checked);	    
-	        				Log.i("Zählerdialog", "Checked RB: " + rb_checked);
+	        				values.put(MeterNumbersOpenHelper.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
+	        				Log.i("Zählerdialog", "Checked RB: " + auswahl.getSelectedItemPosition());
 	        				db.insert(MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME, null, values);
 	        				loadData();
 	                       
