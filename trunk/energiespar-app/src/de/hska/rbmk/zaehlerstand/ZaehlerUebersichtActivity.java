@@ -37,7 +37,7 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 
-public class zaehlerUebersicht extends ListActivity {
+public class ZaehlerUebersichtActivity extends ListActivity {
     
 
 	private SQLiteDatabase db;
@@ -101,7 +101,7 @@ public class zaehlerUebersicht extends ListActivity {
 //				Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
 //				intent.putExtra(Constants.METERNUMBER, number);
 //				startActivity(intent);
-				Intent manualInputIntent = new Intent(getApplicationContext(), zaehlerStandErfassen.class);
+				Intent manualInputIntent = new Intent(getApplicationContext(), ZaehlerStandErfassenActivity.class);
 				manualInputIntent.putExtra(Constants.METERVALUE, "0");
 				manualInputIntent.putExtra(Constants.METERNUMBER, number);
 				startActivityForResult(manualInputIntent, 0);
@@ -167,7 +167,7 @@ public class zaehlerUebersicht extends ListActivity {
 	            final RadioButton rb1 = (RadioButton) textEntryView.findViewById(R.id.radio1);
 	            final RadioButton rb2 = (RadioButton) textEntryView.findViewById(R.id.radio2);
 	            
-	            return new AlertDialog.Builder(zaehlerUebersicht.this)
+	            return new AlertDialog.Builder(ZaehlerUebersichtActivity.this)
 	                .setIcon(android.R.drawable.ic_dialog_alert)
 	                .setTitle(getString(R.string.zaehlerNummerHinzufuegen))
 	                .setView(textEntryView)

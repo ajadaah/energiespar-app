@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="15" />
+    <uses-sdk android:minSdkVersion="10" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -21,13 +21,13 @@
             </intent-filter>
         </activity>
         
-        <activity android:name=".geraetevergleich.geraetevergleich" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".geraetevergleich.GeraetevergleichActivtiy" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
         <activity android:name=".verbrauchsrechner.verbrauchsrechner" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
 
-        <activity android:name=".zaehlerstand.zaehlerUebersicht" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
-        <activity android:name=".zaehlerstand.zaehlerStandErfassen" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".zaehlerstand.ZaehlerUebersichtActivity" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".zaehlerstand.ZaehlerStandErfassenActivity" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
         
-        <activity android:name=".verbrauchsStatistik.verbrauchsStatistik" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
+        <activity android:name=".verbrauchsStatistik.VerbrauchsStatistikMainActivity" android:theme="@android:style/Theme.Light.NoTitleBar" android:screenOrientation="portrait"></activity>
         
     </application>
 
