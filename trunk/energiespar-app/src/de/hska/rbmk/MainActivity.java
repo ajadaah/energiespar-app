@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
     }
 
     public void verbrauchsrechner(View v) {
-    	final Intent i = new Intent(this, verbrauchsrechner.class);
+    	final Intent i = new Intent(this, VerbrauchsrechnerActivity.class);
     	startActivity(i);
     }
 
