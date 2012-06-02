@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 
-public class zaehlerStandErfassen extends Activity {
+public class ZaehlerStandErfassenActivity extends Activity {
 	ListView listView;
 	
     @Override

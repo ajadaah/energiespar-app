@@ -18,12 +18,12 @@ public class MainActivity extends Activity {
     }
     
     public void zaehlerstandErfassen(View v) {
-    	final Intent i = new Intent(this, zaehlerUebersicht.class);
+    	final Intent i = new Intent(this, ZaehlerUebersichtActivity.class);
     	startActivity(i);
     }
     
     public void verbrauchsstatistik(View v) {
-    	final Intent i = new Intent(this, verbrauchsStatistik.class);
+    	final Intent i = new Intent(this, VerbrauchsStatistikMainActivity.class);
     	startActivity(i);
     }
 
@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
     }
 
     public void geraetevergleich(View v) {
-    	final Intent i = new Intent(this, geraetevergleich.class);
+    	final Intent i = new Intent(this, GeraetevergleichActivtiy.class);
     	startActivity(i);
     }
     
