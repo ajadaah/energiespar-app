@@ -2,7 +2,7 @@ package de.hska.rbmk.zaehlerstand;
 
 
 import de.hska.rbmk.Constants;
-import de.hska.rbmk.MainActivity;
+import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.R.menu;
 /*
 import de.hska.info.electricMeter.meterSelection.MeterNumbersOpenHelper;
@@ -85,7 +85,7 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	            return true;
 	        case android.R.id.home:
 	            // app icon in action bar clicked; go home
-	            Intent intent = new Intent(this, MainActivity.class);
+	            Intent intent = new Intent(this, StartbildschirmActivity.class);
 	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	            startActivity(intent);
 	            return true;
