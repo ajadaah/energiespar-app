@@ -9,9 +9,9 @@
 </array>
 
 <array name="ZaehlerTypBild">
-<item>@drawable/ic_type_electricity</item>
-<item>@drawable/ic_type_water</item>
-<item>@drawable/ic_type_gas</item>
+<item>ic_type_electricity</item>
+<item>ic_type_water</item>
+<item>ic_type_gas</item>
 </array>
 
 

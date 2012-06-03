@@ -20,10 +20,12 @@ import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -32,11 +34,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CursorAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -99,7 +104,6 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	        				ContentValues values = new ContentValues();
 	        				values.put(MeterNumbersOpenHelper.KEY_NUMBER, et.getText().toString());
 	        				values.put(MeterNumbersOpenHelper.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
-	        				Log.i("Zählerdialog", "Checked RB: " + auswahl.getSelectedItemPosition());
 	        				db.insert(MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME, null, values);
 	        				loadData();
 	                    }
@@ -147,10 +151,11 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 //		if(v instanceof TextView) {
 //			String s = ((TextView)v).getText().toString();
 			TextView tv_number = (TextView) v.findViewById(R.id.list_zaehlernummer);
-			TextView tv_type = (TextView) v.findViewById(R.id.temp_zaehlertyp); // TODO: zählertyp nicht von textview holen
+			ImageView iv_type = (ImageView) v.findViewById(R.id.list_zaehlertyp_icon);
 			try {
 				int number = Integer.parseInt(tv_number.getText().toString());
-				int type = Integer.parseInt(tv_type.getText().toString());
+				int type = Integer.parseInt(iv_type.getContentDescription().toString());
+				
 //				Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
 //				intent.putExtra(Constants.METERNUMBER, number);
 //				startActivity(intent);
@@ -183,7 +188,7 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	}
 	
 	private void loadData() {
-		Cursor cursor = db.query(
+		Cursor zaehlerCursor = db.query(
 				MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME,							// Tabellenname
 				new String[] { 						// anzuzeigende Spalten
 						MeterNumbersOpenHelper.KEY_ID,
@@ -197,18 +202,61 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 				MeterNumbersOpenHelper.KEY_NUMBER	// ORDER BY
 			);
 
-		startManagingCursor(cursor);
+		CursorAdapter zaehlerAdapter = new CursorAdapter(this, zaehlerCursor, false) {
+			
+			@Override
+			public View newView(Context context, Cursor cursor, ViewGroup parent) {
+				LayoutInflater inflater = LayoutInflater.from(context);
+				View v = inflater.inflate(R.layout.list_item, parent, false);
+				bindView(v, context, cursor);
+				return v;
+			}
+			
+			@Override
+			public void bindView(View view, Context context, Cursor cursor) {
+				TextView zaehlerNummer = (TextView)view.findViewById(R.id.list_zaehlernummer);
+				ImageView zaehlerTypIcon = (ImageView)view.findViewById(R.id.list_zaehlertyp_icon);
+				int zaehlerTyp = Integer.parseInt(cursor.getString(cursor.getColumnIndex(MeterNumbersOpenHelper.KEY_METERTYPE)));
+
+				zaehlerTypIcon.setContentDescription(String.valueOf(zaehlerTyp));
+				
+				switch (zaehlerTyp)
+				{
+				case 0: { 
+					zaehlerTypIcon.setImageResource(R.drawable.ic_type_electricity);
+					break; 
+					}
+				case 1: { 
+					zaehlerTypIcon.setImageResource(R.drawable.ic_type_water);
+					break; 
+					}
+				case 2: { 
+					zaehlerTypIcon.setImageResource(R.drawable.ic_type_gas);
+					break; 
+					}
+				default: { 
+					zaehlerTypIcon.setImageResource(R.drawable.ic_type_electricity);
+					break; 
+					}
+				}
+
+				zaehlerNummer.setText(cursor.getString(cursor.getColumnIndex(MeterNumbersOpenHelper.KEY_NUMBER)));
+			}
+		};
+		/*
+		startManagingCursor(zaehlerCursor);
 			
 		SimpleCursorAdapter adapter =
 			new SimpleCursorAdapter(this, 
 					R.layout.list_item, 
-					cursor, 
+					zaehlerCursor, 
 					new String[] {MeterNumbersOpenHelper.KEY_NUMBER, MeterNumbersOpenHelper.KEY_METERTYPE, MeterNumbersOpenHelper.KEY_ID},
 					new int[] {
 						R.id.list_zaehlernummer, R.id.temp_zaehlertyp
 					}
 			);
+			*/
 		
-		setListAdapter(adapter);
+		setListAdapter(zaehlerAdapter);
 	}
 }
