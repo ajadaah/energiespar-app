@@ -25,14 +25,14 @@
 
         <TextView
             android:id="@+id/list_zaehlernummer"
-            android:text="Medium Text"
+            android:text="Zählernummer"
                     android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/temp_zaehlertyp"
-            android:text="Small Text"
+            android:text="Zählertyp"
                     android:layout_width="wrap_content"
         android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium" />
