@@ -2,7 +2,7 @@
 <resources>
 
     <string name="mainTitle">Hauptmenü</string>
-    <string name="app_name">EnergiesparApp</string>
+    <string name="app_name">Energiespar App</string>
     
     <!-- Namen der Buttons im Hauptmenü -->
     <string name="button1">Zählerstand erfassen</string>
