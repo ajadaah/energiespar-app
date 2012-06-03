@@ -62,7 +62,7 @@ public class ZaehlerStandErfassenActivity extends Activity {
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    actionBar.setTitle(R.string.title_zaehlerstanderfassen);
-	    actionBar.setSubtitle(String.valueOf(zaehlerNummer));
+	    actionBar.setSubtitle(getString(R.string.txt_zaehlerstanderfassen_prezaehlernummer) + " " + String.valueOf(zaehlerNummer));
 	    
 		switch (zaehlerTyp)
 		{
@@ -83,10 +83,7 @@ public class ZaehlerStandErfassenActivity extends Activity {
 			break; 
 			}
 		}
-        
-		TextView tvZaehlerNummer = (TextView) this.findViewById(R.id.tv_zaehlerstanderfassen_zaehlernummer);
-		tvZaehlerNummer.setText(String.valueOf(zaehlerNummer));
-        
+             
 
         
 //        MeterReadingsDbAdapter dbAdapter = new MeterReadingsDbAdapter(getApplicationContext());
@@ -128,8 +125,6 @@ public class ZaehlerStandErfassenActivity extends Activity {
 //        Button sendButton = (Button) findViewById(R.id.btn_send);
 //        sendButton.setOnClickListener(onSendButtonClickListener);
 //
-        Button backButton = (Button) findViewById(R.id.btn_back);
-        backButton.setOnClickListener(onBackButtonClickListener);
     }
     
 	@Override
@@ -223,14 +218,6 @@ public class ZaehlerStandErfassenActivity extends Activity {
 		}
 	};
 */
-    
-    private OnClickListener onBackButtonClickListener = new OnClickListener() {
-		
-		public void onClick(View view) {
-			//remove activity from activity stack (same action as android-back-button)
-			ZaehlerStandErfassenActivity.this.finish();
-		}
-    };
 
    /**
      * Initializes wheel

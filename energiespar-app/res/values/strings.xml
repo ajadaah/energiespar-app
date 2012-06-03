@@ -23,7 +23,7 @@
 
     <string name="txt_zaehlerliste_leer">Es sind keine Zähler vorhanden.</string>
     <string name="title_zaehlerstanderfassen">Zählerstand erfassen</string>
-    <string name="txt_zaehlerstanderfassen_info">Bitte den aktuellen Zählerstand wählen:</string>
+    <string name="txt_zaehlerstanderfassen_info">Bitte den aktuellen Zählerstand einstellen:</string>
     <string name="txt_zaehlerstanderfassen_prezaehlernummer">Zählernummer:</string>
     <string name="menu_zaehlerstand_speichern">Speichern</string>
         
