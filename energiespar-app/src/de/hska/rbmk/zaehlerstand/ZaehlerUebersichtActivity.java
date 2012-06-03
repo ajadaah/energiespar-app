@@ -82,7 +82,6 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    actionBar.setTitle(R.string.title_zaehleruebersicht);
-	    actionBar.removeAllTabs();
 		
 		registerForContextMenu(getListView());
 		
