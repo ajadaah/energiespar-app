@@ -1,4 +1,4 @@
-package de.hska.rbmk.zaehlerstand;
+package de.hska.rbmk.datenVerwaltung;
 
 import java.util.EnumSet;
 import java.util.HashMap;
