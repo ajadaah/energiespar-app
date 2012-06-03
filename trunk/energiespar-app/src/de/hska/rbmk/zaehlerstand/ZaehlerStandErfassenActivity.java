@@ -9,17 +9,26 @@ import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class ZaehlerStandErfassenActivity extends Activity {
@@ -28,7 +37,8 @@ public class ZaehlerStandErfassenActivity extends Activity {
 	private boolean wheelScrolled = false;
 	private boolean valueChanged = false;
 	
-	private int meterNumber = -1;
+	private int zaehlerNummer = -1;
+	private int zaehlerTyp;
 	
 	private long lastSavedValuefromDB;
 	
@@ -46,26 +56,54 @@ public class ZaehlerStandErfassenActivity extends Activity {
 
         setContentView(R.layout.zaehler_stand_erfassen);
 
+        zaehlerNummer = getIntent().getExtras().getInt(Constants.METERNUMBER);
+        zaehlerTyp = getIntent().getExtras().getInt(Constants.METERTYPE);
         
-        meterNumber = getIntent().getExtras().getInt(
-				Constants.METERNUMBER);
+	    ActionBar actionBar = getActionBar();
+	    actionBar.setDisplayHomeAsUpEnabled(true);
+	    actionBar.setTitle(R.string.title_zaehlerstanderfassen);
+	    actionBar.setSubtitle(String.valueOf(zaehlerNummer));
+	    
+		switch (zaehlerTyp)
+		{
+		case 0: { 
+			actionBar.setIcon(R.drawable.ic_type_electricity);
+			break; 
+			}
+		case 1: { 
+			actionBar.setIcon(R.drawable.ic_type_water);
+			break; 
+			}
+		case 2: { 
+			actionBar.setIcon(R.drawable.ic_type_gas);
+			break; 
+			}
+		default: { 
+			actionBar.setIcon(R.drawable.ic_type_electricity);
+			break; 
+			}
+		}
+        
+		TextView tvZaehlerNummer = (TextView) this.findViewById(R.id.tv_zaehlerstanderfassen_zaehlernummer);
+		tvZaehlerNummer.setText(String.valueOf(zaehlerNummer));
+        
+
         
 //        MeterReadingsDbAdapter dbAdapter = new MeterReadingsDbAdapter(getApplicationContext());
 //        dbAdapter.open();
-//        lastSavedValuefromDB = dbAdapter.getLastMeterReadingValueForMeterNumber(meterNumber);
-//        TextView lastValueDisplay = (TextView) this.findViewById(R.id.lastSavedValueDisplay);
+//        lastSavedValuefromDB = dbAdapter.getLastMeterReadingValueForMeterNumber(zaehlerNummer);
+		
 //        lastValueDisplay.setText(this.getString(R.string.last_saved_Value) + lastSavedValuefromDB);
 //        dbAdapter.close();
         
-        String string = getIntent().getExtras().getString(
-				Constants.METERVALUE);
+
         
-        Log.i("OCR_RECOGNIZED_VALUE", string);
-        
-        //add leading zeros
-        while(string.length() < 7) {
-        	string = "0" + string;
-        }
+//        Log.i("OCR_RECOGNIZED_VALUE", string);
+//        
+//        //add leading zeros
+//        while(string.length() < 7) {
+//        	string = "0" + string;
+//        }
 
 
         w1 = (WheelView) findViewById(R.id.w_1);
@@ -78,13 +116,13 @@ public class ZaehlerStandErfassenActivity extends Activity {
         
         //TODO affirm that length is 7
         
-    	initWheel(w1, Character.getNumericValue(string.charAt(0)), false);
-    	initWheel(w2, Character.getNumericValue(string.charAt(1)), false);
-    	initWheel(w3, Character.getNumericValue(string.charAt(2)), false);
-    	initWheel(w4, Character.getNumericValue(string.charAt(3)), false);
-    	initWheel(w5, Character.getNumericValue(string.charAt(4)), false);
-    	initWheel(w6, Character.getNumericValue(string.charAt(5)), false);
-    	initWheel(w7, Character.getNumericValue(string.charAt(6)), true);
+    	initWheel(w1, 0, false);
+    	initWheel(w2, 0, false);
+    	initWheel(w3, 0, false);
+    	initWheel(w4, 0, false);
+    	initWheel(w5, 0, false);
+    	initWheel(w6, 0, false);
+    	initWheel(w7, 0, true);
 
     	
 //        Button sendButton = (Button) findViewById(R.id.btn_send);
@@ -94,6 +132,29 @@ public class ZaehlerStandErfassenActivity extends Activity {
         backButton.setOnClickListener(onBackButtonClickListener);
     }
     
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.zaehlerstand_erfassen_menu, menu);
+	    return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+        case R.id.menu_zaehlerstand_speichern:
+        	
+        	// TODO: Werte speichern
+        	
+            return true;
+	        case android.R.id.home:
+	            // app icon in action bar clicked; go back one step
+	        	ZaehlerStandErfassenActivity.this.finish();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
+	}
     
     // Wheel scrolled listener
     OnWheelScrollListener scrolledListener = new OnWheelScrollListener() {
@@ -136,7 +197,7 @@ public class ZaehlerStandErfassenActivity extends Activity {
 	        	Date timeStamp = new Date(System.currentTimeMillis());				
 				
 				mRDBA.open();
-				mRDBA.addReading("", timeStamp, meterNumber, meterValue , MeterType.ELECTRICITY, valueChanged, false);
+				mRDBA.addReading("", timeStamp, zaehlerNummer, meterValue , MeterType.ELECTRICITY, valueChanged, false);
 				mRDBA.close();
 				
 				//TODO better close activity
