@@ -10,9 +10,15 @@
         android:text="@string/mainTitle" />
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical" android:layout_weight="1">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_gravity="center" android:layout_weight="3">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -26,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="10sp" >
+                android:padding="10sp" android:layout_weight="1">
 
                 <ImageButton
                     android:id="@+id/imageButton1"
@@ -49,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="10sp" >
+                android:padding="10sp" android:layout_weight="1">
 
                 <ImageButton
                     android:id="@+id/imageButton2"
@@ -79,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="10sp" >
+                android:padding="10sp" android:layout_weight="1">
 
                 <ImageButton
                     android:id="@+id/imageButton3"
@@ -102,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
-                android:padding="10sp" >
+                android:padding="10sp" android:layout_weight="1">
 
                 <ImageButton
                     android:id="@+id/imageButton4"
