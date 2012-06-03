@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="mainMenuButtonText">
+    <style name="mainMenuButtonText" parent="@android:style/TextAppearance.Holo">
         <item name="android:textSize">11sp</item>
     </style>
 
+    <style name="lightTheme" parent="@android:style/Theme.Holo.Light"></style>
+    <style name="darkTheme" parent="@android:style/Theme.Holo"></style>
+    
 </resources>
