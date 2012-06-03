@@ -13,8 +13,8 @@
         android:layout_margin="5dp"
         android:layout_row="0"
         android:contentDescription="meterTyp"
-        android:src="@drawable/icon_electricity" />
-
+        android:src="@drawable/ic_type_electricity" />
+
     <LinearLayout
         android:id="@+id/new1"
         android:layout_column="1"
@@ -25,16 +25,16 @@
 
         <TextView
             android:id="@+id/list_zaehlernummer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Zählernummer"
-                    android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:id="@+id/temp_zaehlertyp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Zählertyp"
-                    android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
