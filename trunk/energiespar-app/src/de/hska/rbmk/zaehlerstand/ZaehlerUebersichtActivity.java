@@ -16,6 +16,7 @@ import android.R.id;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentValues;
@@ -81,7 +82,29 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case R.id.menu_zaehler_hinzufuegen:
-	        	showDialog(DIALOG_TEXT_ENTRY);
+	        	
+	            LayoutInflater factory = LayoutInflater.from(this);
+	            final View textEntryView = factory.inflate(R.layout.dialog_zaehler_hinzugfuegen, null);
+	            final EditText et = (EditText) textEntryView.findViewById(R.id.eingetippte_zaehlernummer);
+	            final Spinner auswahl = (Spinner) textEntryView.findViewById(R.id.zaehlerTypAuswahl);
+	            
+	        	Builder builder = new Builder(this);
+	        	builder
+	                .setIcon(android.R.drawable.ic_input_add)
+	                .setTitle(getString(R.string.menu_zaehlerHinzufuegen))
+	                .setView(textEntryView)
+	                .setPositiveButton(R.string.dialog_hinzufuegen, new DialogInterface.OnClickListener() {
+	                    public void onClick(DialogInterface dialog, int whichButton) {
+
+	        				ContentValues values = new ContentValues();
+	        				values.put(MeterNumbersOpenHelper.KEY_NUMBER, et.getText().toString());
+	        				values.put(MeterNumbersOpenHelper.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
+	        				Log.i("Zählerdialog", "Checked RB: " + auswahl.getSelectedItemPosition());
+	        				db.insert(MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME, null, values);
+	        				loadData();
+	                    }
+	                })
+	                .show();
 	            return true;
 	        case android.R.id.home:
 	            // app icon in action bar clicked; go home
@@ -103,7 +126,7 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	    
 	    menu.setHeaderTitle(getString(R.string.aktionen));
 
-		//menu.setHeaderTitle(ctx_menu_meternumber);   
+	    //menu.setHeaderTitle(ctx_menu_meternumber);   
 	    menu.add(0, CONTEXT_DELETE, 0, getString(R.string.loeschen));
 		super.onCreateContextMenu(menu, v, menuInfo);
 	}
@@ -188,41 +211,4 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 		
 		setListAdapter(adapter);
 	}
-	
-	   @Override
-	    protected Dialog onCreateDialog(int id) {
-	        switch (id) {
-	        case DIALOG_TEXT_ENTRY:
-	            // This example shows how to add a custom layout to an AlertDialog
-	            LayoutInflater factory = LayoutInflater.from(this);
-	            final View textEntryView = factory.inflate(R.layout.dialog_zaehler_hinzugfuegen, null);
-	            final EditText et = (EditText) textEntryView.findViewById(R.id.eingetippte_zaehlernummer);
-	            final Spinner auswahl = (Spinner) textEntryView.findViewById(R.id.zaehlerTypAuswahl);
-	            
-	            return new AlertDialog.Builder(ZaehlerUebersichtActivity.this)
-	                .setIcon(android.R.drawable.ic_dialog_alert)
-	                .setTitle(getString(R.string.dialog_title_zaehlerHinzufuegen))
-	                .setView(textEntryView)
-	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-	                    public void onClick(DialogInterface dialog, int whichButton) {
-
-	        				ContentValues values = new ContentValues();
-	        				values.put(MeterNumbersOpenHelper.KEY_NUMBER, et.getText().toString());
-	        				values.put(MeterNumbersOpenHelper.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
-	        				Log.i("Zählerdialog", "Checked RB: " + auswahl.getSelectedItemPosition());
-	        				db.insert(MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME, null, values);
-	        				loadData();
-	                       
-	                    }
-	                })
-	                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-	                    public void onClick(DialogInterface dialog, int whichButton) {
-
-	                        /* Do nothing */
-	                    }
-	                })
-	                .create();
-	        }
-	        return null;
-	    }
 }
