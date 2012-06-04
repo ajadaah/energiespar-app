@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="preferExternal"
+    package="de.hska.info.electricMeter"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application android:label="@string/app_name" android:icon="@drawable/icon_capture">
+        <activity
+            android:label="@string/app_name"
+            android:name=".ElectricMeterActivity"
+            android:theme="@android:style/Theme.Light" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Other activities -->
+        <activity
+            android:label="@string/title_ocr"
+            android:name="de.hska.info.electricMeter.camera.CameraActivity"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Light" />
+        <activity
+            android:label="@string/title_archive"
+            android:name=".archive.ArchiveActivity"
+            android:theme="@android:style/Theme.Light" />
+        <activity
+            android:label="@string/title_meter_selection"
+            android:name=".meterSelection.MeterSelectionActivity"
+            android:theme="@android:style/Theme.Light" >
+        </activity>
+        <activity
+            android:label="@string/title_wheel"
+            android:name=".wheel.WheelActivity"
+            android:theme="@android:style/Theme.Light" >
+        </activity>
+
+        <service
+            android:exported="false"
+            android:name=".syncService.SynchronizationService" />
+        
+        <activity 
+            android:name=".preferences.ElectricMeterPreferenceActivity"
+            android:theme="@android:style/Theme.Light" 
+            android:label="@string/title_prefs">
+            <intent-filter>
+                <action android:name="de.hska.info.ElectricMeter.PREFERENCE" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>            
+        </activity>
+        
+    </application>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+</manifest>

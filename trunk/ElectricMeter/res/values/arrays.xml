@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <array name="ocr_dictionary_url">
+    <item>http://dl.dropbox.com/u/12000633/dict/eng.traineddata</item>
+    <item>http://dl.dropbox.com/u/12000633/dict/xxx.traineddata</item>
+  </array>
+  
+  <array name="ocr_dictionary_url_strings">
+    <item>English</item>
+    <item>HSKA</item>
+  </array>
+</resources>

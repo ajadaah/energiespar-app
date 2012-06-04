@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10px" >
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+        android:id="@+id/btn_start_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/icon_capture" 
+        android:minHeight="150dp"
+        android:minWidth="150dp"
+        android:text="Erfassen"
+        />
+
+        <Button
+        android:id="@+id/btn_start_archive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/icon_archive"
+        android:minHeight="150dp"
+        android:minWidth="150dp"
+        android:text="Archiv"
+         />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lastEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="5pt" />
+
+    <TextView
+        android:id="@+id/adScroller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="25dp"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
+        android:lines="1"
+        android:focusable="true"
+        android:focusableInTouchMode="true" 
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:text="@string/_adScroller_no_Adverts"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff4500" />
+<!-- android:text="@string/ad_scroller" -->
+
+</LinearLayout>

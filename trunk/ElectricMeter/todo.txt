@@ -1,0 +1,16 @@
+ToDo Liste
+
+Allgemein:
+	-
+	
+Server:
+	-
+	
+Camera:
+	- (done) Richtige Preferences in CameraSurfaceView.java setzen, um das Bild richtig zu skalieren
+	- (done) Overlay mit dem Scanbereich anzeigen
+	- (done) Scanbereich als Bitmap an die OCR weitergeben
+	- (done) Benutzer über OCR process informieren (Camera overlay erweitern)
+	
+OCR:
+	- 

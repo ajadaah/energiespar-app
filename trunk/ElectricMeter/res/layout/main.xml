@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent" 
+                android:padding="10px" 
+                android:gravity="center" 
+                android:layout_height="fill_parent" 
+                android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_start_camera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/icon_capture" 
+        android:minHeight="150dp"
+        android:minWidth="150dp"
+        android:text="Erfassen"
+        />
+
+    <Button
+        android:id="@+id/btn_start_archive"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/icon_archive"
+        android:minHeight="150dp"
+        android:minWidth="150dp"
+        android:text="Archiv"
+         />
+
+    <TextView
+        android:id="@+id/lastEntry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="5pt" />
+    <TextView
+        android:id="@+id/adScroller"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="25dp"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
+        android:lines="1"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:scrollHorizontally="true"
+        android:text="@string/_adScroller_no_Adverts"
+        android:textColor="#ff4500"         
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+</LinearLayout>
