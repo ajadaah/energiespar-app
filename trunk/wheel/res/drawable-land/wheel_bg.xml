@@ -30,7 +30,7 @@
 				<stroke android:width="10dp" android:color="#FF333333" />
 		</shape>
 	</item>
-	<item android:left="6dp" android:right="6dp" android:top="6dp" android:bottom="6dp">
+	<item android:left="10dp" android:right="10dp" android:top="10dp" android:bottom="10dp">
 		<shape android:shape="rectangle">
 			<gradient
 				android:startColor="#AAA"
