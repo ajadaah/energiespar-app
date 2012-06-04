@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory
+    android:title="Debug Einstellungen"
+    android:key="debug_prefs"
+    android:summary="Einstellungen für Entwickler">
+        <EditTextPreference
+        android:summary="URL des Server-Agenten, in der Form 'http://adress:port', ohne Dienst"
+        android:title="Server Agent URL"
+        android:key="pref_server_agent_url"
+        android:defaultValue="http://localhost:8765"/>
+	</PreferenceCategory>
+	
+	<PreferenceCategory
+	android:title="OCR"
+	android:key="ocr_pref"
+	android:summary="Einstellungen für OCR">
+		<ListPreference
+        android:key="pref_ocr_dict_key"
+        android:defaultValue="http://dl.dropbox.com/u/12000633/dict/eng.traineddata"
+        android:entries="@array/ocr_dictionary_url_strings"
+        android:entryValues="@array/ocr_dictionary_url"
+        android:title="@string/pref_ocr_dict_title"/>
+	</PreferenceCategory>
+</PreferenceScreen>

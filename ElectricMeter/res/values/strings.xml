@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="startCameraString">Zählerstanderfassung</string>
+    <string name="startArchiveString">Archiv</string>
+    <string name="hello">Hello World, ElectricMeterActivity!</string>
+    <string name="ocractivity">OCRActivity</string>
+    <string name="app_name">ElectricMeter</string>
+ 	
+    <!-- preferences -->
+    <string name="pref_ocr_dict_title">Auswahl des Wörterbuches für OCR</string>
+    
+    <!-- archive -->    
+    <string name="group_label_key">groupLabel</string>
+    <string name="child_label_key">childLabel</string>
+    <string name="child_value_key">childValue</string>
+    <string name="child_number_key">childNumber</string>
+    <string name="child_label_date">Datum</string>
+    <string name="child_label_meternumber">Nummer</string>
+    <string name="child_label_metervalue">Stand</string>
+    <string name="delete">Löschen</string>
+    <string name="actions">Aktionen</string>
+    <string name="enter_meternumber">Zählernummer eingeben</string>
+    <string name="wheel_screen_info_text">Zum Korrigieren des automatisch erkannten Zählerstandes drehen Sie an den inkorrekten Zahlenrädern:</string>
+    <string name="send">Senden</string>
+    <string name="add_meter">Zähler hinzufügen</string>
+    <string name="back">Zurück</string>
+    <string name="title_ocr">Automatische Erkennung</string>
+    <string name="title_archive">Archiv</string>
+    <string name="title_meter_selection">Zähler auswählen</string>
+    <string name="title_wheel">Manuelle Eingabe / Korrektur</string>
+    <string name="title_prefs">Einstellungen</string>
+    <string name="last_saved_Value">letzter gespeicherter Wert: </string>
+    <string name="_adScroller_no_Adverts"> ### keine aktuellen Werbeinformationen verfügbar...</string>
+    
+
+</resources>

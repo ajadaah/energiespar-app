@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <item name="auto_focus_msg" type="id"/>
+    <item name="ocr_msg" type="id"/>
+    <item name="quit_msg" type="id"/>
+    <item name="ocr_dictdownload_finished" type="id"/>
+    <item name="ocr_dictdownload_failed" type="id"/>
+    <item name="ocr_succeeded_msg" type="id"/>
+    <item name="ocr_failed_msg" type="id"/>
+    <item name="restart_preview_msg" type="id"/>
+</resources>
