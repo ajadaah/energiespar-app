@@ -42,7 +42,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class ZaehlerUebersichtActivity extends ListActivity {
+public class ZaehlerstandErfassenActivity extends ListActivity {
     
 
 	private SQLiteDatabase db;
