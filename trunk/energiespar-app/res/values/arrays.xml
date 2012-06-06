@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-<!-- Zähler --> 
-<array name="ZaehlerTypen">
-<item>Strom</item>
-<item>Wasser</item>
-<item>Gas</item>
-</array>
+    <!-- Zähler -->
+    <array name="ZaehlerTypen">
+        <item>Strom</item>
+        <item>Wasser</item>
+        <item>Gas</item>
+    </array>
+    
+    <array name="ZaehlerTypBild">
+        <item>ic_type_electricity</item>
+        <item>ic_type_water</item>
+        <item>ic_type_gas</item>
+    </array>
+    
+    <string-array name="Themes">
+        <item>Dunkel</item>
+        <item>Hell</item>
+    </string-array>
 
-<array name="ZaehlerTypBild">
-<item>ic_type_electricity</item>
-<item>ic_type_water</item>
-<item>ic_type_gas</item>
-</array>
-
+    <string-array name="ThemeValues">
+        <item>darkTheme</item>
+        <item>lightTheme</item>
+    </string-array>
 
 </resources>
