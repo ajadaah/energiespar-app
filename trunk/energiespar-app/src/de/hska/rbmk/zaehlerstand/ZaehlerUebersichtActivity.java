@@ -7,25 +7,13 @@ import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
-import de.hska.rbmk.Constants;
 import de.hska.rbmk.EinstellungenActivity;
 import de.hska.rbmk.datenVerwaltung.*;
 import de.hska.rbmk.StartbildschirmActivity;
-import de.hska.rbmk.R.menu;
-/*
-import de.hska.info.electricMeter.meterSelection.MeterNumbersOpenHelper;
-import de.hska.info.electricMeter.meterSelection.MeterSelectionActivity;
-import de.hska.info.electricMeter.wheel.WheelActivity;
-*/
-
 import de.hska.rbmk.R;
 
-import android.R.id;
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
-import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.ContentValues;
 import android.content.Context;
@@ -34,9 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -45,17 +31,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View.OnClickListener;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,7 +47,6 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 
 	private SQLiteDatabase db;
 	private MeterNumbersOpenHelper mHelper;
-    private static final int DIALOG_TEXT_ENTRY = 1;
     
 	private static final int CONTEXT_DELETE = 1;
 
@@ -80,7 +60,7 @@ public class ZaehlerUebersichtActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		// Das momentane Theme anwenden
+		// Das momentane Theme anwenden (normalerweise durch "extends" geregelt, hier aber ein einzelfall wegen ListActivity) 
         SharedPreferences einstellungen = EinstellungenActivity.getSettings(this);
         String themeName = einstellungen.getString("ausgewaehltes_theme", getResources().getString(R.string.einstellungen_default_theme));
         int themeResource = getResources().getIdentifier(themeName, "style", getPackageName());
@@ -234,20 +214,6 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	
 	private void erfasseNeuenZaehlerwertDialog(final TextView tv_number, final ImageView iv_type)
 	{
-		
-		/*
-//		Intent intent = new Intent(getApplicationContext(), CameraActivity.class);
-//		intent.putExtra(Constants.METERNUMBER, number);
-//		startActivity(intent);
-		Intent manualInputIntent = new Intent(getApplicationContext(), ZaehlerStandErfassenActivity.class);
-		manualInputIntent.putExtra(Constants.METERVALUE, "0");
-		manualInputIntent.putExtra(Constants.METERNUMBER, number);
-		manualInputIntent.putExtra(Constants.METERTYPE, type);
-		startActivityForResult(manualInputIntent, 0);
-		*/
-
-
-		
 		final MeterType zaehlerArt = MeterType.values()[Integer.parseInt(String.valueOf(iv_type.getContentDescription()))];
 		final int zaehlerNummer = Integer.parseInt(String.valueOf(tv_number.getText()));
 		
@@ -290,9 +256,8 @@ public class ZaehlerUebersichtActivity extends ListActivity {
             .setView(textEntryView)
             .setPositiveButton(R.string.menu_zaehlerstand_speichern, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
-                	// TODO: Speichern des neuen Wertes
 
-                			int zaehlerWert = 
+                	int zaehlerWert = 
                 				w1.getCurrentItem() * 1000000 +
                 				w2.getCurrentItem() * 100000 +
                 				w3.getCurrentItem() * 10000 +
@@ -383,19 +348,6 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 				zaehlerNummer.setText(cursor.getString(cursor.getColumnIndex(MeterNumbersOpenHelper.KEY_NUMBER)));
 			}
 		};
-		/*
-		startManagingCursor(zaehlerCursor);
-			
-		SimpleCursorAdapter adapter =
-			new SimpleCursorAdapter(this, 
-					R.layout.list_item, 
-					zaehlerCursor, 
-					new String[] {MeterNumbersOpenHelper.KEY_NUMBER, MeterNumbersOpenHelper.KEY_METERTYPE, MeterNumbersOpenHelper.KEY_ID},
-					new int[] {
-						R.id.list_zaehlernummer, R.id.temp_zaehlertyp
-					}
-			);
-			*/
 		
 		setListAdapter(zaehlerAdapter);
 	}
