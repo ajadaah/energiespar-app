@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+<!--  Theme Enbw -->
+    <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
+         <item name="android:textViewStyle">@style/textEnbw</item>
+         <item name="android:windowBackground">@color/enbw</item>
+    </style> 
+  
+        
+    <style name="darkTheme" parent="@android:style/Theme.Holo">   
+    </style>
+    
+<!-- Schrift -->    
+	<style name="textEnbw" parent="@android:style/Widget.TextView">
+	    <item name="android:textSize">11sp</item>
+	    <item name="android:textColor">#638d2d</item>
+	</style>    
+
+    
+    
+<!-- Farben -->    
+    <color name="enbw">#0000cd</color>
+
+    
+    
+    
+    
+    
+    
+<!--  Schrift alternativ -->    
     <style name="mainMenuButtonText" parent="@android:style/TextAppearance.Holo">
         <item name="android:textSize">11sp</item>
-    </style>
-
-    <style name="lightTheme" parent="@android:style/Theme.Holo.Light"></style>
-    <style name="darkTheme" parent="@android:style/Theme.Holo"></style>
+        <item name="android:textColor">#638d2d</item>
+     </style>
     
 </resources>
