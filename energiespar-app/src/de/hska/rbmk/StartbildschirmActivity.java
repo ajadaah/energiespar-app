@@ -27,7 +27,7 @@ public class StartbildschirmActivity extends ThemedActivity {
     }
     
     public void zaehlerstandErfassen(View v) {
-    	final Intent i = new Intent(this, ZaehlerUebersichtActivity.class);
+    	final Intent i = new Intent(this, ZaehlerstandErfassenActivity.class);
     	startActivity(i);
     }
     
