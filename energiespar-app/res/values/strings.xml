@@ -27,6 +27,11 @@
     <string name="txt_zaehlerstanderfassen_prezaehlernummer">Zählernummer:</string>
     <string name="menu_zaehlerstand_speichern">Speichern</string>
     <string name="menu_einstellungen">Einstellungen</string>
+    <string name="einstellungen_theme_titel">Aussehen</string>
+    <string name="einstellungen_theme_list_titel">Theme auswählen</string>
+    <string name="einstellungen_titel">Einstellungen</string>
+    <string name="einstellungen_default_theme">darkTheme</string>
+    <string name="einstellungen_theme_list_untertitel">Aussehen der Benutzeroberfläche</string>
         
         
 </resources>

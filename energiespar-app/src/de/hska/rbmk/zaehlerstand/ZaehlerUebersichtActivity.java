@@ -8,6 +8,7 @@ import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
 import de.hska.rbmk.Constants;
+import de.hska.rbmk.EinstellungenActivity;
 import de.hska.rbmk.datenVerwaltung.*;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.R.menu;
@@ -30,6 +31,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
@@ -77,6 +79,13 @@ public class ZaehlerUebersichtActivity extends ListActivity {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		// Das momentane Theme anwenden
+        SharedPreferences einstellungen = EinstellungenActivity.getSettings(this);
+        String themeName = einstellungen.getString("ausgewaehltes_theme", getResources().getString(R.string.einstellungen_default_theme));
+        int themeResource = getResources().getIdentifier(themeName, "style", getPackageName());
+        this.setTheme(themeResource);
+		
 		setContentView(R.layout.zaehler_erfassen_uebersicht);
 		
 	    ActionBar actionBar = getActionBar();
