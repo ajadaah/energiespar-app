@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="raster1">4dp</dimen>
+    <dimen name="raster2">8dp</dimen>
+    <dimen name="raster3">12dp</dimen>
+    <dimen name="raster4">16dp</dimen>
+    <dimen name="raster5">20dp</dimen>
+    <dimen name="raster6">24dp</dimen>
+    <dimen name="raster8">32dp</dimen>
+    <dimen name="raster12">48dp</dimen>
+    
+</resources>
