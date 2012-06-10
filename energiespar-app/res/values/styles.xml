@@ -5,6 +5,7 @@
     <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
          <item name="android:textViewStyle">@style/textEnbw</item>
          <item name="android:windowBackground">@drawable/enbwback</item>
+		 <item name="android:imageButtonStyle">@style/Buttonround</item>
     </style> 
   
         
@@ -22,8 +23,17 @@
     <color name="background1">#0000fe</color>
     <color name="background2">#000090</color>
     <color name="text">#ffffff</color>
+    <color name="button1">#000000</color>
+    <color name="button2">#ffffff</color>
 
 
+ <!-- Buttons -->   
+    <style name="Buttonround" parent="@android:style/Widget.ImageButton">
+        <item name="android:background">@drawable/test</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:minWidth">48dp</item>
+        
+    </style>
     
     
 <!--  Schrift alternativ -->    
