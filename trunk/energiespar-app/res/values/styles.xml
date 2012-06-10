@@ -2,13 +2,15 @@
 <resources>
 
 <!--  Theme Enbw -->
-    <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
+    <style name="enbwTheme" parent="@style/lightTheme">
          <item name="android:textViewStyle">@style/textEnbw</item>
          <item name="android:windowBackground">@drawable/enbwback</item>
 		 <item name="android:imageButtonStyle">@style/Buttonround</item>
     </style> 
+    
+    <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
+    </style> 
   
-        
     <style name="darkTheme" parent="@android:style/Theme.Holo">   
     </style>
     
