@@ -4,7 +4,7 @@
 <!--  Theme Enbw -->
     <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
          <item name="android:textViewStyle">@style/textEnbw</item>
-         <item name="android:windowBackground">@color/enbw</item>
+         <item name="android:windowBackground">@drawable/enbwback</item>
     </style> 
   
         
@@ -13,19 +13,17 @@
     
 <!-- Schrift -->    
 	<style name="textEnbw" parent="@android:style/Widget.TextView">
-	    <item name="android:textSize">11sp</item>
-	    <item name="android:textColor">#638d2d</item>
+	    <item name="android:textColor">@color/text</item>
 	</style>    
 
     
     
 <!-- Farben -->    
-    <color name="enbw">#0000cd</color>
+    <color name="background1">#0000fe</color>
+    <color name="background2">#000090</color>
+    <color name="text">#ffffff</color>
 
-    
-    
-    
-    
+
     
     
 <!--  Schrift alternativ -->    
