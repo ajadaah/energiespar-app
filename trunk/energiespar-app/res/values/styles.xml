@@ -2,7 +2,7 @@
 <resources>
 
 <!--  Theme Enbw -->
-    <style name="enbwTheme" parent="@style/lightTheme">
+    <style name="enbwTheme" parent="@android:style/Theme.Holo">
          <item name="android:textViewStyle">@style/textEnbw</item>
          <item name="android:windowBackground">@drawable/enbwback</item>
 		 <item name="android:imageButtonStyle">@style/Buttonround</item>
@@ -17,26 +17,28 @@
 <!-- Schrift -->    
 	<style name="textEnbw" parent="@android:style/Widget.TextView">
 	    <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">12sp</item>
 	</style>    
 
     
     
 <!-- Farben -->    
+    <color name="text">#ffffff</color>
     <color name="background1">#0000fe</color>
     <color name="background2">#000090</color>
-    <color name="text">#ffffff</color>
     <color name="button1">#000000</color>
     <color name="button2">#ffffff</color>
+    <color name="buttonPressed1">#ffffff</color>
+    <color name="buttonPressed2">#000000</color>
 
 
  <!-- Buttons -->   
     <style name="Buttonround" parent="@android:style/Widget.ImageButton">
-        <item name="android:background">@drawable/test</item>
-        <item name="android:minHeight">@dimen/raster12</item>
-        <item name="android:minWidth">@dimen/raster12</item>
-        <item name="android:maxHeight">@dimen/raster12</item>
-        <item name="android:maxWidth">@dimen/raster12</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:minHeight">@dimen/raster16</item>
+        <item name="android:minWidth">@dimen/raster16</item>
+        <item name="android:maxHeight">@dimen/raster16</item>
+        <item name="android:maxWidth">@dimen/raster16</item>
         
     </style>
     

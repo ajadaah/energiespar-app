@@ -8,5 +8,6 @@
     <dimen name="raster6">24dp</dimen>
     <dimen name="raster8">32dp</dimen>
     <dimen name="raster12">48dp</dimen>
+    <dimen name="raster16">64dp</dimen>
     
 </resources>
