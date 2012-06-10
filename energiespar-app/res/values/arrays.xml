@@ -16,11 +16,15 @@
     <string-array name="Themes">
         <item>Dunkel</item>
         <item>Hell</item>
+        <item>EnBW</item>
     </string-array>
+    
     <string-array name="ThemeValues">
         <item>darkTheme</item>
         <item>lightTheme</item>
+        <item>enbwTheme</item>
     </string-array>
+    
     <string-array name="spinner_kWh_p3_to_1p4">
         <item>0.3</item>
         <item>0.31</item>
