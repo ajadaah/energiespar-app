@@ -14,6 +14,7 @@
     <style name="darkTheme" parent="@android:style/Theme.Holo">   
     </style>
     
+    
 <!-- Schrift -->    
 	<style name="textEnbw" parent="@android:style/Widget.TextView">
 	    <item name="android:textColor">@color/text</item>
