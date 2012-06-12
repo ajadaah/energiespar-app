@@ -33,7 +33,12 @@
     <string name="einstellungen_default_theme">darkTheme</string>
     <string name="einstellungen_theme_list_untertitel">Aussehen der Benutzeroberfläche</string>
     <string name="list_item_letzte_ablesung">Letzte Ablesung: %d</string>
-    <string name="list_item_stand">Aktueller Stand: %v</string>
+    <string name="list_item_stand">Letzter Stand: %v</string>
+    <string name="calc_dishw">Spülmaschinen</string>
+    <string name="calc_washer">Waschmaschinen</string>
+    <string name="calc_fridge">Kühlschränke</string>
+    <string name="list_item_keine_werte_erfasst">Es wurde noch kein Zählerstand erfasst.</string>
+    <string name="list_item_blank"> </string>
         
         
 </resources>

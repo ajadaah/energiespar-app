@@ -351,14 +351,6 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 				long letztesUpdate = mRDBA.getLastMeterReadingDateForMeterNumber(Integer.parseInt(zaehlerNummerText));
 				mRDBA.close();
 
-
-				//Date letztesUpdateD = new Date(new Long(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_LASTUPDATE))));
-				String letztesUpdateText;
-				if (letztesUpdate == 0)
-					letztesUpdateText = "-";
-				else
-					letztesUpdateText = (String) DateFormat.format("dd.MM.yyyy kk:mm", letztesUpdate);
-
 				MeterType zaehlerArt = MeterType.values()[zaehlerTyp];
 				
 				switch (zaehlerArt)
@@ -379,8 +371,20 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 				zaehlerTypIcon.setContentDescription(String.valueOf(zaehlerTyp));
 
 				zaehlerNummer.setText(zaehlerNummerText);
-				zaehlerLetzterStand.setText(getString(R.string.list_item_stand).replace("%v", String.valueOf(letzterStand)));
-				zaehlerLetztesUpdate.setText(getString(R.string.list_item_letzte_ablesung).replace("%d", letztesUpdateText));
+				
+				
+				if (letztesUpdate == 0)
+				{
+					zaehlerLetzterStand.setText(R.string.list_item_keine_werte_erfasst);
+					zaehlerLetztesUpdate.setText(R.string.list_item_blank);
+				}
+				else
+				{
+					String letztesUpdateText = (String) DateFormat.format("dd.MM.yyyy kk:mm", letztesUpdate);
+					zaehlerLetztesUpdate.setText(getString(R.string.list_item_letzte_ablesung).replace("%d", letztesUpdateText));
+					zaehlerLetzterStand.setText(getString(R.string.list_item_stand).replace("%v", String.valueOf(letzterStand)));
+				}
+				
 				
 			}
 		};

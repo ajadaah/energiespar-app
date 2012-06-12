@@ -14,12 +14,12 @@ public class SpuelmaschinenActivity extends ThemedActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.rechner_waschmaschine);
+		setContentView(R.layout.rechner_spuelmaschinen);
 		
 		String[] geraeteListe = getResources().getStringArray(R.array.GeraeteListe);
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
-	    actionBar.setTitle(geraeteListe[2]); // 0 = Kühlschrank, 1 = Waschmaschine, 2 = Spülmaschine
+	    actionBar.setTitle(geraeteListe[2]); // 0 = Kühlschränke, 1 = Waschmaschinen, 2 = Spülmaschinen
 	    actionBar.setIcon(R.drawable.ic_calc_dishw);
 	}
 	
@@ -40,11 +40,13 @@ public class SpuelmaschinenActivity extends ThemedActivity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
 	        case android.R.id.home:
+	    	{
 	            // app icon in action bar clicked; go home
 	            Intent intent = new Intent(this, StartbildschirmActivity.class);
-	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	            startActivity(intent);
 	            return true;
+	    	}
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

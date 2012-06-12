@@ -26,9 +26,9 @@
     </string-array>
     
     <string-array name="GeraeteListe">
-        <item >Kühlschrank</item>
-        <item >Waschmaschine</item>
-        <item >Spülmaschine</item>
+        <item >Kühlschränke</item>
+        <item >Waschmaschinen</item>
+        <item >Spülmaschinen</item>
     </string-array>
     
     <string-array name="GeraeteListeSymbole">
@@ -37,193 +37,516 @@
         <item >ic_calc_dishw</item>
     </string-array>
     
+    <string-array name="spinner_kWh_80_to_400">
+        <item>80 kWh</item>
+		<item>81 kWh</item>
+		<item>82 kWh</item>
+		<item>83 kWh</item>
+		<item>84 kWh</item>
+		<item>85 kWh</item>
+		<item>86 kWh</item>
+		<item>87 kWh</item>
+		<item>88 kWh</item>
+		<item>89 kWh</item>
+		<item>90 kWh</item>
+		<item>91 kWh</item>
+		<item>92 kWh</item>
+		<item>93 kWh</item>
+		<item>94 kWh</item>
+		<item>95 kWh</item>
+		<item>96 kWh</item>
+		<item>97 kWh</item>
+		<item>98 kWh</item>
+		<item>99 kWh</item>
+		<item>100 kWh</item>
+		<item>101 kWh</item>
+		<item>102 kWh</item>
+		<item>103 kWh</item>
+		<item>104 kWh</item>
+		<item>105 kWh</item>
+		<item>106 kWh</item>
+		<item>107 kWh</item>
+		<item>108 kWh</item>
+		<item>109 kWh</item>
+		<item>110 kWh</item>
+		<item>111 kWh</item>
+		<item>112 kWh</item>
+		<item>113 kWh</item>
+		<item>114 kWh</item>
+		<item>115 kWh</item>
+		<item>116 kWh</item>
+		<item>117 kWh</item>
+		<item>118 kWh</item>
+		<item>119 kWh</item>
+		<item>120 kWh</item>
+		<item>121 kWh</item>
+		<item>122 kWh</item>
+		<item>123 kWh</item>
+		<item>124 kWh</item>
+		<item>125 kWh</item>
+		<item>126 kWh</item>
+		<item>127 kWh</item>
+		<item>128 kWh</item>
+		<item>129 kWh</item>
+		<item>130 kWh</item>
+		<item>131 kWh</item>
+		<item>132 kWh</item>
+		<item>133 kWh</item>
+		<item>134 kWh</item>
+		<item>135 kWh</item>
+		<item>136 kWh</item>
+		<item>137 kWh</item>
+		<item>138 kWh</item>
+		<item>139 kWh</item>
+		<item>140 kWh</item>
+		<item>141 kWh</item>
+		<item>142 kWh</item>
+		<item>143 kWh</item>
+		<item>144 kWh</item>
+		<item>145 kWh</item>
+		<item>146 kWh</item>
+		<item>147 kWh</item>
+		<item>148 kWh</item>
+		<item>149 kWh</item>
+		<item>150 kWh</item>
+		<item>151 kWh</item>
+		<item>152 kWh</item>
+		<item>153 kWh</item>
+		<item>154 kWh</item>
+		<item>155 kWh</item>
+		<item>156 kWh</item>
+		<item>157 kWh</item>
+		<item>158 kWh</item>
+		<item>159 kWh</item>
+		<item>160 kWh</item>
+		<item>161 kWh</item>
+		<item>162 kWh</item>
+		<item>163 kWh</item>
+		<item>164 kWh</item>
+		<item>165 kWh</item>
+		<item>166 kWh</item>
+		<item>167 kWh</item>
+		<item>168 kWh</item>
+		<item>169 kWh</item>
+		<item>170 kWh</item>
+		<item>171 kWh</item>
+		<item>172 kWh</item>
+		<item>173 kWh</item>
+		<item>174 kWh</item>
+		<item>175 kWh</item>
+		<item>176 kWh</item>
+		<item>177 kWh</item>
+		<item>178 kWh</item>
+		<item>179 kWh</item>
+		<item>180 kWh</item>
+		<item>181 kWh</item>
+		<item>182 kWh</item>
+		<item>183 kWh</item>
+		<item>184 kWh</item>
+		<item>185 kWh</item>
+		<item>186 kWh</item>
+		<item>187 kWh</item>
+		<item>188 kWh</item>
+		<item>189 kWh</item>
+		<item>190 kWh</item>
+		<item>191 kWh</item>
+		<item>192 kWh</item>
+		<item>193 kWh</item>
+		<item>194 kWh</item>
+		<item>195 kWh</item>
+		<item>196 kWh</item>
+		<item>197 kWh</item>
+		<item>198 kWh</item>
+		<item>199 kWh</item>
+		<item>200 kWh</item>
+		<item>201 kWh</item>
+		<item>202 kWh</item>
+		<item>203 kWh</item>
+		<item>204 kWh</item>
+		<item>205 kWh</item>
+		<item>206 kWh</item>
+		<item>207 kWh</item>
+		<item>208 kWh</item>
+		<item>209 kWh</item>
+		<item>210 kWh</item>
+		<item>211 kWh</item>
+		<item>212 kWh</item>
+		<item>213 kWh</item>
+		<item>214 kWh</item>
+		<item>215 kWh</item>
+		<item>216 kWh</item>
+		<item>217 kWh</item>
+		<item>218 kWh</item>
+		<item>219 kWh</item>
+		<item>220 kWh</item>
+		<item>221 kWh</item>
+		<item>222 kWh</item>
+		<item>223 kWh</item>
+		<item>224 kWh</item>
+		<item>225 kWh</item>
+		<item>226 kWh</item>
+		<item>227 kWh</item>
+		<item>228 kWh</item>
+		<item>229 kWh</item>
+		<item>230 kWh</item>
+		<item>231 kWh</item>
+		<item>232 kWh</item>
+		<item>233 kWh</item>
+		<item>234 kWh</item>
+		<item>235 kWh</item>
+		<item>236 kWh</item>
+		<item>237 kWh</item>
+		<item>238 kWh</item>
+		<item>239 kWh</item>
+		<item>240 kWh</item>
+		<item>241 kWh</item>
+		<item>242 kWh</item>
+		<item>243 kWh</item>
+		<item>244 kWh</item>
+		<item>245 kWh</item>
+		<item>246 kWh</item>
+		<item>247 kWh</item>
+		<item>248 kWh</item>
+		<item>249 kWh</item>
+		<item>250 kWh</item>
+		<item>251 kWh</item>
+		<item>252 kWh</item>
+		<item>253 kWh</item>
+		<item>254 kWh</item>
+		<item>255 kWh</item>
+		<item>256 kWh</item>
+		<item>257 kWh</item>
+		<item>258 kWh</item>
+		<item>259 kWh</item>
+		<item>260 kWh</item>
+		<item>261 kWh</item>
+		<item>262 kWh</item>
+		<item>263 kWh</item>
+		<item>264 kWh</item>
+		<item>265 kWh</item>
+		<item>266 kWh</item>
+		<item>267 kWh</item>
+		<item>268 kWh</item>
+		<item>269 kWh</item>
+		<item>270 kWh</item>
+		<item>271 kWh</item>
+		<item>272 kWh</item>
+		<item>273 kWh</item>
+		<item>274 kWh</item>
+		<item>275 kWh</item>
+		<item>276 kWh</item>
+		<item>277 kWh</item>
+		<item>278 kWh</item>
+		<item>279 kWh</item>
+		<item>280 kWh</item>
+		<item>281 kWh</item>
+		<item>282 kWh</item>
+		<item>283 kWh</item>
+		<item>284 kWh</item>
+		<item>285 kWh</item>
+		<item>286 kWh</item>
+		<item>287 kWh</item>
+		<item>288 kWh</item>
+		<item>289 kWh</item>
+		<item>290 kWh</item>
+		<item>291 kWh</item>
+		<item>292 kWh</item>
+		<item>293 kWh</item>
+		<item>294 kWh</item>
+		<item>295 kWh</item>
+		<item>296 kWh</item>
+		<item>297 kWh</item>
+		<item>298 kWh</item>
+		<item>299 kWh</item>
+		<item>300 kWh</item>
+		<item>301 kWh</item>
+		<item>302 kWh</item>
+		<item>303 kWh</item>
+		<item>304 kWh</item>
+		<item>305 kWh</item>
+		<item>306 kWh</item>
+		<item>307 kWh</item>
+		<item>308 kWh</item>
+		<item>309 kWh</item>
+		<item>310 kWh</item>
+		<item>311 kWh</item>
+		<item>312 kWh</item>
+		<item>313 kWh</item>
+		<item>314 kWh</item>
+		<item>315 kWh</item>
+		<item>316 kWh</item>
+		<item>317 kWh</item>
+		<item>318 kWh</item>
+		<item>319 kWh</item>
+		<item>320 kWh</item>
+		<item>321 kWh</item>
+		<item>322 kWh</item>
+		<item>323 kWh</item>
+		<item>324 kWh</item>
+		<item>325 kWh</item>
+		<item>326 kWh</item>
+		<item>327 kWh</item>
+		<item>328 kWh</item>
+		<item>329 kWh</item>
+		<item>330 kWh</item>
+		<item>331 kWh</item>
+		<item>332 kWh</item>
+		<item>333 kWh</item>
+		<item>334 kWh</item>
+		<item>335 kWh</item>
+		<item>336 kWh</item>
+		<item>337 kWh</item>
+		<item>338 kWh</item>
+		<item>339 kWh</item>
+		<item>340 kWh</item>
+		<item>341 kWh</item>
+		<item>342 kWh</item>
+		<item>343 kWh</item>
+		<item>344 kWh</item>
+		<item>345 kWh</item>
+		<item>346 kWh</item>
+		<item>347 kWh</item>
+		<item>348 kWh</item>
+		<item>349 kWh</item>
+		<item>350 kWh</item>
+		<item>351 kWh</item>
+		<item>352 kWh</item>
+		<item>353 kWh</item>
+		<item>354 kWh</item>
+		<item>355 kWh</item>
+		<item>356 kWh</item>
+		<item>357 kWh</item>
+		<item>358 kWh</item>
+		<item>359 kWh</item>
+		<item>360 kWh</item>
+		<item>361 kWh</item>
+		<item>362 kWh</item>
+		<item>363 kWh</item>
+		<item>364 kWh</item>
+		<item>365 kWh</item>
+		<item>366 kWh</item>
+		<item>367 kWh</item>
+		<item>368 kWh</item>
+		<item>369 kWh</item>
+		<item>370 kWh</item>
+		<item>371 kWh</item>
+		<item>372 kWh</item>
+		<item>373 kWh</item>
+		<item>374 kWh</item>
+		<item>375 kWh</item>
+		<item>376 kWh</item>
+		<item>377 kWh</item>
+		<item>378 kWh</item>
+		<item>379 kWh</item>
+		<item>380 kWh</item>
+		<item>381 kWh</item>
+		<item>382 kWh</item>
+		<item>383 kWh</item>
+		<item>384 kWh</item>
+		<item>385 kWh</item>
+		<item>386 kWh</item>
+		<item>387 kWh</item>
+		<item>388 kWh</item>
+		<item>389 kWh</item>
+		<item>390 kWh</item>
+		<item>391 kWh</item>
+		<item>392 kWh</item>
+		<item>393 kWh</item>
+		<item>394 kWh</item>
+		<item>395 kWh</item>
+		<item>396 kWh</item>
+		<item>397 kWh</item>
+		<item>398 kWh</item>
+		<item>399 kWh</item>
+		<item>400 kWh</item>
+		</string-array>
+    
     <string-array name="spinner_kWh_p3_to_1p4">
-        <item>0.3</item>
-        <item>0.31</item>
-        <item>0.32</item>
-        <item>0.33</item>
-        <item>0.34</item>
-        <item>0.35</item>
-        <item>0.36</item>
-        <item>0.37</item>
-        <item>0.38</item>
-        <item>0.39</item>
-        <item>0.4</item>
-        <item>0.41</item>
-        <item>0.42</item>
-        <item>0.43</item>
-        <item>0.44</item>
-        <item>0.45</item>
-        <item>0.46</item>
-        <item>0.47</item>
-        <item>0.48</item>
-        <item>0.49</item>
-        <item>0.5</item>
-        <item>0.51</item>
-        <item>0.52</item>
-        <item>0.53</item>
-        <item>0.54</item>
-        <item>0.55</item>
-        <item>0.56</item>
-        <item>0.57</item>
-        <item>0.58</item>
-        <item>0.59</item>
-        <item>0.6</item>
-        <item>0.61</item>
-        <item>0.62</item>
-        <item>0.63</item>
-        <item>0.64</item>
-        <item>0.65</item>
-        <item>0.66</item>
-        <item>0.67</item>
-        <item>0.68</item>
-        <item>0.69</item>
-        <item>0.7</item>
-        <item>0.71</item>
-        <item>0.72</item>
-        <item>0.73</item>
-        <item>0.74</item>
-        <item>0.75</item>
-        <item>0.76</item>
-        <item>0.77</item>
-        <item>0.78</item>
-        <item>0.79</item>
-        <item>0.8</item>
-        <item>0.81</item>
-        <item>0.82</item>
-        <item>0.83</item>
-        <item>0.84</item>
-        <item>0.85</item>
-        <item>0.86</item>
-        <item>0.87</item>
-        <item>0.88</item>
-        <item>0.89</item>
-        <item>0.9</item>
-        <item>0.91</item>
-        <item>0.92</item>
-        <item>0.93</item>
-        <item>0.94</item>
-        <item>0.95</item>
-        <item>0.96</item>
-        <item>0.97</item>
-        <item>0.98</item>
-        <item>0.99</item>
-        <item>1</item>
-        <item>1.01</item>
-        <item>1.02</item>
-        <item>1.03</item>
-        <item>1.04</item>
-        <item>1.05</item>
-        <item>1.06</item>
-        <item>1.07</item>
-        <item>1.08</item>
-        <item>1.09</item>
-        <item>1.1</item>
-        <item>1.11</item>
-        <item>1.12</item>
-        <item>1.13</item>
-        <item>1.14</item>
-        <item>1.15</item>
-        <item>1.16</item>
-        <item>1.17</item>
-        <item>1.18</item>
-        <item>1.19</item>
-        <item>1.2</item>
-        <item>1.21</item>
-        <item>1.22</item>
-        <item>1.23</item>
-        <item>1.24</item>
-        <item>1.25</item>
-        <item>1.26</item>
-        <item>1.27</item>
-        <item>1.28</item>
-        <item>1.29</item>
-        <item>1.3</item>
-        <item>1.31</item>
-        <item>1.32</item>
-        <item>1.33</item>
-        <item>1.34</item>
-        <item>1.35</item>
-        <item>1.36</item>
-        <item>1.37</item>
-        <item>1.38</item>
-        <item>1.39</item>
-        <item>1.4</item>
+        <item>0.30 kWh</item>
+        <item>0.31 kWh</item>
+        <item>0.32 kWh</item>
+        <item>0.33 kWh</item>
+        <item>0.34 kWh</item>
+        <item>0.35 kWh</item>
+        <item>0.36 kWh</item>
+        <item>0.37 kWh</item>
+        <item>0.38 kWh</item>
+        <item>0.39 kWh</item>
+        <item>0.40 kWh</item>
+        <item>0.41 kWh</item>
+        <item>0.42 kWh</item>
+        <item>0.43 kWh</item>
+        <item>0.44 kWh</item>
+        <item>0.45 kWh</item>
+        <item>0.46 kWh</item>
+        <item>0.47 kWh</item>
+        <item>0.48 kWh</item>
+        <item>0.49 kWh</item>
+        <item>0.50 kWh</item>
+        <item>0.51 kWh</item>
+        <item>0.52 kWh</item>
+        <item>0.53 kWh</item>
+        <item>0.54 kWh</item>
+        <item>0.55 kWh</item>
+        <item>0.56 kWh</item>
+        <item>0.57 kWh</item>
+        <item>0.58 kWh</item>
+        <item>0.59 kWh</item>
+        <item>0.60 kWh</item>
+        <item>0.61 kWh</item>
+        <item>0.62 kWh</item>
+        <item>0.63 kWh</item>
+        <item>0.64 kWh</item>
+        <item>0.65 kWh</item>
+        <item>0.66 kWh</item>
+        <item>0.67 kWh</item>
+        <item>0.68 kWh</item>
+        <item>0.69 kWh</item>
+        <item>0.70 kWh</item>
+        <item>0.71 kWh</item>
+        <item>0.72 kWh</item>
+        <item>0.73 kWh</item>
+        <item>0.74 kWh</item>
+        <item>0.75 kWh</item>
+        <item>0.76 kWh</item>
+        <item>0.77 kWh</item>
+        <item>0.78 kWh</item>
+        <item>0.79 kWh</item>
+        <item>0.80 kWh</item>
+        <item>0.81 kWh</item>
+        <item>0.82 kWh</item>
+        <item>0.83 kWh</item>
+        <item>0.84 kWh</item>
+        <item>0.85 kWh</item>
+        <item>0.86 kWh</item>
+        <item>0.87 kWh</item>
+        <item>0.88 kWh</item>
+        <item>0.89 kWh</item>
+        <item>0.90 kWh</item>
+        <item>0.91 kWh</item>
+        <item>0.92 kWh</item>
+        <item>0.93 kWh</item>
+        <item>0.94 kWh</item>
+        <item>0.95 kWh</item>
+        <item>0.96 kWh</item>
+        <item>0.97 kWh</item>
+        <item>0.98 kWh</item>
+        <item>0.99 kWh</item>
+        <item>1.00 kWh</item>
+        <item>1.01 kWh</item>
+        <item>1.02 kWh</item>
+        <item>1.03 kWh</item>
+        <item>1.04 kWh</item>
+        <item>1.05 kWh</item>
+        <item>1.06 kWh</item>
+        <item>1.07 kWh</item>
+        <item>1.08 kWh</item>
+        <item>1.09 kWh</item>
+        <item>1.10 kWh</item>
+        <item>1.11 kWh</item>
+        <item>1.12 kWh</item>
+        <item>1.13 kWh</item>
+        <item>1.14 kWh</item>
+        <item>1.15 kWh</item>
+        <item>1.16 kWh</item>
+        <item>1.17 kWh</item>
+        <item>1.18 kWh</item>
+        <item>1.19 kWh</item>
+        <item>1.20 kWh</item>
+        <item>1.21 kWh</item>
+        <item>1.22 kWh</item>
+        <item>1.23 kWh</item>
+        <item>1.24 kWh</item>
+        <item>1.25 kWh</item>
+        <item>1.26 kWh</item>
+        <item>1.27 kWh</item>
+        <item>1.28 kWh</item>
+        <item>1.29 kWh</item>
+        <item>1.30 kWh</item>
+        <item>1.31 kWh</item>
+        <item>1.32 kWh</item>
+        <item>1.33 kWh</item>
+        <item>1.34 kWh</item>
+        <item>1.35 kWh</item>
+        <item>1.36 kWh</item>
+        <item>1.37 kWh</item>
+        <item>1.38 kWh</item>
+        <item>1.39 kWh</item>
+        <item>1.40 kWh</item>
     </string-array>
     
-    
     <string-array name="spinner_wasser_30_to_100">
-        <item>30</item>
-        <item>31</item>
-        <item>32</item>
-        <item>33</item>
-        <item>34</item>
-        <item>35</item>
-        <item>36</item>
-        <item>37</item>
-        <item>38</item>
-        <item>39</item>
-        <item>40</item>
-        <item>41</item>
-        <item>42</item>
-        <item>43</item>
-        <item>44</item>
-        <item>45</item>
-        <item>46</item>
-        <item>47</item>
-        <item>48</item>
-        <item>49</item>
-        <item>50</item>
-        <item>51</item>
-        <item>52</item>
-        <item>53</item>
-        <item>54</item>
-        <item>55</item>
-        <item>56</item>
-        <item>57</item>
-        <item>58</item>
-        <item>59</item>
-        <item>60</item>
-        <item>61</item>
-        <item>62</item>
-        <item>63</item>
-        <item>64</item>
-        <item>65</item>
-        <item>66</item>
-        <item>67</item>
-        <item>68</item>
-        <item>69</item>
-        <item>70</item>
-        <item>71</item>
-        <item>72</item>
-        <item>73</item>
-        <item>74</item>
-        <item>75</item>
-        <item>76</item>
-        <item>77</item>
-        <item>78</item>
-        <item>79</item>
-        <item>80</item>
-        <item>81</item>
-        <item>82</item>
-        <item>83</item>
-        <item>84</item>
-        <item>85</item>
-        <item>86</item>
-        <item>87</item>
-        <item>88</item>
-        <item>89</item>
-        <item>90</item>
-        <item>91</item>
-        <item>92</item>
-        <item>93</item>
-        <item>94</item>
-        <item>95</item>
-        <item>96</item>
-        <item>97</item>
-        <item>98</item>
-        <item>99</item>
-        <item>100</item>
+        <item>30 Liter</item>
+        <item>31 Liter</item>
+        <item>32 Liter</item>
+        <item>33 Liter</item>
+        <item>34 Liter</item>
+        <item>35 Liter</item>
+        <item>36 Liter</item>
+        <item>37 Liter</item>
+        <item>38 Liter</item>
+        <item>39 Liter</item>
+        <item>40 Liter</item>
+        <item>41 Liter</item>
+        <item>42 Liter</item>
+        <item>43 Liter</item>
+        <item>44 Liter</item>
+        <item>45 Liter</item>
+        <item>46 Liter</item>
+        <item>47 Liter</item>
+        <item>48 Liter</item>
+        <item>49 Liter</item>
+        <item>50 Liter</item>
+        <item>51 Liter</item>
+        <item>52 Liter</item>
+        <item>53 Liter</item>
+        <item>54 Liter</item>
+        <item>55 Liter</item>
+        <item>56 Liter</item>
+        <item>57 Liter</item>
+        <item>58 Liter</item>
+        <item>59 Liter</item>
+        <item>60 Liter</item>
+        <item>61 Liter</item>
+        <item>62 Liter</item>
+        <item>63 Liter</item>
+        <item>64 Liter</item>
+        <item>65 Liter</item>
+        <item>66 Liter</item>
+        <item>67 Liter</item>
+        <item>68 Liter</item>
+        <item>69 Liter</item>
+        <item>70 Liter</item>
+        <item>71 Liter</item>
+        <item>72 Liter</item>
+        <item>73 Liter</item>
+        <item>74 Liter</item>
+        <item>75 Liter</item>
+        <item>76 Liter</item>
+        <item>77 Liter</item>
+        <item>78 Liter</item>
+        <item>79 Liter</item>
+        <item>80 Liter</item>
+        <item>81 Liter</item>
+        <item>82 Liter</item>
+        <item>83 Liter</item>
+        <item>84 Liter</item>
+        <item>85 Liter</item>
+        <item>86 Liter</item>
+        <item>87 Liter</item>
+        <item>88 Liter</item>
+        <item>89 Liter</item>
+        <item>90 Liter</item>
+        <item>91 Liter</item>
+        <item>92 Liter</item>
+        <item>93 Liter</item>
+        <item>94 Liter</item>
+        <item>95 Liter</item>
+        <item>96 Liter</item>
+        <item>97 Liter</item>
+        <item>98 Liter</item>
+        <item>99 Liter</item>
+        <item>100 Liter</item>
     </string-array>
 
 </resources>

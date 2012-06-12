@@ -2,7 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<item android:id="@+id/pick_action_provider"
-		android:showAsAction="always" android:title="Auswahl"
+		android:showAsAction="always"
+		android:title="Auswahl"
 		android:actionProviderClass="de.hska.rbmk.verbrauchsrechner.MyActionProvider" />
 
+<!-- 	    <item android:id="@+id/menu_dishw" -->
+<!--           android:icon="@drawable/ic_calc_dishw" -->
+<!--           android:title="@string/calc_dishw" -->
+<!--           android:showAsAction="always|withText" /> -->
+	    
+<!-- 	    <item android:id="@+id/menu_washer" -->
+<!--           android:icon="@drawable/ic_calc_washer" -->
+<!--           android:title="@string/calc_washer" -->
+<!--           android:showAsAction="always|withText" /> -->
+	    
+<!-- 	    <item android:id="@+id/menu_fridge" -->
+<!--           android:icon="@drawable/ic_calc_fridge" -->
+<!--           android:title="@string/calc_fridge" -->
+<!--           android:showAsAction="always|withText" /> -->
+	
 </menu>
