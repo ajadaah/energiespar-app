@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.text.format.DateFormat;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -291,7 +292,13 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 //                				Intent intent = new Intent(view.getContext(), ElectricMeterActivity.class);
 //                				startActivityForResult(intent, 0);
                 			}
-                			else {
+                			else { // Der Wert ist kleiner als der zuletzt erfasste Zählerstand
+                				
+                				// Vibrate
+                				Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                				v.vibrate(300);
+
+                				// Toast
                 				Toast.makeText(getApplicationContext(),
                 						"Fehler: Der gewählte Wert " + zaehlerWert + 
                 						" ist kleiner als der zuletzt erfasste Wert " +	letzterWert,
@@ -308,9 +315,7 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 				new String[] { 						// anzuzeigende Spalten
 						MeterReadingsDbAdapter.KEY_ID,
 						MeterReadingsDbAdapter.KEY_NUMBER,
-						MeterReadingsDbAdapter.KEY_METERTYPE,
-						MeterReadingsDbAdapter.KEY_LASTVALUE,
-						MeterReadingsDbAdapter.KEY_LASTUPDATE
+						MeterReadingsDbAdapter.KEY_METERTYPE
 				}, 
 				null, 								// WHERE (z.B. "_id = ?")
 				null, 								// WHERE-Argumente (für "?")
@@ -345,7 +350,6 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 				long letzterStand = mRDBA.getLastMeterReadingValueForMeterNumber(Integer.parseInt(zaehlerNummerText));
 				long letztesUpdate = mRDBA.getLastMeterReadingDateForMeterNumber(Integer.parseInt(zaehlerNummerText));
 				mRDBA.close();
-				
 
 
 				//Date letztesUpdateD = new Date(new Long(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_LASTUPDATE))));
