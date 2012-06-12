@@ -3,7 +3,12 @@ package de.hska.rbmk.verbrauchsrechner;
 
 import java.util.List;
 
+import de.hska.rbmk.R;
+import de.hska.rbmk.StartbildschirmActivity;
+import de.hska.rbmk.zaehlerstand.ZaehlerstandErfassenActivity;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
@@ -57,35 +62,29 @@ public class MyActionProvider extends ActionProvider implements OnMenuItemClickL
 
 		subMenu.clear();
 
-		PackageManager manager = mContext.getPackageManager();
-		List<ApplicationInfo> applicationList = manager
-				.getInstalledApplications(PackageManager.GET_ACTIVITIES);
-
-		for (int i = 0; i < Math.min(LIST_LENGTH, applicationList.size()); i++) {
-			ApplicationInfo appInfo = applicationList.get(i);
-
-			subMenu.add(0, i, i, manager.getApplicationLabel(appInfo))
-					.setIcon(appInfo.loadIcon(manager))
-					.setOnMenuItemClickListener(this);
-		}
-
-		if (LIST_LENGTH < applicationList.size()) {
-			subMenu = subMenu.addSubMenu(Menu.NONE, LIST_LENGTH, LIST_LENGTH,
-					"hoge");
-
-			for (int i = 0; i < applicationList.size(); i++) {
-				ApplicationInfo appInfo = applicationList.get(i);
-
-				subMenu.add(0, i, i, manager.getApplicationLabel(appInfo))
-						.setIcon(appInfo.loadIcon(manager))
-						.setOnMenuItemClickListener(this);
-			}
-		}
+		String[] geraeteListe = mContext.getResources().getStringArray(R.array.GeraeteListe);
+		String[] geraeteListeSymbole = mContext.getResources().getStringArray(R.array.GeraeteListeSymbole);
+		
+		// TODO schlechte implementation 
+		subMenu.add(0, 0, 0, geraeteListe[0])
+		.setIcon(mContext.getResources().getIdentifier(geraeteListeSymbole[0], "drawable", mContext.getPackageName()))
+		.setOnMenuItemClickListener(this)
+		.setIntent(new Intent(mContext, StartbildschirmActivity.class));
+		
+		subMenu.add(0, 1, 1, geraeteListe[1])
+		.setIcon(mContext.getResources().getIdentifier(geraeteListeSymbole[1], "drawable", mContext.getPackageName()))
+		.setOnMenuItemClickListener(this)
+		.setIntent(new Intent(mContext, StartbildschirmActivity.class));
+		
+		subMenu.add(0, 2, 2, geraeteListe[2])
+		.setIcon(mContext.getResources().getIdentifier(geraeteListeSymbole[2], "drawable", mContext.getPackageName()))
+		.setOnMenuItemClickListener(this)
+		.setIntent(new Intent(mContext, StartbildschirmActivity.class));
 	}
 
 	@Override
 	public boolean onMenuItemClick(MenuItem item) {
-		Toast.makeText(mContext, item.getTitle(), Toast.LENGTH_SHORT).show();
+    	mContext.startActivity(item.getIntent());
 		return true;
 	}
 }

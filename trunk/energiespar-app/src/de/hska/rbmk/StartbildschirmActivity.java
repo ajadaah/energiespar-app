@@ -37,7 +37,7 @@ public class StartbildschirmActivity extends ThemedActivity {
     }
 
     public void verbrauchsrechner(View v) {
-    	final Intent i = new Intent(this, WaschmaschineActivity.class);
+    	final Intent i = new Intent(this, WaschmaschinenActivity.class);
     	startActivity(i);
     }
 

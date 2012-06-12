@@ -24,7 +24,7 @@
         </activity>
 
         <activity android:name=".geraetevergleich.GeraetevergleichActivtiy"></activity>
-        <activity android:name=".verbrauchsrechner.WaschmaschineActivity"></activity>
+        <activity android:name=".verbrauchsrechner.WaschmaschinenActivity"></activity>
 
         <activity android:name=".zaehlerstand.ZaehlerstandErfassenActivity"></activity>
         

@@ -25,6 +25,18 @@
         <item>enbwTheme</item>
     </string-array>
     
+    <string-array name="GeraeteListe">
+        <item >Kühlschrank</item>
+        <item >Waschmaschine</item>
+        <item >Spülmaschine</item>
+    </string-array>
+    
+    <string-array name="GeraeteListeSymbole">
+        <item >ic_calc_fridge</item>
+        <item >ic_calc_washer</item>
+        <item >ic_calc_dishw</item>
+    </string-array>
+    
     <string-array name="spinner_kWh_p3_to_1p4">
         <item>0.3</item>
         <item>0.31</item>
