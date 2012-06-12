@@ -16,9 +16,9 @@ public class MeterReadingsDbAdapter {
 	private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
     
-    private static final String DATABASE_NAME = "data";
+    private static final String DATABASE_NAME = "AppDatenbank.db";
     private static final String DATABASE_TABLE_METERREADINGS = "meterReadings";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     
     public static final String KEY_ROWID = "_id";
     public static final String KEY_CONNECTIONINFO = "connectionInfo";
@@ -28,6 +28,23 @@ public class MeterReadingsDbAdapter {
     public static final String KEY_METERTYPE = "meterType";
     public static final String KEY_METERVALUEREVISED = "meterValueRevised"; 
     public static final String KEY_SYNCHRONIZED = "synchronized";
+    
+	public static final String TABLE_METERNUMBERS_NAME = "meternumbers";
+    
+	public static final String KEY_ID = "_id";
+	public static final String KEY_NUMBER = "number";
+	public static final String KEY_LASTVALUE = "letzterWert";
+	public static final String KEY_LASTUPDATE = "letztesUpdate";
+	
+	
+	private static final String TABLE_METERNUMBERS_CREATE = 
+    		"CREATE TABLE " + TABLE_METERNUMBERS_NAME + "(" +
+    				KEY_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+    				KEY_NUMBER + " TEXT NOT NULL, " +
+    				KEY_METERTYPE + " TEXT NOT NULL," +
+    				KEY_LASTVALUE + " INTEGER DEFAULT 0," +
+    				KEY_LASTUPDATE + " DATETIME" +
+    				")";
     
     /**
      * Database creation sql statement
@@ -42,14 +59,13 @@ public class MeterReadingsDbAdapter {
     private final Context mCtx;
 	
 	private static class DatabaseHelper extends SQLiteOpenHelper {
-
 		public DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		}
 		
 		@Override
         public void onCreate(SQLiteDatabase db) {
-
+			db.execSQL(TABLE_METERNUMBERS_CREATE);
             db.execSQL(TABLE_METERREADINGS_CREATE);
         }
 
@@ -58,6 +74,7 @@ public class MeterReadingsDbAdapter {
             Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
                     + newVersion + ", which will destroy all old data");
             db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_METERREADINGS + ";"); // TODO implement update handling that preserves the old values
+			db.execSQL("DROP TABLE IF EXISTS " + TABLE_METERNUMBERS_NAME + ";");
             onCreate(db);
         }
 		
@@ -90,6 +107,10 @@ public class MeterReadingsDbAdapter {
 
     public void close() {
         mDbHelper.close();
+    }
+    
+    public SQLiteDatabase getDb() {
+    	return mDbHelper.getWritableDatabase();
     }
     
     /**
