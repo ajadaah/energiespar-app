@@ -46,7 +46,8 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
     
 
 	private SQLiteDatabase db;
-	private MeterNumbersOpenHelper mHelper;
+//	private MeterNumbersOpenHelper mHelper;
+	private MeterReadingsDbAdapter dbAdapter;
     
 	private static final int CONTEXT_DELETE = 1;
 
@@ -74,7 +75,9 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 		
 		registerForContextMenu(getListView());
 		
-		mHelper = new MeterNumbersOpenHelper(this);
+		dbAdapter = new MeterReadingsDbAdapter(this);
+		
+//		mHelper = new MeterNumbersOpenHelper(this);
     }
 	
 	@Override
@@ -103,9 +106,9 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	                    public void onClick(DialogInterface dialog, int whichButton) {
 
 	        				ContentValues values = new ContentValues();
-	        				values.put(MeterNumbersOpenHelper.KEY_NUMBER, et.getText().toString());
-	        				values.put(MeterNumbersOpenHelper.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
-	        				db.insert(MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME, null, values);
+	        				values.put(MeterReadingsDbAdapter.KEY_NUMBER, et.getText().toString());
+	        				values.put(MeterReadingsDbAdapter.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
+	        				db.insert(MeterReadingsDbAdapter.TABLE_METERNUMBERS_NAME, null, values);
 	        				loadData();
 	                    }
 	                })
@@ -140,7 +143,7 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
 		case CONTEXT_DELETE:
-			db.delete(MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME, MeterNumbersOpenHelper.KEY_ID + "=" + contextSelection, null);
+			db.delete(MeterReadingsDbAdapter.TABLE_METERNUMBERS_NAME, MeterReadingsDbAdapter.KEY_ID + "=" + contextSelection, null);
 			loadData();
 			break;
 		}
@@ -200,13 +203,14 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
     
 	@Override
 	protected void onPause() {
-		db.close();
+		dbAdapter.close();
 		super.onPause();
 	}
 
 	@Override
 	protected void onResume() {
-		db = mHelper.getWritableDatabase();
+		dbAdapter.open();
+		db = dbAdapter.getDb();
 		loadData();
 
 		super.onResume();
@@ -296,17 +300,17 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	
 	private void loadData() {
 		Cursor zaehlerCursor = db.query(
-				MeterNumbersOpenHelper.TABLE_METERNUMBERS_NAME,							// Tabellenname
+				MeterReadingsDbAdapter.TABLE_METERNUMBERS_NAME,							// Tabellenname
 				new String[] { 						// anzuzeigende Spalten
-						MeterNumbersOpenHelper.KEY_ID,
-						MeterNumbersOpenHelper.KEY_NUMBER,
-						MeterNumbersOpenHelper.KEY_METERTYPE
+						MeterReadingsDbAdapter.KEY_ID,
+						MeterReadingsDbAdapter.KEY_NUMBER,
+						MeterReadingsDbAdapter.KEY_METERTYPE
 				}, 
 				null, 								// WHERE (z.B. "_id = ?")
 				null, 								// WHERE-Argumente (für "?")
 				null, 								// GROUP BY
 				null, 								// HAVING
-				MeterNumbersOpenHelper.KEY_NUMBER	// ORDER BY
+				MeterReadingsDbAdapter.KEY_NUMBER	// ORDER BY
 			);
 
 		CursorAdapter zaehlerAdapter = new CursorAdapter(this, zaehlerCursor, false) {
@@ -323,7 +327,7 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 			public void bindView(View view, Context context, Cursor cursor) {
 				TextView zaehlerNummer = (TextView)view.findViewById(R.id.list_zaehlernummer);
 				ImageView zaehlerTypIcon = (ImageView)view.findViewById(R.id.list_zaehlertyp_icon);
-				int zaehlerTyp = Integer.parseInt(cursor.getString(cursor.getColumnIndex(MeterNumbersOpenHelper.KEY_METERTYPE)));
+				int zaehlerTyp = Integer.parseInt(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_METERTYPE)));
 
 				zaehlerTypIcon.setContentDescription(String.valueOf(zaehlerTyp));
 				
@@ -345,7 +349,7 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 					}
 				}
 
-				zaehlerNummer.setText(cursor.getString(cursor.getColumnIndex(MeterNumbersOpenHelper.KEY_NUMBER)));
+				zaehlerNummer.setText(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_NUMBER)));
 			}
 		};
 		
