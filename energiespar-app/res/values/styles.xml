@@ -5,26 +5,38 @@
     <style name="enbwTheme" parent="@android:style/Theme.Holo">
          <item name="android:textViewStyle">@style/textEnbw</item>
          <item name="android:windowBackground">@drawable/enbwback</item>
-		 <item name="android:imageButtonStyle">@style/Buttonround</item>
+		 <item name="android:imageButtonStyle">@style/ButtonroundEnbw</item>
     </style> 
-    
-    <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
+
+<!--  Theme EnergieDienst -->
+    <style name="EDTheme" parent="@android:style/Theme.Holo.Light">
+         <item name="android:textViewStyle">@style/textED</item>
+         <item name="android:windowBackground">@drawable/energie_dienst</item>
+		 <item name="android:imageButtonStyle">@style/Buttonround_energiedienst</item>
     </style> 
-  
-    <style name="darkTheme" parent="@android:style/Theme.Holo">   
+
+<!-- Banner -->    
+    <style name="banner">
+        <item name="android:src">@drawable/banner_energiedienst</item>
+        <item name="android:layout_gravity">center</item>
     </style>
     
-    
-<!-- Schrift -->    
+<!-- Schrift ENBW -->    
 	<style name="textEnbw" parent="@android:style/Widget.TextView">
 	    <item name="android:textColor">@color/text</item>
         <item name="android:paddingTop">4dp</item>
- 
 	</style>    
+ 
+<!-- Schrift Energie Dienst -->    
+	<style name="textED" parent="@android:style/Widget.TextView">
+	    <item name="android:textColor">@color/textenergiedienst</item>
+        <item name="android:paddingTop">4dp</item>
+	</style>    
+ 
 
     
     
-<!-- Farben -->    
+<!-- Farben ENBW-->    
     <color name="text">#ffffff</color>
     <color name="background1">#0000fe</color>
     <color name="background2">#000090</color>
@@ -32,11 +44,28 @@
     <color name="button2">#ffffff</color>
     <color name="buttonPressed1">#ffffff</color>
     <color name="buttonPressed2">#000000</color>
+    
+<!-- Farben Energiedienst-->    
+    <color name="textenergiedienst">#0765af</color>
+    <color name="backgroundenergiedienst1">#e8f3d5</color>
+    <color name="backgroundenergiedienst2">#82be1e</color>
+    <color name="buttonenergiedienst1">#f7b400</color>
+    <color name="buttonenergiedienst2">#f7b400</color>
+    <color name="buttonPressedenergiedienst1">#0765af</color>
+    <color name="buttonPressedenergiedienst2">#0765af</color>
 
 
- <!-- Buttons -->   
-    <style name="Buttonround" parent="@android:style/Widget.ImageButton">
+ <!-- Buttons-->   
+    <style name="ButtonroundEnbw" parent="@android:style/Widget.ImageButton">
         <item name="android:background">@drawable/button</item>
+        <item name="android:minHeight">@dimen/raster16</item>
+        <item name="android:minWidth">@dimen/raster16</item>
+        <item name="android:maxHeight">@dimen/raster16</item>
+        <item name="android:maxWidth">@dimen/raster16</item>
+    </style>
+<!-- Buttons -->   
+    <style name="Buttonround_energiedienst" parent="@android:style/Widget.ImageButton">
+        <item name="android:background">@drawable/button_round_energiedienst</item>
         <item name="android:minHeight">@dimen/raster16</item>
         <item name="android:minWidth">@dimen/raster16</item>
         <item name="android:maxHeight">@dimen/raster16</item>
@@ -48,7 +77,7 @@
 <!--  Schrift alternativ -->    
     <style name="mainMenuButtonText" parent="@android:style/TextAppearance.Holo">
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">#638d2d</item>
+        <item name="android:textColor">#0765af</item>
      </style>
     
     
@@ -59,4 +88,9 @@
         <item name="android:paddingTop">0dp</item>
      </style>
     
+    <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
+    </style> 
+  
+    <style name="darkTheme" parent="@android:style/Theme.Holo">   
+    </style>
 </resources>
