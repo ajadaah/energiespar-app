@@ -1,6 +1,7 @@
 package de.hska.rbmk.zaehlerstand;
 
 
+import java.util.Calendar;
 import java.util.Date;
 
 import kankan.wheel.widget.OnWheelChangedListener;
@@ -23,6 +24,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -281,6 +283,8 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
                 				
                 				//TODO better close activity
 
+                				loadData();
+                				
 //                				TODO: Sync
 //                				Intent serviceIntent = new Intent(getApplicationContext(), SynchronizationService.class);
 //                	        	startService(serviceIntent);
@@ -304,7 +308,9 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 				new String[] { 						// anzuzeigende Spalten
 						MeterReadingsDbAdapter.KEY_ID,
 						MeterReadingsDbAdapter.KEY_NUMBER,
-						MeterReadingsDbAdapter.KEY_METERTYPE
+						MeterReadingsDbAdapter.KEY_METERTYPE,
+						MeterReadingsDbAdapter.KEY_LASTVALUE,
+						MeterReadingsDbAdapter.KEY_LASTUPDATE
 				}, 
 				null, 								// WHERE (z.B. "_id = ?")
 				null, 								// WHERE-Argumente (für "?")
@@ -326,11 +332,29 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 			@Override
 			public void bindView(View view, Context context, Cursor cursor) {
 				TextView zaehlerNummer = (TextView)view.findViewById(R.id.list_zaehlernummer);
+				TextView zaehlerLetzterStand = (TextView)view.findViewById(R.id.list_letzterZaehlerstand);
+				TextView zaehlerLetztesUpdate = (TextView)view.findViewById(R.id.list_letztesUpdate);
 				ImageView zaehlerTypIcon = (ImageView)view.findViewById(R.id.list_zaehlertyp_icon);
-				int zaehlerTyp = Integer.parseInt(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_METERTYPE)));
-
-				zaehlerTypIcon.setContentDescription(String.valueOf(zaehlerTyp));
 				
+				String zaehlerNummerText = cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_NUMBER));
+				int zaehlerTyp = cursor.getInt(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_METERTYPE));
+				
+				MeterReadingsDbAdapter mRDBA = new MeterReadingsDbAdapter(getApplicationContext());
+				
+				mRDBA.open();
+				long letzterStand = mRDBA.getLastMeterReadingValueForMeterNumber(Integer.parseInt(zaehlerNummerText));
+				long letztesUpdate = mRDBA.getLastMeterReadingDateForMeterNumber(Integer.parseInt(zaehlerNummerText));
+				mRDBA.close();
+				
+
+
+				//Date letztesUpdateD = new Date(new Long(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_LASTUPDATE))));
+				String letztesUpdateText;
+				if (letztesUpdate == 0)
+					letztesUpdateText = "-";
+				else
+					letztesUpdateText = (String) DateFormat.format("dd.MM.yyyy kk:mm", letztesUpdate);
+
 				MeterType zaehlerArt = MeterType.values()[zaehlerTyp];
 				
 				switch (zaehlerArt)
@@ -348,8 +372,12 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 					break; 
 					}
 				}
+				zaehlerTypIcon.setContentDescription(String.valueOf(zaehlerTyp));
 
-				zaehlerNummer.setText(cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_NUMBER)));
+				zaehlerNummer.setText(zaehlerNummerText);
+				zaehlerLetzterStand.setText(getString(R.string.list_item_stand).replace("%v", String.valueOf(letzterStand)));
+				zaehlerLetztesUpdate.setText(getString(R.string.list_item_letzte_ablesung).replace("%d", letztesUpdateText));
+				
 			}
 		};
 		

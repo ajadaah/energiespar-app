@@ -32,6 +32,8 @@
     <string name="einstellungen_titel">Einstellungen</string>
     <string name="einstellungen_default_theme">darkTheme</string>
     <string name="einstellungen_theme_list_untertitel">Aussehen der Benutzeroberfläche</string>
+    <string name="list_item_letzte_ablesung">Letzte Ablesung: %d</string>
+    <string name="list_item_stand">Aktueller Stand: %v</string>
         
         
 </resources>
