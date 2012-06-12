@@ -36,14 +36,16 @@ public class MeterReadingsDbAdapter {
 	public static final String KEY_LASTVALUE = "letzterWert";
 	public static final String KEY_LASTUPDATE = "letztesUpdate";
 	
-	
+    /**
+     * Database creation sql statement
+     */
 	private static final String TABLE_METERNUMBERS_CREATE = 
     		"CREATE TABLE " + TABLE_METERNUMBERS_NAME + "(" +
     				KEY_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
     				KEY_NUMBER + " TEXT NOT NULL, " +
     				KEY_METERTYPE + " TEXT NOT NULL," +
     				KEY_LASTVALUE + " INTEGER DEFAULT 0," +
-    				KEY_LASTUPDATE + " DATETIME" +
+    				KEY_LASTUPDATE + " DATETIME DEFAULT 0" +
     				")";
     
     /**
@@ -130,7 +132,7 @@ public class MeterReadingsDbAdapter {
      * @param isSynchronized whether or not the meter reading has yet been synchronized (usually false)
      * @return rowId or -1 if failed
      */
-    public long addReading(String connectionInfo, Date timeStamp, int meterNumber, 
+    public void addReading(String connectionInfo, Date timeStamp, int meterNumber, 
     		int meterValue, MeterType meterType, boolean isMeterValueRevised, boolean isSynchronized) {
     	ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_CONNECTIONINFO, connectionInfo);
@@ -142,7 +144,8 @@ public class MeterReadingsDbAdapter {
         initialValues.put(KEY_SYNCHRONIZED, isSynchronized);
 
         Log.d("MeterReadingsDbAdapter", "storing meter reading " + initialValues.toString());
-        return mDb.insert(DATABASE_TABLE_METERREADINGS, null, initialValues);
+        
+        mDb.insert(DATABASE_TABLE_METERREADINGS, null, initialValues);
     }
     
     /**
@@ -168,6 +171,15 @@ public class MeterReadingsDbAdapter {
     	Cursor queryCursor = mDb.rawQuery(query, new String[] {String.valueOf(meterNumber)});
     	queryCursor.moveToFirst();
     	long retValue = queryCursor.getLong(queryCursor.getColumnIndex(KEY_METERVALUE + "Max"));
+    	queryCursor.close();
+    	return retValue;
+    }
+    
+    public long getLastMeterReadingDateForMeterNumber(int meterNumber) {
+    	String query = "SELECT MAX(" + KEY_TIMESTAMP + ") AS " + KEY_TIMESTAMP +"Max FROM " + DATABASE_TABLE_METERREADINGS + " WHERE " + KEY_METERNUMBER + " = ?";
+    	Cursor queryCursor = mDb.rawQuery(query, new String[] {String.valueOf(meterNumber)});
+    	queryCursor.moveToFirst();
+    	long retValue = queryCursor.getLong(queryCursor.getColumnIndex(KEY_TIMESTAMP + "Max"));
     	queryCursor.close();
     	return retValue;
     }
