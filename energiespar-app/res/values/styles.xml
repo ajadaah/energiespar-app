@@ -17,7 +17,8 @@
 <!-- Schrift -->    
 	<style name="textEnbw" parent="@android:style/Widget.TextView">
 	    <item name="android:textColor">@color/text</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">4dp</item>
+ 
 	</style>    
 
     
@@ -45,7 +46,7 @@
     
 <!--  Schrift alternativ -->    
     <style name="mainMenuButtonText" parent="@android:style/TextAppearance.Holo">
-        <item name="android:textSize">11sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">#638d2d</item>
      </style>
     
@@ -53,7 +54,8 @@
     <!--  List Item Zählerübersicht -->    
     <style name="zaehler_list_item_untertitel">
         <item name="android:textSize">12dp</item>
-        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingTop">0dp</item>
      </style>
     
 </resources>
