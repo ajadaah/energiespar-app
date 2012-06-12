@@ -108,11 +108,24 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	                .setPositiveButton(R.string.dialog_hinzufuegen, new DialogInterface.OnClickListener() {
 	                    public void onClick(DialogInterface dialog, int whichButton) {
 
-	        				ContentValues values = new ContentValues();
-	        				values.put(MeterReadingsDbAdapter.KEY_NUMBER, et.getText().toString());
-	        				values.put(MeterReadingsDbAdapter.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
-	        				db.insert(MeterReadingsDbAdapter.TABLE_METERNUMBERS_NAME, null, values);
-	        				loadData();
+	                    	if (!et.getText().toString().isEmpty()) {
+		        				ContentValues values = new ContentValues();
+		        				values.put(MeterReadingsDbAdapter.KEY_NUMBER, et.getText().toString());
+		        				values.put(MeterReadingsDbAdapter.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
+		        				db.insert(MeterReadingsDbAdapter.TABLE_METERNUMBERS_NAME, null, values);
+		        				loadData();
+	                    	}
+	                    	else
+	                    	{
+                				// Vibrate
+                				Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                				v.vibrate(300);
+
+                				// Toast
+                				Toast.makeText(getApplicationContext(),
+                						"Fehler: Keine Zählernummer eingegeben",
+                						Toast.LENGTH_LONG).show();
+	                    	}
 	                    }
 	                })
 	                .show();
@@ -340,39 +353,40 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 				TextView zaehlerLetzterStand = (TextView)view.findViewById(R.id.list_letzterZaehlerstand);
 				TextView zaehlerLetztesUpdate = (TextView)view.findViewById(R.id.list_letztesUpdate);
 				ImageView zaehlerTypIcon = (ImageView)view.findViewById(R.id.list_zaehlertyp_icon);
-				
+
 				String zaehlerNummerText = cursor.getString(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_NUMBER));
 				int zaehlerTyp = cursor.getInt(cursor.getColumnIndex(MeterReadingsDbAdapter.KEY_METERTYPE));
-				
+
+
 				MeterReadingsDbAdapter mRDBA = new MeterReadingsDbAdapter(getApplicationContext());
-				
+
 				mRDBA.open();
 				long letzterStand = mRDBA.getLastMeterReadingValueForMeterNumber(Integer.parseInt(zaehlerNummerText));
 				long letztesUpdate = mRDBA.getLastMeterReadingDateForMeterNumber(Integer.parseInt(zaehlerNummerText));
 				mRDBA.close();
 
 				MeterType zaehlerArt = MeterType.values()[zaehlerTyp];
-				
+
 				switch (zaehlerArt)
 				{
 				case ELECTRICITY: {
 					zaehlerTypIcon.setImageResource(R.drawable.ic_type_electricity);
 					break; 
-					}
+				}
 				case WATER: {
 					zaehlerTypIcon.setImageResource(R.drawable.ic_type_water);
 					break; 
-					}
+				}
 				case GAS: {
 					zaehlerTypIcon.setImageResource(R.drawable.ic_type_gas);
 					break; 
-					}
+				}
 				}
 				zaehlerTypIcon.setContentDescription(String.valueOf(zaehlerTyp));
 
 				zaehlerNummer.setText(zaehlerNummerText);
-				
-				
+
+
 				if (letztesUpdate == 0)
 				{
 					zaehlerLetzterStand.setText(R.string.list_item_keine_werte_erfasst);
@@ -384,8 +398,8 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 					zaehlerLetztesUpdate.setText(getString(R.string.list_item_letzte_ablesung).replace("%d", letztesUpdateText));
 					zaehlerLetzterStand.setText(getString(R.string.list_item_stand).replace("%v", String.valueOf(letzterStand)));
 				}
-				
-				
+
+
 			}
 		};
 		
