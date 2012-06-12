@@ -33,8 +33,6 @@ public class MeterReadingsDbAdapter {
     
 	public static final String KEY_ID = "_id";
 	public static final String KEY_NUMBER = "number";
-	public static final String KEY_LASTVALUE = "letzterWert";
-	public static final String KEY_LASTUPDATE = "letztesUpdate";
 	
     /**
      * Database creation sql statement
@@ -43,9 +41,7 @@ public class MeterReadingsDbAdapter {
     		"CREATE TABLE " + TABLE_METERNUMBERS_NAME + "(" +
     				KEY_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
     				KEY_NUMBER + " TEXT NOT NULL, " +
-    				KEY_METERTYPE + " TEXT NOT NULL," +
-    				KEY_LASTVALUE + " INTEGER DEFAULT 0," +
-    				KEY_LASTUPDATE + " DATETIME DEFAULT 0" +
+    				KEY_METERTYPE + " TEXT NOT NULL" +
     				")";
     
     /**
