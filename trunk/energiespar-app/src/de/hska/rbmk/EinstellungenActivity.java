@@ -1,5 +1,6 @@
 package de.hska.rbmk;
 
+import android.app.Activity;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -7,7 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 
 
-public class EinstellungenActivity extends ThemedActivity {
+public class EinstellungenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

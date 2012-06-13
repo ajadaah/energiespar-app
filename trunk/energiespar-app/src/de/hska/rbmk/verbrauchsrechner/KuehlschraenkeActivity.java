@@ -4,13 +4,14 @@ import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.ThemedActivity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class KuehlschraenkeActivity extends ThemedActivity {
+public class KuehlschraenkeActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
