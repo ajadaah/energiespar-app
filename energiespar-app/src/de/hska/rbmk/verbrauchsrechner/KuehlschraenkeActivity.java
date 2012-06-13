@@ -2,7 +2,6 @@ package de.hska.rbmk.verbrauchsrechner;
 
 import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
-import de.hska.rbmk.ThemedActivity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;

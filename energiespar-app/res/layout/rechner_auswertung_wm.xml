@@ -81,7 +81,7 @@
                 android:id="@+id/auswertung_wm_literErsparnis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="%l Liter"
+                android:text="@string/auswertung_wm_literErsparnis"
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right"/>
 
@@ -102,7 +102,7 @@
                 android:id="@+id/auswertung_wm_kwhErsparnis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="%kwh kWh"
+                android:text="@string/auswertung_wm_kwhErsparnis"
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right"/>
 
@@ -124,7 +124,7 @@
                 android:id="@+id/auswertung_wm_euroErsparnis"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="%euro Euro"
+                android:text="@string/auswertung_wm_euroErsparnis"
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right"/>
 

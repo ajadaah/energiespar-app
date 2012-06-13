@@ -39,6 +39,10 @@
     <string name="calc_fridge">Kühlschränke</string>
     <string name="list_item_keine_werte_erfasst">Es wurde noch kein Zählerstand erfasst.</string>
     <string name="list_item_blank"> </string>
+
+    <string name="auswertung_wm_literErsparnis">%l Liter</string>
+    <string name="auswertung_wm_kwhErsparnis">%kwh kWh</string>
+    <string name="auswertung_wm_euroErsparnis">%euro Euro</string>
         
         
 </resources>
