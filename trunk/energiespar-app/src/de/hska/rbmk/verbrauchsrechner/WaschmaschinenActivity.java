@@ -100,28 +100,27 @@ public class WaschmaschinenActivity extends Activity {
 	
     public void onButtonClick(View v) {
     	Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
-    	
 
     	
     	if (cbEigenesGeraet.isChecked()) // // vergleiche mit Spezifikation aus Datensatz
     	{
-        	ausrechnen.putExtra("g2_stromverbrauch", "1.2");
-        	ausrechnen.putExtra("g2_wasserverbrauch", "67");
-        	ausrechnen.putExtra("g2_anschaffungspreis", "0");
+        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf("1.2"));
+        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf("67"));
+        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
     	}
     	else // vergleiche mit Eingabe für Gerät 2
     	{
-        	ausrechnen.putExtra("g2_stromverbrauch", spinner_g2_stromverbrauch.toString());
-        	ausrechnen.putExtra("g2_wasserverbrauch", spinner_g2_wasserverbrauch.toString());
-        	ausrechnen.putExtra("g2_anschaffungspreis", edittext_g2_anschaffungspreis.getText().toString());
+        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf(spinner_g2_stromverbrauch.getSelectedItem().toString()));
+        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf(spinner_g2_wasserverbrauch.getSelectedItem().toString()));
+        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf(edittext_g2_anschaffungspreis.getText().toString()));
     	}
 
-    	ausrechnen.putExtra("g1_stromverbrauch", spinner_g1_stromverbrauch.toString());
-    	ausrechnen.putExtra("g1_wasserverbrauch", spinner_g1_wasserverbrauch.toString());
-    	ausrechnen.putExtra("g1_anschaffungspreis", edittext_g1_anschaffungspreis.getText().toString());
+    	ausrechnen.putExtra("g1_stromverbrauch", Float.valueOf(spinner_g1_stromverbrauch.getSelectedItem().toString()));
+    	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(spinner_g1_wasserverbrauch.getSelectedItem().toString()));
+    	ausrechnen.putExtra("g1_anschaffungspreis", Float.valueOf(edittext_g1_anschaffungspreis.getText().toString()));
     	
-    	ausrechnen.putExtra("jahreseinsatz", edittext_jahreinsaetze.getText().toString());
-    	ausrechnen.putExtra("stromkosten", edittext_stromkosten.getText().toString());
+    	ausrechnen.putExtra("jahreseinsaetz", Integer.valueOf(edittext_jahreinsaetze.getText().toString()));
+    	ausrechnen.putExtra("stromkosten", Float.valueOf(edittext_stromkosten.getText().toString()));
 
     	startActivity(ausrechnen);
     }
