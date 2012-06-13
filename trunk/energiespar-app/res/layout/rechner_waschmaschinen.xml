@@ -68,7 +68,7 @@
                 </LinearLayout>
 
                 <Spinner
-                    android:id="@+id/spinner1"
+                    android:id="@+id/rechner_wm_g1_stromverbrauch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -102,7 +102,7 @@
                 </LinearLayout>
 
                 <Spinner
-                    android:id="@+id/spinner2"
+                    android:id="@+id/rechner_wm_g1_wasserverbrauch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -128,20 +128,19 @@
                         android:textAppearance="?android:attr/textAppearanceMedium" />
 
                     <TextView
-                        android:id="@+id/TextView011"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="in Euro" />
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editText1"
+                    android:id="@+id/rechner_wm_g1_anschaffungspreis"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:hint="€"
+                    android:hint="Euro"
                     android:inputType="numberDecimal" >
                 </EditText>
             </LinearLayout>
@@ -209,7 +208,7 @@
                     </LinearLayout>
 
                     <Spinner
-                        android:id="@+id/spinner121"
+                        android:id="@+id/rechner_wm_g2_stromverbrauch"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -243,7 +242,7 @@
                     </LinearLayout>
 
                     <Spinner
-                        android:id="@+id/spinner21"
+                        android:id="@+id/rechner_wm_g2_wasserverbrauch"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
@@ -276,13 +275,13 @@
                     </LinearLayout>
 
                     <EditText
-                        android:id="@+id/editText111"
+                        android:id="@+id/rechner_wm_g2_anschaffungspreis"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:layout_weight="1"
                         android:gravity="right"
-                        android:hint="€"
+                        android:hint="Euro"
                         android:inputType="numberDecimal" >
 
                         <requestFocus />
@@ -311,7 +310,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/rechner_wm_jahreseinsaetze"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -333,13 +332,13 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
-                android:id="@+id/EditText01"
+                android:id="@+id/rechner_wm_stromkosten"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:gravity="center_horizontal"
-                android:hint="in kWh"
+                android:hint="Euro/kWh"
                 android:inputType="numberDecimal"/>
         </LinearLayout>
 
@@ -347,7 +346,8 @@
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ausrechnen" />
+            android:text="Ausrechnen"
+            android:onClick="onButtonClick" />
     </LinearLayout>
 
 </ScrollView>
