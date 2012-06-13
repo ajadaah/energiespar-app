@@ -6,14 +6,24 @@ import de.hska.rbmk.ThemedActivity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.LinearGradient;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class WaschmaschinenActivity extends Activity {
+	CheckBox cbEigenesGeraet;
+	LinearLayout hiddenLL;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,14 +35,23 @@ public class WaschmaschinenActivity extends Activity {
 	    actionBar.setTitle(geraeteListe[1]); // 0 = Kühlschränke, 1 = Waschmaschinen, 2 = Spülmaschinen
 	    actionBar.setIcon(R.drawable.ic_calc_washer);
 	    
-	    EditText edittext1 = (EditText) findViewById(R.id.editText1);
-	    EditText edittext2 = (EditText) findViewById(R.id.editText111);
-	    
-	    edittext1.clearFocus();
-	    edittext2.clearFocus();
-	    
 	    this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+	    
+	    cbEigenesGeraet = (CheckBox) findViewById(R.id.cbEigenesGeraet);
+	    
+	    hiddenLL = (LinearLayout) findViewById(R.id.calcLayoutToHide);
 	}
+	
+    public void onCheckBoxClickEigenesGeraet(View v) {
+    	if (cbEigenesGeraet.isChecked())
+    	{
+    		hiddenLL.setVisibility(LinearLayout.GONE);
+    	}
+    	else {
+    		hiddenLL.setVisibility(LinearLayout.VISIBLE);
+    	}
+    }
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

@@ -3,15 +3,14 @@
     android:id="@+id/mainScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:padding="10dp">
+    android:layout_gravity="center_horizontal">
 
     <LinearLayout
         android:id="@+id/LinearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
-        android:orientation="vertical" >
+        android:orientation="vertical" android:padding="10dp">
 
         <TextView
             android:id="@+id/textView1"
@@ -142,7 +141,8 @@
                     android:layout_gravity="bottom"
                     android:layout_weight="1"
                     android:gravity="right"
-                    android:inputType="numberSigned" >
+                    android:hint="€"
+                    android:inputType="numberDecimal" >
                 </EditText>
             </LinearLayout>
         </LinearLayout>
@@ -155,14 +155,7 @@
             android:paddingTop="10dp" >
         </LinearLayout>
 
-        <CheckBox
-            android:id="@+id/checkBox1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="mit eigenem Gerät vergleichen" />
-
         <TextView
-            android:id="@+id/TextView02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
@@ -176,106 +169,125 @@
             android:orientation="vertical"
             android:padding="15dp" >
 
+            <CheckBox
+                android:id="@+id/cbEigenesGeraet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:onClick="onCheckBoxClickEigenesGeraet"
+                android:text="mit eigenem Gerät vergleichen" />
+
             <LinearLayout
+                android:id="@+id/calcLayoutToHide"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="15dp" >
+                android:orientation="vertical"
+                android:visibility="gone" >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:paddingBottom="15dp">
 
-                    <TextView
-                        android:id="@+id/textView212"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Energieverbrauch"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:orientation="vertical" >
 
-                    <TextView
-                        android:id="@+id/textView52"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textView212"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Energieverbrauch"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/textView52"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="pro Waschgang" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/spinner121"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="pro Waschgang" />
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:entries="@array/spinner_kWh_p3_to_1p4"
+                        android:gravity="right" />
                 </LinearLayout>
-
-                <Spinner
-                    android:id="@+id/spinner121"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:entries="@array/spinner_kWh_p3_to_1p4"
-                    android:gravity="right" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="15dp" >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:paddingBottom="15dp" >
 
-                    <TextView
-                        android:id="@+id/textView32"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wasserverbrauch"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:orientation="vertical" >
 
-                    <TextView
-                        android:id="@+id/TextView33"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textView32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wasserverbrauch"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/TextView33"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="pro Waschgang" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/spinner21"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="pro Waschgang" />
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:entries="@array/spinner_wasser_30_to_100"
+                        android:gravity="right" />
                 </LinearLayout>
-
-                <Spinner
-                    android:id="@+id/spinner21"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:entries="@array/spinner_wasser_30_to_100"
-                    android:gravity="right" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
 
-                    <TextView
-                        android:id="@+id/textView41"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Anschaffungspreis"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:orientation="vertical" >
 
-                    <TextView
-                        android:id="@+id/TextView01"
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textView41"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Anschaffungspreis"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/TextView01"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="in Euro" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/editText111"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="in Euro" />
+                        android:layout_gravity="bottom"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:hint="€"
+                        android:inputType="numberDecimal" >
+
+                        <requestFocus />
+                    </EditText>
                 </LinearLayout>
-
-                <EditText
-                    android:id="@+id/editText111"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:inputType="numberSigned" >
-                </EditText>
             </LinearLayout>
         </LinearLayout>
 
@@ -295,36 +307,40 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jährliche Einsätze" />
+                android:text="Jahreseinsatz"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
                 android:id="@+id/editText2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10" >
-
-                <requestFocus />
-            </EditText>
-
+                android:gravity="center_horizontal"
+                android:hint="Anzahl der Einsätze"
+                android:inputType="number"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp" >
 
             <TextView
                 android:id="@+id/TextView03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Strompreis" />
+                android:text="Strompreis"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
                 android:id="@+id/EditText01"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10" />
+                android:ems="10"
+                android:gravity="center_horizontal"
+                android:hint="in kWh"
+                android:inputType="numberDecimal"/>
         </LinearLayout>
 
         <Button
