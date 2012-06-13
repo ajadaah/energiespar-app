@@ -2,13 +2,9 @@ package de.hska.rbmk.verbrauchsrechner;
 
 import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
-import de.hska.rbmk.ThemedActivity;
-import de.hska.rbmk.geraetevergleich.GeraetevergleichActivtiy;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.LinearGradient;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,8 +15,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class WaschmaschinenActivity extends Activity {
 	CheckBox cbEigenesGeraet;
