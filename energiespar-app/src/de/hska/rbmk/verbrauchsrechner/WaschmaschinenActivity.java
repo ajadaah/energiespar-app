@@ -3,6 +3,7 @@ package de.hska.rbmk.verbrauchsrechner;
 import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.ThemedActivity;
+import de.hska.rbmk.geraetevergleich.GeraetevergleichActivtiy;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,12 +18,25 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class WaschmaschinenActivity extends Activity {
 	CheckBox cbEigenesGeraet;
 	LinearLayout hiddenLL;
+	
+	Spinner 
+		spinner_g1_stromverbrauch,
+		spinner_g1_wasserverbrauch,
+		spinner_g2_stromverbrauch,
+		spinner_g2_wasserverbrauch;
+	
+	EditText 
+		edittext_g1_anschaffungspreis,
+		edittext_g2_anschaffungspreis,
+		edittext_jahreinsaetze,
+		edittext_stromkosten;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -37,9 +51,17 @@ public class WaschmaschinenActivity extends Activity {
 	    
 	    this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	    
+	    // finde alle Eingabewerte
 	    cbEigenesGeraet = (CheckBox) findViewById(R.id.cbEigenesGeraet);
-	    
 	    hiddenLL = (LinearLayout) findViewById(R.id.calcLayoutToHide);
+		spinner_g1_stromverbrauch = (Spinner) findViewById(R.id.rechner_wm_g1_stromverbrauch);
+		spinner_g1_wasserverbrauch = (Spinner) findViewById(R.id.rechner_wm_g1_wasserverbrauch);
+		spinner_g2_stromverbrauch = (Spinner) findViewById(R.id.rechner_wm_g2_stromverbrauch);
+		spinner_g2_wasserverbrauch = (Spinner) findViewById(R.id.rechner_wm_g2_wasserverbrauch);
+		edittext_g1_anschaffungspreis = (EditText) findViewById(R.id.rechner_wm_g1_anschaffungspreis);
+		edittext_g2_anschaffungspreis = (EditText) findViewById(R.id.rechner_wm_g2_anschaffungspreis);
+		edittext_jahreinsaetze = (EditText) findViewById(R.id.rechner_wm_jahreseinsaetze);
+		edittext_stromkosten = (EditText) findViewById(R.id.rechner_wm_stromkosten);
 	}
 	
     public void onCheckBoxClickEigenesGeraet(View v) {
@@ -81,4 +103,34 @@ public class WaschmaschinenActivity extends Activity {
 	            return super.onOptionsItemSelected(item);
 	    }
 	}
+	
+    public void onButtonClick(View v) {
+    	Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
+    	
+
+    	
+    	if (cbEigenesGeraet.isChecked()) // // vergleiche mit Spezifikation aus Datensatz
+    	{
+        	ausrechnen.putExtra("g2_stromverbrauch", "1.2");
+        	ausrechnen.putExtra("g2_wasserverbrauch", "67");
+        	ausrechnen.putExtra("g2_anschaffungspreis", "0");
+    	}
+    	else // vergleiche mit Eingabe für Gerät 2
+    	{
+        	ausrechnen.putExtra("g2_stromverbrauch", spinner_g2_stromverbrauch.toString());
+        	ausrechnen.putExtra("g2_wasserverbrauch", spinner_g2_wasserverbrauch.toString());
+        	ausrechnen.putExtra("g2_anschaffungspreis", edittext_g2_anschaffungspreis.getText().toString());
+    	}
+
+    	ausrechnen.putExtra("g1_stromverbrauch", spinner_g1_stromverbrauch.toString());
+    	ausrechnen.putExtra("g1_wasserverbrauch", spinner_g1_wasserverbrauch.toString());
+    	ausrechnen.putExtra("g1_anschaffungspreis", edittext_g1_anschaffungspreis.getText().toString());
+    	
+    	ausrechnen.putExtra("jahreseinsatz", edittext_jahreinsaetze.getText().toString());
+    	ausrechnen.putExtra("stromkosten", edittext_stromkosten.getText().toString());
+
+    	startActivity(ausrechnen);
+    }
+	
+
 }
