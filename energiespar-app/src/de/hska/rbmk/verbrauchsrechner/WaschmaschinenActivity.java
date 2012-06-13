@@ -4,6 +4,7 @@ import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.ThemedActivity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +13,7 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-public class WaschmaschinenActivity extends ThemedActivity {
+public class WaschmaschinenActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

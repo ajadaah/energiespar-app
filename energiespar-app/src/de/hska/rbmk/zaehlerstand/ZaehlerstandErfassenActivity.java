@@ -64,12 +64,6 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		// Das momentane Theme anwenden (normalerweise durch "extends" geregelt, hier aber ein einzelfall wegen ListActivity) 
-        SharedPreferences einstellungen = EinstellungenActivity.getSettings(this);
-        String themeName = einstellungen.getString("ausgewaehltes_theme", getResources().getString(R.string.einstellungen_default_theme));
-        int themeResource = getResources().getIdentifier(themeName, "style", getPackageName());
-        this.setTheme(themeResource);
-		
 		setContentView(R.layout.zaehler_erfassen_uebersicht);
 		
 	    ActionBar actionBar = getActionBar();

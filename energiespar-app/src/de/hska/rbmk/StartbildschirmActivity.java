@@ -5,6 +5,7 @@ import de.hska.rbmk.zaehlerstand.*;
 import de.hska.rbmk.verbrauchsrechner.*;
 import de.hska.rbmk.geraetevergleich.*;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
-public class StartbildschirmActivity extends ThemedActivity {
+public class StartbildschirmActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
