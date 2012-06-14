@@ -44,6 +44,7 @@
     <string name="auswertung_wm_kwhErsparnis">%kwh kWh</string>
     <string name="auswertung_wm_euroErsparnis">%euro Euro</string>
     <string name="menu_erinnerungHinzufuegen">Erinnerung</string>
+    <string name="title_zaehlererinnerung">Erinnerung</string>
         
         
 </resources>
