@@ -1,14 +1,12 @@
 package de.hska.rbmk.zaehlerstand;
 
 
-import java.util.Calendar;
 import java.util.Date;
 
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
 import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
-import de.hska.rbmk.EinstellungenActivity;
 import de.hska.rbmk.datenVerwaltung.*;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.R;
@@ -20,7 +18,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
