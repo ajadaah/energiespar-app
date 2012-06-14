@@ -548,5 +548,17 @@
         <item>99</item>
         <item>100</item>
     </string-array>
+    <string-array name="spinner_alarm_entries">
+        <item >täglich</item>
+        <item >wöchentlich</item>
+        <item >alle zwei Wochen</item>
+        <item >jeden Monat</item>
+    </string-array>
+    <integer-array name="spinner_alarm_entry_values">
+        <item >1</item>
+        <item >7</item>
+        <item >14</item>
+        <item >31</item>
+    </integer-array>
 
 </resources>

@@ -87,8 +87,15 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
+		    case R.id.menu_erinnerung_hinzufuegen:
+		    {
+		    	// app icon in action bar clicked; go home
+		    	Intent intent = new Intent(this, ZaehlerErinnerungActivity.class);
+		    	startActivity(intent);
+		    	return true;
+		    }
 	        case R.id.menu_zaehler_hinzufuegen:
-	        	
+	        {
 	            LayoutInflater factory = LayoutInflater.from(this);
 	            final View textEntryView = factory.inflate(R.layout.dialog_zaehler_hinzugfuegen, null);
 	            final EditText et = (EditText) textEntryView.findViewById(R.id.eingetippte_zaehlernummer);
@@ -124,12 +131,15 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	                })
 	                .show();
 	            return true;
+	        }
 	        case android.R.id.home:
+	        {
 	            // app icon in action bar clicked; go home
 	            Intent intent = new Intent(this, StartbildschirmActivity.class);
 	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	            startActivity(intent);
 	            return true;
+	        }
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }

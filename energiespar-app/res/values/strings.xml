@@ -18,7 +18,7 @@
     <string name="dialog_zaehlernummer">Zählernummer:</string>
     <string name="dialog_zaehlertyp">Zählerart:</string>
     <string name="dialog_hinzufuegen">Hinzufügen</string>
-    <string name="menu_zaehlerHinzufuegen">Zähler hinzufügen</string>
+    <string name="menu_zaehlerHinzufuegen">Neuer Zähler</string>
     <string name="title_zaehleruebersicht">Zählerübersicht</string>
 
     <string name="txt_zaehlerliste_leer">Es sind keine Zähler vorhanden.</string>
@@ -43,6 +43,7 @@
     <string name="auswertung_wm_literErsparnis">%l Liter</string>
     <string name="auswertung_wm_kwhErsparnis">%kwh kWh</string>
     <string name="auswertung_wm_euroErsparnis">%euro Euro</string>
+    <string name="menu_erinnerungHinzufuegen">Erinnerung</string>
         
         
 </resources>
