@@ -35,10 +35,11 @@ public class AlarmEmpfaenger extends BroadcastReceiver {
 
 	        notify.icon = R.drawable.ic_launcher;
 	        notify.tickerText = "Erinnerung: Zählerstand erfassen";
-	        notify.when = System.currentTimeMillis();
 	        notify.flags |= Notification.FLAG_AUTO_CANCEL;
+	        notify.flags |= Notification.FLAG_SHOW_LIGHTS;
 
-//	        notify.vibrate = new long[] {100, 200, 200, 200, 200, 200, 1000, 200, 200, 200, 1000, 200};
+	        // Vibration
+	        // notify.vibrate = new long[] {100, 200, 200, 200, 200, 200, 1000, 200, 200, 200, 1000, 200};
 
 	        Intent toLaunch = new Intent(caller, ZaehlerstandErfassenActivity.class);
 	        PendingIntent intentBack = PendingIntent.getActivity(caller, 0, toLaunch, 0);
