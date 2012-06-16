@@ -202,7 +202,7 @@ public class ZaehlerErinnerungActivity extends Activity {
 
 				if (erinnerungWiederholenCB.isChecked())
 				{
-					alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, erinnerungsZeit.getTimeInMillis(), 1000 * 60 * 60 * 24 * wiederholungsZeitraum[spinner_wiederholungszeitraum.getSelectedItemPosition()], sender);
+					//alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, erinnerungsZeit.getTimeInMillis(), AlarmManager.INTERVAL_DAY*wiederholungsZeitraum[spinner_wiederholungszeitraum.getSelectedItemPosition()], sender);
 				}
 				else
 				{
