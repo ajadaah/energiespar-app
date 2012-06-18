@@ -15,6 +15,13 @@
  
         <receiver android:process=":remote" android:name=".zaehlerstand.AlarmEmpfaenger"></receiver>
         
+        <receiver android:name=".zaehlerstand.AlarmServiceAutostart" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+                <category android:name="android.intent.category.HOME"></category>
+            </intent-filter>
+        </receiver>
+        
         <activity
             android:name="StartbildschirmActivity"
             android:label="@string/app_name">
@@ -37,6 +44,8 @@
         
         <activity android:name=".verbrauchsStatistik.VerbrauchsStatistikMainActivity"></activity>
         <activity android:name="EinstellungenActivity"></activity>
+        
+        <service android:name=".zaehlerstand.AlarmService" android:exported="false" />
         
     </application>
 

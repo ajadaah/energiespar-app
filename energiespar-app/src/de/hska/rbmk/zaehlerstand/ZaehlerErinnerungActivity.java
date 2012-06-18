@@ -1,5 +1,6 @@
 package de.hska.rbmk.zaehlerstand;
 import java.util.Calendar;
+
 import de.hska.rbmk.Constants;
 import de.hska.rbmk.R;
 import android.app.ActionBar;
@@ -13,7 +14,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -64,9 +64,9 @@ public class ZaehlerErinnerungActivity extends Activity {
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    actionBar.setTitle(R.string.title_zaehlererinnerung);
 	    actionBar.setIcon(R.drawable.ic_alarm);
-		
-		editor = getPreferences(0).edit();
-		prefs = getPreferences(0);
+	    
+	    prefs = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE);
+	    editor = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE).edit();
 		
 		// capture our View elements
 		datumEditText = (EditText) findViewById(R.id.editText1);
@@ -83,14 +83,6 @@ public class ZaehlerErinnerungActivity extends Activity {
 		
 		datumEditText.setKeyListener(null);
 		uhrzeitEditText.setKeyListener(null);
-	}
-	
-
-
-	private boolean checkAlarmStatus() {
-		return (PendingIntent.getBroadcast(this, Constants.ALARM_REQUEST_CODE, 
-		        new Intent(this, AlarmEmpfaenger.class), 
-		        PendingIntent.FLAG_NO_CREATE) != null);
 	}
 
 	@Override
@@ -134,7 +126,10 @@ public class ZaehlerErinnerungActivity extends Activity {
 		naechsteErinnerungString = prefs.getString("naechsteErinnerungString","");
 		letzteErrinerungsZeit = prefs.getLong("letzteErrinerungsZeit",0);
 		
-		boolean alarmAktiv = checkAlarmStatus();
+		Calendar alteErinnerung = Calendar.getInstance();
+		alteErinnerung.setTimeInMillis(letzteErrinerungsZeit);
+		
+		boolean alarmAktiv = alteErinnerung.getTimeInMillis() > jetzt.getTimeInMillis();
 		
 		toggleButtonErinnerung.setChecked(alarmAktiv);
 		
@@ -144,24 +139,7 @@ public class ZaehlerErinnerungActivity extends Activity {
 		}
 		else
 		{
-			Calendar alteErinnerung = Calendar.getInstance();
-			alteErinnerung.setTimeInMillis(letzteErrinerungsZeit);
-			
-			Log.d("alteErinnerung", (String) DateFormat.format("MMMM dd, yyyy hh:mm:ss a", alteErinnerung));
-			Log.d("jetzt", (String) DateFormat.format("MMMM dd, yyyy hh:mm:ss a", jetzt));
-			
-			if (alteErinnerung.getTimeInMillis() < jetzt.getTimeInMillis()) 
-			{
-				long zeitunterschied = jetzt.getTimeInMillis() - alteErinnerung.getTimeInMillis();
-				int interval = 1000 * 60 * 60 * 24 * wiederholungsZeitraum[spinner_wiederholungszeitraum.getSelectedItemPosition()];
-				long anzahl_der_intervalle = (zeitunterschied / interval)+1;
-
-				alteErinnerung.add(Calendar.HOUR, (int) (anzahl_der_intervalle * 24 * wiederholungsZeitraum[spinner_wiederholungszeitraum.getSelectedItemPosition()]));
-				
-				Log.d("alteErinnerung korrigiert", (String) DateFormat.format("MMMM dd, yyyy hh:mm:ss a", alteErinnerung));
-				
-				naechsteErinnerungString = naechsteErinnerungTextGenerieren(alteErinnerung);
-			}
+			naechsteErinnerungString = naechsteErinnerungTextGenerieren(alteErinnerung);
 		}
 		
 		// Beim Wechsel der Orientierung
@@ -180,85 +158,42 @@ public class ZaehlerErinnerungActivity extends Activity {
 	public void onClickToggleButtonErinnerung(View v) {
 		if (toggleButtonErinnerung.isChecked())
 		{
-			// get a Calendar object with current time
 			Calendar erinnerungsZeit = Calendar.getInstance();
-			// add 5 seconds to the calendar object
-//			erinnerungsZeit.add(Calendar.SECOND, 5);
 
 			// set alarm
 			erinnerungsZeit.set(mYear, mMonth, mDay, mHour, mMinute , 0);
 
-			// is date in the future?
+			// ist das Datum auch in der Zukunft?
 			Calendar jetzt = Calendar.getInstance();
 
 			if (jetzt.getTimeInMillis() < erinnerungsZeit.getTimeInMillis()) {
-				Intent alarmIntent = new Intent(this, AlarmEmpfaenger.class);
-				alarmIntent.putExtra("wiederholungAktiv", erinnerungWiederholenCB.isChecked());
-				alarmIntent.putExtra("vibrationAktiv", vibrationCB.isChecked());
-
-				PendingIntent sender = PendingIntent.getBroadcast(this, Constants.ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-				AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-
-				if (erinnerungWiederholenCB.isChecked())
-				{
-					//alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, erinnerungsZeit.getTimeInMillis(), AlarmManager.INTERVAL_DAY*wiederholungsZeitraum[spinner_wiederholungszeitraum.getSelectedItemPosition()], sender);
-				}
-				else
-				{
-					alarmManager.set(AlarmManager.RTC_WAKEUP, erinnerungsZeit.getTimeInMillis(), sender);
-				}
-
-				if (erinnerungsZeit != null)
-				{
-
-					naechsteErinnerungString = naechsteErinnerungTextGenerieren(erinnerungsZeit);
-					
-//					String stunde = String.valueOf(erinnerungsZeit.get(Calendar.HOUR_OF_DAY));
-//					String minute = String.valueOf(erinnerungsZeit.get(Calendar.MINUTE));
-//					if (minute.length() == 1)
-//						minute = "0" + minute;
-//					if (stunde.length() == 1)
-//						stunde = "0" + stunde;
-//
-//
-//					if ((jetzt.get(Calendar.YEAR) == erinnerungsZeit.get(Calendar.YEAR)) && (jetzt.get(Calendar.MONTH) == erinnerungsZeit.get(Calendar.MONTH)) && ((jetzt.get(Calendar.DAY_OF_MONTH) == erinnerungsZeit.get(Calendar.DAY_OF_MONTH) || jetzt.get(Calendar.DAY_OF_MONTH)+1 == erinnerungsZeit.get(Calendar.DAY_OF_MONTH))))
-//					{
-//						if (jetzt.get(Calendar.DAY_OF_MONTH) == erinnerungsZeit.get(Calendar.DAY_OF_MONTH))
-//						{
-//							naechsteErinnerungString = "heute um " + stunde + ":" + minute + " Uhr";
-//						}
-//						else if (jetzt.get(Calendar.DAY_OF_MONTH)+1 == erinnerungsZeit.get(Calendar.DAY_OF_MONTH))
-//						{
-//							naechsteErinnerungString = "morgen um " + stunde + ":" + minute + " Uhr";
-//						}
-//					}
-//					else
-//					{
-//						naechsteErinnerungString = DateFormat.format("E, MMMM dd, yyyy", erinnerungsZeit).toString() + " " + stunde + ":" + minute + " Uhr";
-//					}
-					
-					editor.putLong("letzteErrinerungsZeit", erinnerungsZeit.getTimeInMillis());
-				}
+				
+				editor.putLong("letzteErrinerungsZeit", erinnerungsZeit.getTimeInMillis());
+				editor.putBoolean("vibrationAktiv", vibrationCB.isChecked());
+				editor.putBoolean("wiederholungAktiv", erinnerungWiederholenCB.isChecked());
+				editor.putInt("wiederholungsZeitraum", wiederholungsZeitraum[spinner_wiederholungszeitraum.getSelectedItemPosition()]);
+				editor.commit();
+				
+		    	Intent serviceIntent = new Intent(this, AlarmService.class);
+		    	startService(serviceIntent);
+				
+		    	naechsteErinnerungString = naechsteErinnerungTextGenerieren(erinnerungsZeit);
 			}
 			else // Datum liegt in der Vergangenheit
 			{
 				// Toast
 				Toast.makeText(getApplicationContext(),
-						"Datum muss in der Zukunft liegen",
+						getString(R.string.erinnerung_fehler_datum_liegt_in_vergangenheit),
 						Toast.LENGTH_LONG).show();
 
 				toggleButtonErinnerung.setChecked(false);
 				naechsteErinnerungString = "";
 			}
-
-
 		}
-    	else
+    	else // !toggleButtonErinnerung.isChecked()
     	{
     		erinnerungLoeschen();
     	}
-    	
     	updateDisplay();
 	}
 	
@@ -396,6 +331,23 @@ public class ZaehlerErinnerungActivity extends Activity {
 	{
 		Calendar jetzt = Calendar.getInstance();
 		
+		boolean wiederholungAktiv = prefs.getBoolean("wiederholungAktiv",false);
+		
+		// Springe ein interval zurück um nächsten Alarm korrekt anzuzeigen
+		if (wiederholungAktiv)
+		{
+			int wiederholungsZeitraum = prefs.getInt("wiederholungsZeitraum",1);
+			Calendar tempZeit = Calendar.getInstance();
+			tempZeit.setTimeInMillis(zeit.getTimeInMillis());
+			
+			tempZeit.add(Calendar.DAY_OF_YEAR, wiederholungsZeitraum*(-1));
+			
+			if (tempZeit.getTimeInMillis() > jetzt.getTimeInMillis())
+			{
+				zeit.setTimeInMillis(tempZeit.getTimeInMillis());
+			}
+		}
+		
 		String returnString = "";
 		
 		String stunde = String.valueOf(zeit.get(Calendar.HOUR_OF_DAY));
@@ -427,17 +379,26 @@ public class ZaehlerErinnerungActivity extends Activity {
 	
 	private void erinnerungLoeschen()
 	{
+		// Lösche Benachrichtigungsalarm
 		Intent alarmIntent = new Intent(this, AlarmEmpfaenger.class);
-		
 		PendingIntent sender = PendingIntent.getBroadcast(this, Constants.ALARM_REQUEST_CODE, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-		
 		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 		alarmManager.cancel(sender);
-		
 		sender.cancel();
 		
+		// Lösche Dienstalarm
+		Intent serviceIntent = new Intent(this,AlarmService.class);
+		PendingIntent restartServiceIntent = PendingIntent.getService(this, Constants.ALARM_SERVICE_CODE, serviceIntent,0);
+		AlarmManager alarms = (AlarmManager)getSystemService(ALARM_SERVICE);
+		alarms.cancel(restartServiceIntent);
+		restartServiceIntent.cancel();
+		
+		// letzteErrinerungsZeit verhindert das ausführen des Dienstes
+		editor.putLong("letzteErrinerungsZeit", 0);
+		editor.commit();
+		
 		naechsteErinnerungString = "";
-		naechsteErinnerungTV.setText("");
+		naechsteErinnerungTV.setText(naechsteErinnerungString);
 	}
     
 }
