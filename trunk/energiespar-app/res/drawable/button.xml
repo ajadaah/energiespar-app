@@ -15,6 +15,7 @@
  	 			android:topLeftRadius="64dp"
  	 			android:topRightRadius="64dp"/>
 
+    		
         </shape>
     </item>
     
@@ -32,6 +33,10 @@
  	 			android:topLeftRadius="64dp"
  	 			android:topRightRadius="64dp"/>
 
+   		    <stroke
+   	    	 	android:width="@dimen/rahmenstaerke"
+    	    	android:color="@color/buttonRahmen" />
+    		
         </shape>
     </item>
 

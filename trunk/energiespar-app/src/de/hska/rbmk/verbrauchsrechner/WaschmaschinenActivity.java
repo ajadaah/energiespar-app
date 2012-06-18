@@ -35,7 +35,14 @@ public class WaschmaschinenActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.rechner_waschmaschinen);
+		
+		int display_mode = getResources().getConfiguration().orientation;
+
+		if (display_mode == 1) {
+			setContentView(R.layout.rechner_waschmaschinen);
+		} else {
+			setContentView(R.layout.rechner_waschmaschine_landscape);
+		}  
 		
 		String[] geraeteListe = getResources().getStringArray(R.array.GeraeteListe);
 	    ActionBar actionBar = getActionBar();

@@ -18,10 +18,14 @@ public class StartbildschirmActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.startbildschirm);
-        
+              
+        int display_mode = getResources().getConfiguration().orientation;
 
+        if (display_mode == 1) {
+            setContentView(R.layout.startbildschirm);
+        } else {
+            setContentView(R.layout.startbildschirm_landscape);
+        }  
         
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setTitle(R.string.app_name);
