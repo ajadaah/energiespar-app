@@ -45,6 +45,7 @@
     <string name="auswertung_wm_euroErsparnis">%euro Euro</string>
     <string name="menu_erinnerungHinzufuegen">Erinnerung</string>
     <string name="title_zaehlererinnerung">Erinnerung</string>
+    <string name="erinnerung_fehler_datum_liegt_in_vergangenheit">Datum muss in der Zukunft liegen</string>
         
         
 </resources>
