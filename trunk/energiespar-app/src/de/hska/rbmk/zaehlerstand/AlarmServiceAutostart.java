@@ -8,7 +8,8 @@ public class AlarmServiceAutostart extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		Intent serviceIntent = new Intent(context,AlarmService.class);
+		Intent serviceIntent = new Intent();
+		serviceIntent.setAction("de.hska.rbmk.zaehlerstand.ErinnerungsService");
 		context.startService(serviceIntent);
 	}
 
