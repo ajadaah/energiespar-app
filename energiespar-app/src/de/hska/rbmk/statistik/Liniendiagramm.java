@@ -84,7 +84,7 @@ public class Liniendiagramm extends AbstractChart {
       dates.get(i)[11] = new Date(112, 3, 17);
     }
 //    values.add(new double[] { 152, 123, 122, 140, 135, 115, 120, 115, 112, 106, 100, 107 });
-    values.add(new double[] { 102, 90, 112, 105, 125, 112, 125, 112, 105, 115, 116, 135 });
+    values.add(new double[] { 30, 25, 36, 40, 41, 37, 35, 27, 19, 15, 26, 28 });
     length = values.get(0).length;
     int[] colors = new int[] { Color.DKGRAY };
     PointStyle[] styles = new PointStyle[] { PointStyle.POINT };
