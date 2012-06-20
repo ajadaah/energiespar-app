@@ -44,7 +44,12 @@
         <activity android:name=".zaehlerstand.ZaehlerErinnerungActivity"></activity>
         
         <activity android:name=".verbrauchsStatistik.VerbrauchsStatistikMainActivity"></activity>
-        <activity android:name="EinstellungenActivity"></activity>
+        <activity android:name=".EinstellungenActivity"></activity>
+        
+        <activity android:name="org.achartengine.chartdemo.demo.chart.XYChartBuilder"/>
+		<activity android:name="org.achartengine.chartdemo.demo.chart.PieChartBuilder"/>
+		<activity android:name="org.achartengine.chartdemo.demo.chart.PieChartBuilder" />
+        <activity android:name="org.achartengine.GraphicalActivity" />
         
         <service android:name=".zaehlerstand.AlarmService" android:exported="false">
             <intent-filter>

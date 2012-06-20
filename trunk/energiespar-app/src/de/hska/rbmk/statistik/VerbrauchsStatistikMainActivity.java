@@ -1,4 +1,4 @@
-package de.hska.rbmk.verbrauchsStatistik;
+package de.hska.rbmk.statistik;
 
 import de.hska.rbmk.R;
 
