@@ -3,6 +3,7 @@ package de.hska.rbmk.verbrauchsrechner;
 import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
 import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -49,7 +51,7 @@ public class WaschmaschinenActivity extends Activity {
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    actionBar.setTitle(geraeteListe[1]); // 0 = Kühlschränke, 1 = Waschmaschinen, 2 = Spülmaschinen
 	    actionBar.setIcon(R.drawable.ic_calc_washer);
-	    
+	   
 	    this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 	    
 	    // finde alle Eingabewerte

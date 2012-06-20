@@ -56,10 +56,10 @@ public class MyActionProvider extends ActionProvider implements OnMenuItemClickL
 		.setIntent(new Intent(mContext, KuehlschraenkeActivity.class));
 		
 		// Waschmaschinen
-		subMenu.add(0, 1, 1, geraeteListe[1])
-		.setIcon(mContext.getResources().getIdentifier(geraeteListeSymbole[1], "drawable", mContext.getPackageName()))
-		.setOnMenuItemClickListener(this)
-		.setIntent(new Intent(mContext, WaschmaschinenActivity.class));
+//		subMenu.add(0, 1, 1, geraeteListe[1])
+//		.setIcon(mContext.getResources().getIdentifier(geraeteListeSymbole[1], "drawable", mContext.getPackageName()))
+//		.setOnMenuItemClickListener(this)
+//		.setIntent(new Intent(mContext, WaschmaschinenActivity.class));
 		
 		// Spülmaschinen
 		subMenu.add(0, 2, 2, geraeteListe[2])

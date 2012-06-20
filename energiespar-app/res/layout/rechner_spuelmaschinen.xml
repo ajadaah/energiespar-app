@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
     android:gravity="center_horizontal"
-    android:orientation="vertical" >
+    android:orientation="vertical" android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Spezifikationen festlegen" android:padding="5dp"/>
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Gerätespezifikationen zur Ermittlung der Amortisationszeit festlegen"
+            android:width="230dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
