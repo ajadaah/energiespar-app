@@ -12,23 +12,26 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 
 public class StartbildschirmActivity extends Activity {
+	
+	ImageButton b1, b2;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-              
-        int display_mode = getResources().getConfiguration().orientation;
-
-        if (display_mode == 1) {
-            setContentView(R.layout.startbildschirm);
-        } else {
-            setContentView(R.layout.startbildschirm_landscape);
-        }  
+        setContentView(R.layout.startbildschirm);
         
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setTitle(R.string.app_name);
+	    
+        b1 = (ImageButton) findViewById(R.id.imageButton2);
+        b2 = (ImageButton) findViewById(R.id.imageButton4);
+        
+        b1.setEnabled(false);
+        b2.setEnabled(false);
     }
     
     public void zaehlerstandErfassen(View v) {

@@ -12,7 +12,7 @@
 
 <!-- Banner -->    
     <style name="banner">
-        <item name="android:src">@drawable/banner_energiedienst</item>
+        <item name="android:src">@drawable/ic_platzhalter_logo</item>
         <item name="android:layout_gravity">center</item>
     </style>
     

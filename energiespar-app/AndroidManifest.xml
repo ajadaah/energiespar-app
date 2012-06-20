@@ -12,7 +12,7 @@
     <application
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/CompanyTheme">
+        android:theme="@android:style/Theme.Holo.Light">
  
         <receiver android:process=":remote" android:name=".zaehlerstand.AlarmEmpfaenger"></receiver>
         

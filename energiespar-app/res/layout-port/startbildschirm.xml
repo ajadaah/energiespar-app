@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
     android:orientation="vertical" >
 
     <TextView
@@ -23,7 +22,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="200dp"
+        android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center_vertical|center_horizontal"
         android:orientation="vertical" >
@@ -91,7 +90,7 @@
 
             <LinearLayout
                 android:id="@+id/buttonlayout_3"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
@@ -115,7 +114,7 @@
 
             <LinearLayout
                 android:id="@+id/buttonlayout_4"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:orientation="vertical"
