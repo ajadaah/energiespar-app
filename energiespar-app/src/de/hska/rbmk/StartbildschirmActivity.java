@@ -1,12 +1,22 @@
 package de.hska.rbmk;
 
-import de.hska.rbmk.verbrauchsStatistik.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.achartengine.ChartFactory;
+import org.achartengine.chart.PointStyle;
+import org.achartengine.renderer.SimpleSeriesRenderer;
+import org.achartengine.renderer.XYMultipleSeriesRenderer;
+
+import de.hska.rbmk.statistik.*;
 import de.hska.rbmk.zaehlerstand.*;
 import de.hska.rbmk.verbrauchsrechner.*;
 import de.hska.rbmk.geraetevergleich.*;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -30,7 +40,7 @@ public class StartbildschirmActivity extends Activity {
         b1 = (ImageButton) findViewById(R.id.imageButton2);
         b2 = (ImageButton) findViewById(R.id.imageButton4);
         
-        b1.setEnabled(false);
+        b1.setEnabled(true);
         b2.setEnabled(false);
     }
     
@@ -38,10 +48,10 @@ public class StartbildschirmActivity extends Activity {
     	final Intent i = new Intent(this, ZaehlerstandErfassenActivity.class);
     	startActivity(i);
     }
-    
+
     public void verbrauchsstatistik(View v) {
-    	final Intent i = new Intent(this, VerbrauchsStatistikMainActivity.class);
-    	startActivity(i);
+        final Intent chart = new Liniendiagramm().execute(this);
+    	startActivity(chart);
     }
 
     public void verbrauchsrechner(View v) {
