@@ -7,6 +7,7 @@
         <item>Wasser</item>
         <item>Gas</item>
     </array>
+    
     <array name="ZaehlerTypBild">
         <item>ic_type_electricity</item>
         <item>ic_type_water</item>
@@ -26,9 +27,9 @@
     </string-array>
     
     <string-array name="GeraeteListe">
-        <item >Kühlschränke</item>
-        <item >Waschmaschinen</item>
-        <item >Spülmaschinen</item>
+        <item >Kühlschrank</item>
+        <item >Waschmaschine</item>
+        <item >Spülmaschine</item>
     </string-array>
     
     <string-array name="GeraeteListeSymbole">
