@@ -5,10 +5,10 @@
     <string name="app_name">EnergieBerater</string>
     
     <!-- Namen der Buttons im Hauptmenü -->
-    <string name="button1">Erfassung</string>
+    <string name="button1">Zählerverwaltung</string>
     <string name="button2">Statistik</string>
     <string name="button3">Rechner</string>
-    <string name="button4">Vergleich</string>
+    <string name="button4">Gerätevergleich</string>
     
     <string name="zaehlerHinzufuegen">Zähler hinzufügen</string>
     <string name="zaehlerUebersicht">Zählerübersicht:</string>
