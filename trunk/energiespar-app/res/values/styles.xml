@@ -62,6 +62,11 @@
         <item name="android:paddingTop">0dp</item>
      </style>
     
+    <style name="leafRatingBar" parent="@android:style/Widget.Holo.RatingBar">
+        <item name="android:progressDrawable">@drawable/leaf_rating_bar_full</item>
+        <item name="android:minHeight">47dp</item>
+        <item name="android:maxHeight">47dp</item>
+    </style>
 
     <style name="lightTheme" parent="@android:style/Theme.Holo.Light">
     </style> 

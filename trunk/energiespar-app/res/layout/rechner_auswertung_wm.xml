@@ -29,7 +29,7 @@
         android:id="@+id/auswertung_wm_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="%j Jahr(e) und %t Monat(e) dauert es, bis sich der Kauf eines Neugeräts oder des teureren und sparsameren Geräts gegenüber des günstigeren weniger sparsameren Geräts amortisiert hat."/>
+        android:text="%j Jahr(e) und %t Monat(e) "/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,14 +45,13 @@
         android:orientation="vertical" >
 
         <RatingBar
+            style="@style/leafRatingBar"
             android:id="@+id/sterneWM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:numStars="5"
-            android:rating="0"
-            android:focusable="false"
-            android:progress="5" />
+            android:numStars="6"
+            android:rating="4.5"/>
     </LinearLayout>
 
     <TextView
