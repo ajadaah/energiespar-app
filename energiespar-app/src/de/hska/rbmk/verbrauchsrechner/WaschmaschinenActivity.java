@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class WaschmaschinenActivity extends Activity {
 	CheckBox cbEigenesGeraet;
@@ -108,30 +109,47 @@ public class WaschmaschinenActivity extends Activity {
 	}
 	
     public void onButtonClick(View v) {
-    	Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
-
     	
-    	if (cbEigenesGeraet.isChecked()) // // vergleiche mit Spezifikation aus Datensatz
-    	{
-        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf("1.2"));
-        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf("67"));
-        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
-    	}
-    	else // vergleiche mit Eingabe für Gerät 2
-    	{
-        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf(spinner_g2_stromverbrauch.getSelectedItem().toString()));
-        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf(spinner_g2_wasserverbrauch.getSelectedItem().toString()));
-        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf(edittext_g2_anschaffungspreis.getText().toString()));
-    	}
-
-    	ausrechnen.putExtra("g1_stromverbrauch", Float.valueOf(spinner_g1_stromverbrauch.getSelectedItem().toString()));
-    	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(spinner_g1_wasserverbrauch.getSelectedItem().toString()));
-    	ausrechnen.putExtra("g1_anschaffungspreis", Float.valueOf(edittext_g1_anschaffungspreis.getText().toString()));
+    	float g1_anschaffungspreis = Float.valueOf(edittext_g1_anschaffungspreis.getText().toString());
+    	float g2_anschaffungspreis;
     	
-    	ausrechnen.putExtra("jahreseinsaetze", Integer.valueOf(edittext_jahreinsaetze.getText().toString()));
-    	ausrechnen.putExtra("stromkosten", Float.valueOf(edittext_stromkosten.getText().toString()));
-
-    	startActivity(ausrechnen);
+    	if (cbEigenesGeraet.isChecked())
+    		g2_anschaffungspreis = 0; // TODO: hole wert aus sharedpreference
+    	else
+    		g2_anschaffungspreis = Float.valueOf(edittext_g2_anschaffungspreis.getText().toString());
+    	
+    	if (g1_anschaffungspreis > g2_anschaffungspreis)
+    	{
+	    	Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
+		
+	    	if (cbEigenesGeraet.isChecked()) // // vergleiche mit Spezifikation aus Datensatz
+	    	{
+	    		// TODO: hole werte aus sharedpreference
+	        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf("1.2"));
+	        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf("67"));
+	        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
+	    	}
+	    	else // vergleiche mit Eingabe für Gerät 2
+	    	{
+	        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf(spinner_g2_stromverbrauch.getSelectedItem().toString()));
+	        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf(spinner_g2_wasserverbrauch.getSelectedItem().toString()));
+	        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf(edittext_g2_anschaffungspreis.getText().toString()));
+	    	}
+	
+	    	ausrechnen.putExtra("g1_stromverbrauch", Float.valueOf(spinner_g1_stromverbrauch.getSelectedItem().toString()));
+	    	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(spinner_g1_wasserverbrauch.getSelectedItem().toString()));
+	    	ausrechnen.putExtra("g1_anschaffungspreis", Float.valueOf(edittext_g1_anschaffungspreis.getText().toString()));
+	    	
+	    	ausrechnen.putExtra("jahreseinsaetze", Integer.valueOf(edittext_jahreinsaetze.getText().toString()));
+	    	ausrechnen.putExtra("stromkosten", Float.valueOf(edittext_stromkosten.getText().toString()));
+	    	ausrechnen.putExtra("eigenesGeraet", cbEigenesGeraet.isChecked());
+	
+	    	startActivity(ausrechnen);
+    	}
+    	else
+    	{
+    		Toast.makeText(this, getString(R.string.auswertung_wm_text_unmoeglich), Toast.LENGTH_LONG).show();
+    	}
     }
 	
 

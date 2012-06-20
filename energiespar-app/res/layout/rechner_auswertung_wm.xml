@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" android:padding="10dp">
+    android:orientation="vertical"
+    android:padding="10dp" >
 
     <TableRow
         android:id="@+id/tableRow4"
@@ -29,7 +30,7 @@
         android:id="@+id/auswertung_wm_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="%j Jahr(e) und %t Monat(e) "/>
+        android:text="12 Jahre und 1 Monat dauert es, bis sich der Kauf eines Neugeräts oder des teureren und sparsameren Geräts gegenüber des günstigeren weniger sparsameren Geräts amortisiert hat." />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,91 +46,14 @@
         android:orientation="vertical" >
 
         <RatingBar
-            style="@style/leafRatingBar"
             android:id="@+id/sterneWM"
+            style="@style/leafRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:numStars="6"
-            android:rating="4.5"/>
+            android:rating="4.5" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ersparnis pro Jahr"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:paddingLeft="20dp" android:paddingRight="20dp">
-        <TableRow
-            android:id="@+id/tableRow33"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/textView22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wasser:"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/auswertung_wm_literErsparnis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/auswertung_wm_literErsparnis"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right"/>
-
-        </TableRow>
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Strom:"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/auswertung_wm_kwhErsparnis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/auswertung_wm_kwhErsparnis"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right"/>
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
-
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kosten:"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
-
-            <TextView
-                android:id="@+id/auswertung_wm_euroErsparnis"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/auswertung_wm_euroErsparnis"
-                android:layout_weight="1"
-                android:textAppearance="?android:attr/textAppearanceMedium" android:gravity="right"/>
-
-        </TableRow>
-
-    </TableLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -138,5 +62,76 @@
         android:paddingBottom="5dp"
         android:paddingTop="10dp" >
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ersparnis pro Jahr" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+        <TableRow
+            android:id="@+id/tableRow33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/auswertung_wm_literErsparnis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/auswertung_wm_literErsparnis"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/auswertung_wm_kwhErsparnis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/auswertung_wm_kwhErsparnis"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/auswertung_wm_euroErsparnis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/auswertung_wm_euroErsparnis"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="40dp"
+        android:paddingTop="10dp" >
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auswertung_wm_kwh_info"
+        android:layout_gravity="center_horizontal"
+        android:onClick="onClickButtonInfo"/>
 
 </LinearLayout>
