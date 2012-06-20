@@ -128,7 +128,7 @@ public class WaschmaschinenActivity extends Activity {
     	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(spinner_g1_wasserverbrauch.getSelectedItem().toString()));
     	ausrechnen.putExtra("g1_anschaffungspreis", Float.valueOf(edittext_g1_anschaffungspreis.getText().toString()));
     	
-    	ausrechnen.putExtra("jahreseinsaetz", Integer.valueOf(edittext_jahreinsaetze.getText().toString()));
+    	ausrechnen.putExtra("jahreseinsaetze", Integer.valueOf(edittext_jahreinsaetze.getText().toString()));
     	ausrechnen.putExtra("stromkosten", Float.valueOf(edittext_stromkosten.getText().toString()));
 
     	startActivity(ausrechnen);

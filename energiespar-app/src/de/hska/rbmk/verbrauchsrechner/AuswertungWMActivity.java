@@ -5,6 +5,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 public class AuswertungWMActivity extends Activity {
@@ -26,6 +27,9 @@ public class AuswertungWMActivity extends Activity {
 		auswertung_wm_kwhErsparnis,
 		auswertung_wm_euroErsparnis;
 	
+	RatingBar
+		ratingBar;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +45,7 @@ public class AuswertungWMActivity extends Activity {
 	    auswertung_wm_literErsparnis = (TextView) findViewById(R.id.auswertung_wm_literErsparnis);
 		auswertung_wm_kwhErsparnis = (TextView) findViewById(R.id.auswertung_wm_kwhErsparnis);
 		auswertung_wm_euroErsparnis = (TextView) findViewById(R.id.auswertung_wm_euroErsparnis);
+		ratingBar = (RatingBar) findViewById(R.id.sterneWM);
 	    
 	    Intent auswertung = this.getIntent();
 	    Bundle extras = auswertung.getExtras();
@@ -60,13 +65,18 @@ public class AuswertungWMActivity extends Activity {
     	int wasserersparnis = g2_wasserverbrauch*jahreseinsaetze-g1_wasserverbrauch*jahreseinsaetze;
     	float kostenersparnis = g2_stromverbrauch*jahreseinsaetze*stromkosten-g1_stromverbrauch*jahreseinsaetze*stromkosten;
     	
-    	auswertung_wm_kwhErsparnis.setText(new String(getResources().getString(R.string.auswertung_wm_kwhErsparnis)).replace("%kwh", String.valueOf(stromersparnis)));
-    	auswertung_wm_literErsparnis.setText(new String(getResources().getString(R.string.auswertung_wm_literErsparnis)).replace("%l", String.valueOf(wasserersparnis)));
-    	auswertung_wm_euroErsparnis.setText(new String(getResources().getString(R.string.auswertung_wm_euroErsparnis)).replace("%euro", String.valueOf(kostenersparnis)));
+    	String kwh_ersparnis = getResources().getString(R.string.auswertung_wm_kwhErsparnis).replace("%kwh", String.valueOf(stromersparnis));
+    	String literErsparnis = getResources().getString(R.string.auswertung_wm_literErsparnis).replace("%l", String.valueOf(wasserersparnis));
+    	String euroErsparnis = getResources().getString(R.string.auswertung_wm_euroErsparnis).replace("%euro", String.valueOf(kostenersparnis));
+    	
+    	auswertung_wm_kwhErsparnis.setText(kwh_ersparnis);
+    	auswertung_wm_literErsparnis.setText(literErsparnis);
+    	auswertung_wm_euroErsparnis.setText(euroErsparnis);
     	
     	// Amortisationszeitberechnung (in Jahren)
     	float amortisationszeit = (g1_anschaffungspreis/((g2_stromverbrauch*jahreseinsaetze*stromkosten)-(g1_stromverbrauch*jahreseinsaetze*stromkosten)));
     	
+    	ratingBar.setRating(2.33F);
     	
     	
 	}
