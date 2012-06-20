@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Die elektrische Leistung ist ein Momentwert. Sie gibt an, wie viel Energie ein Gerät in einer bestimmten Zeit benötigt. Die Maßeinheit dafür ist Watt (W). Die Maßeinheit für elektrische Energie (= elektrische Arbeit) ist Wattsekunde (Ws). Da diese Einheit sehr klein ist, werden in der Praxis größere Einheiten benutzt, Wattstunden (Wh). Elektrische Leistung: 1.000 Watt (W) = 1 Kilowatt (kW) Elektrische Arbeit: 1.000 Watt (W) x 1 Stunde (h) = 1 Kilowattstunde (kWh)
+Menschliche Leistung im Vergleich: Die verwertbare Leistung des Menschen beträgt etwa 40 Watt. Leistungssportler bringen es kurzfristig (= maximal drei Minuten) auf etwa 400 Watt. Um also eine Kilowattstunde elektrische Arbeit zu erzeugen, müsste der Sportler seine Höchstleistung kontinuierlich 2½ Stunden erbringen.
+\n\n
+Was man mit 1 Kilowattstunde (kWh) alles machen kann:\n
+&#8226; 1 Mittagessen für vier Personen kochen\n
+&#8226; 1 Geschirrspülmaschine durchlaufen lassen\n
+&#8226; 1 Ladung 60-Grad-Wäsche waschen\n
+&#8226; 15 Hemden bügeln\n
+&#8226; 17 Stunden Lesen unter einer 60-Watt-Glühlampe\n
+&#8226; 91 Stunden Lesen unter einer 11-Watt-Energiesparlampe\n
+&#8226; 130 Scheiben Brot toasten\n
+&#8226; 70 Tassen Kaffee kochen\n
+&#8226; sich 1.800 mal elektrisch rasieren\n
+&#8226; 0,5 Stunden lang staubsaugen (2.000-Watt-Staubsauger)\n
+&#8226; 0,75 Stunden lang Haare föhnen (1.400-Watt-Föhn)\n
+&#8226; 3 Stunden fernsehen mit einem Plasma-TV\n
+&#8226; 5 Stunden fernsehen (LCD-Gerät, Bildschirmdiagonale 107 cm)\n
+&#8226; 10 Stunden fernsehen (modernes 76-Zentimeter-Röhrengerät)\n
+&#8226; 20 Stunden fernsehen (alter 51-Zentimeter-Röhrengerät)\n
+&#8226; 5 bis 10 Stunden am Desktop-Computer arbeiten\n
+&#8226; 20 bis 30 Stunden am Notebook arbeiten (15-Zoll-Bildschirm und direkter Stromanschluss)\n
+&#8226; 40 Stunden mit dem CD-Spieler Musik hören (25 Watt)\n
+&#8226; 100 Stunden Radio hören (10 Watt)\n
+&#8226; alle Elektrogeräte eines typischen Vier-Personen-Haushalts 14 Stunden lang im Standby-Betrieb halten" />
+
+</ScrollView>
