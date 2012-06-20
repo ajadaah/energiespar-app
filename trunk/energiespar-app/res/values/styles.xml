@@ -2,7 +2,7 @@
 <resources>
 
 <!--  Theme  -->
-    <style name="CompanyTheme" parent="@android:style/Theme.Holo">
+    <style name="CompanyTheme" parent="@android:style/Theme.Holo.Light">
          <item name="android:textViewStyle">@style/textStyle</item>
          <item name="android:windowBackground">@drawable/background</item>
 		 <item name="android:imageButtonStyle">@style/ButtonRound</item>
