@@ -84,14 +84,14 @@ public class Liniendiagramm extends AbstractChart {
       dates.get(i)[11] = new Date(112, 3, 17);
     }
 //    values.add(new double[] { 152, 123, 122, 140, 135, 115, 120, 115, 112, 106, 100, 107 });
-    values.add(new double[] { 30, 25, 36, 40, 41, 37, 35, 27, 19, 15, 26, 28 });
+    values.add(new double[] { 26, 25, 26, 29, 33, 31, 29, 25, 26, 23, 27, 30 });
     length = values.get(0).length;
     int[] colors = new int[] { Color.DKGRAY };
     PointStyle[] styles = new PointStyle[] { PointStyle.POINT };
     XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
     renderer.setMarginsColor(Color.WHITE);
     setChartSettings(renderer, "Verbrauchsstatistik", "Datum", "Stromverbrauch in kWh", dates.get(0)[0].getTime(),
-        dates.get(0)[11].getTime(), 50, 190, Color.DKGRAY, Color.BLACK);
+        dates.get(0)[11].getTime(), 0, 50, Color.BLACK, Color.BLACK);
     renderer.setXLabels(5);
     renderer.setYLabels(10);
     length = renderer.getSeriesRendererCount();
