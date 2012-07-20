@@ -19,7 +19,7 @@ public class MeterReadingsDbAdapter {
 	
 	private static final String TAG = "MeterReadingsDbAdapter";
 	private DatabaseHelper mDbHelper;
-    private SQLiteDatabase mDb;
+    private static SQLiteDatabase mDb;
     
     private static final String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
     private static final String DATABASE_NAME = "AppDatenbank.db";
@@ -144,20 +144,48 @@ public class MeterReadingsDbAdapter {
 	 
 	    }
 		
+		public void openDataBase() throws SQLException{
+			 
+	    	//Open the database
+	        String myPath = DATABASE_PATH + DATABASE_NAME;
+	        mDb = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+	 
+	    }
+	 
+	    @Override
+		public synchronized void close() {
+	 
+	    	    if(mDb != null)
+	    	    	mDb.close();
+	 
+	    	    super.close();
+	 
+		}
+	 
 		@Override
-        public void onCreate(SQLiteDatabase db) {
-			db.execSQL(TABLE_METERNUMBERS_CREATE);
-            db.execSQL(TABLE_METERREADINGS_CREATE);
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-                    + newVersion + ", which will destroy all old data");
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_METERREADINGS + ";"); // TODO implement update handling that preserves the old values
-			db.execSQL("DROP TABLE IF EXISTS " + TABLE_METERNUMBERS_NAME + ";");
-            onCreate(db);
-        }
+		public void onCreate(SQLiteDatabase db) {
+	 
+		}
+	 
+		@Override
+		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+	 
+		}
+		
+//		@Override
+//        public void onCreate(SQLiteDatabase db) {
+//			db.execSQL(TABLE_METERNUMBERS_CREATE);
+//            db.execSQL(TABLE_METERREADINGS_CREATE);
+//        }
+//
+//        @Override
+//        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+//            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
+//                    + newVersion + ", which will destroy all old data");
+//            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_METERREADINGS + ";"); // TODO implement update handling that preserves the old values
+//			db.execSQL("DROP TABLE IF EXISTS " + TABLE_METERNUMBERS_NAME + ";");
+//            onCreate(db);
+//        }
 		
 	}
 	
@@ -171,6 +199,8 @@ public class MeterReadingsDbAdapter {
 		this.mCtx = ctx;
 	}
 	
+	
+	
 	/**
      * Open the notes database. If it cannot be opened, try to create a new
      * instance of the database. If it cannot be created, throw an exception to
@@ -182,6 +212,19 @@ public class MeterReadingsDbAdapter {
      */
     public MeterReadingsDbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
+ 
+        try {
+        	mDbHelper.createDataBase();
+        } catch (IOException ioe) {
+        	throw new Error("Unable to create database");
+        }
+        
+//        try {
+//        	mDbHelper.openDataBase();
+//        }catch(SQLException sqle){
+//        	throw sqle;
+//        }
+        
         mDb = mDbHelper.getWritableDatabase();
         return this;
     }
