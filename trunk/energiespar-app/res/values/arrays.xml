@@ -8,6 +8,12 @@
         <item>Gas</item>
     </array>
     
+    <array name="SortierVerfahren">
+        <item>Preis</item>
+        <item>Verbrauch</item>
+        <item>Hersteller</item>
+    </array>
+    
     <array name="ZaehlerTypBild">
         <item>ic_type_electricity</item>
         <item>ic_type_water</item>

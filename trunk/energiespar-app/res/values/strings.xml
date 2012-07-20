@@ -15,11 +15,16 @@
     
     <string name="aktionen">Aktionen</string>
     <string name="loeschen">Zähler entfernen</string>
+    <string name="im_internet_suchen">Gerät im Internet suchen</string>
     <string name="dialog_zaehlernummer">Zählernummer:</string>
     <string name="dialog_zaehlertyp">Zählerart:</string>
     <string name="dialog_hinzufuegen">Hinzufügen</string>
+    <string name="dialog_wm_filer_sortieren">Sortieren nach:</string>
+    
     <string name="menu_zaehlerHinzufuegen">Neuer Zähler</string>
     <string name="title_zaehleruebersicht">Zählerübersicht</string>
+    <string name="title_geraetevergleich">Gerätevergleich</string>
+    
 
     <string name="txt_zaehlerliste_leer">Es sind keine Zähler vorhanden.</string>
     <string name="title_zaehlerstanderfassen">Zählerstand erfassen</string>
@@ -27,6 +32,13 @@
     <string name="txt_zaehlerstanderfassen_prezaehlernummer">Zählernummer:</string>
     <string name="menu_zaehlerstand_speichern">Speichern</string>
     <string name="menu_einstellungen">Einstellungen</string>
+    
+    <string name="menu_filter">Filter</string>
+    <string name="dialog_hinzufuegen">Anwenden</string>
+    
+    
+    <string name="menu_strichcode">Scannen</string>
+    
     <string name="einstellungen_theme_titel">Aussehen</string>
     <string name="einstellungen_theme_list_titel">Theme auswählen</string>
     <string name="einstellungen_titel">Einstellungen</string>
@@ -51,6 +63,13 @@
     <string name="auswertung_wm_text_unmoeglich">Auswertung nicht möglich, da das Gerät welches mehr Energie verbraucht teuerer ist, als das sparsamere Gerät.</string>
     <string name="auswertung_wm_kwh_info">Was ist eine Kilowattstunde?</string>
     <string name="dialog_kwh_info_titel">Eine Kilowattstunde</string>
+    <string name="gv_wm_list_item_preis">%r €</string>
+    <string name="gv_wm_list_item_eek">Effizienzkl.: %r</string>
+    <string name="gv_wm_list_item_ladevolumen">Ladevolumen: %r Liter</string>
+        <string name="gv_wm_list_item_sverbrauch">Stromverbrauch: %r kWh</string>
+    <string name="gv_wm_list_item_wverbrauch">Wasserverbrauch: %r Liter</string>
+    <string name="txt_geraete_fehlen">Keine Geräte gefunden.</string>
+    
         
         
 </resources>
