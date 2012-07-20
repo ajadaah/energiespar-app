@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/GridLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:columnCount="2"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:id="@+id/test"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_column="0"
+        android:layout_gravity="center_vertical"
+        android:layout_row="0"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/list_geraete_bild"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ean_9751411224011" />
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/new1"
+        android:layout_column="1"
+        android:layout_columnSpan="2"
+        android:layout_gravity="center_vertical|right"
+        android:layout_row="0"
+        android:columnCount="2"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/gv_wm_list_geraetetitel"
+            android:layout_gravity="left"
+            android:text="Siemens WS776XM"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/gv_wm_list_item_ladevolumen"
+            style="@style/zaehler_list_item_untertitel"
+            android:layout_column="0"
+            android:layout_gravity="left"
+            android:text="@string/gv_wm_list_item_ladevolumen" />
+
+        <TextView
+            android:id="@+id/gv_wm_list_item_sverbrauch"
+            style="@style/zaehler_list_item_untertitel"
+            android:layout_column="0"
+            android:layout_gravity="left"
+            android:text="@string/gv_wm_list_item_sverbrauch" />
+
+        <TextView
+            android:id="@+id/gv_wm_list_item_wverbrauch"
+            style="@style/zaehler_list_item_untertitel"
+            android:layout_column="0"
+            android:layout_gravity="left"
+            android:text="@string/gv_wm_list_item_wverbrauch" />
+
+        <TextView
+            android:id="@+id/gv_wm_list_item_eek"
+            style="@style/zaehler_list_item_untertitel"
+            android:layout_column="0"
+            android:layout_gravity="left"
+            android:text="@string/gv_wm_list_item_eek" />
+
+        <TextView
+            android:id="@+id/gv_wm_list_item_strichcode"
+            style="@style/zaehler_list_item_untertitel"
+            android:layout_column="0"
+            android:layout_gravity="left"
+            android:text=""
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/gv_wm_list_item_preis"
+            style="@style/zaehler_list_item_untertitel"
+            android:layout_column="0"
+            android:layout_columnSpan="2"
+            android:layout_gravity="right"
+            android:padding="10dp"
+            android:text="@string/gv_wm_list_item_preis"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_column="1"
+            android:layout_gravity="fill_vertical"
+            android:layout_row="4" />
+    </GridLayout>
+
+</GridLayout>

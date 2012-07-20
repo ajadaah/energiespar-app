@@ -36,12 +36,6 @@ public class StartbildschirmActivity extends Activity {
         
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setTitle(R.string.app_name);
-	    
-        b1 = (ImageButton) findViewById(R.id.imageButton2);
-        b2 = (ImageButton) findViewById(R.id.imageButton4);
-        
-        b1.setEnabled(true);
-        b2.setEnabled(false);
     }
     
     public void zaehlerstandErfassen(View v) {

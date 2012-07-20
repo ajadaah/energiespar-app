@@ -15,9 +15,9 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class MeterReadingsDbAdapter {
+public class DbAdapter {
 	
-	private static final String TAG = "MeterReadingsDbAdapter";
+	private static final String TAG = "DbAdapter";
 	private DatabaseHelper mDbHelper;
     private static SQLiteDatabase mDb;
     
@@ -26,6 +26,7 @@ public class MeterReadingsDbAdapter {
     private static final String DATABASE_TABLE_METERREADINGS = "meterReadings";
     private static final int DATABASE_VERSION = 2;
     
+    // Zählerstände Tabelle
     public static final String KEY_ROWID = "_id";
     public static final String KEY_CONNECTIONINFO = "connectionInfo";
     public static final String KEY_TIMESTAMP = "timestamp";
@@ -35,30 +36,23 @@ public class MeterReadingsDbAdapter {
     public static final String KEY_METERVALUEREVISED = "meterValueRevised"; 
     public static final String KEY_SYNCHRONIZED = "synchronized";
     
+    // Waschmaschinen Tabelle
+    public static final String KEY_HERSTELLER = "hersteller";
+    public static final String KEY_MODELL = "modell";
+    public static final String KEY_PREIS = "preis";
+    public static final String KEY_WASSERVERBRAUCH = "wasserverbrauch";
+    public static final String KEY_STROMVERBRAUCH = "stromverbrauch";
+    public static final String KEY_LADEVOLUMEN = "ladevolumen"; 
+    public static final String KEY_EEK = "energieeffizienzklasse";
+    public static final String KEY_STRICHCODE = "strichcode";
+    
+    
 	public static final String TABLE_METERNUMBERS_NAME = "meternumbers";
+	public static final String TABLE_WM_NAME = "gv_waschmaschinen";
     
 	public static final String KEY_ID = "_id";
 	public static final String KEY_NUMBER = "number";
-	
-    /**
-     * Database creation sql statement
-     */
-	private static final String TABLE_METERNUMBERS_CREATE = 
-    		"CREATE TABLE " + TABLE_METERNUMBERS_NAME + "(" +
-    				KEY_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
-    				KEY_NUMBER + " TEXT NOT NULL, " +
-    				KEY_METERTYPE + " TEXT NOT NULL" +
-    				")";
-    
-    /**
-     * Database creation sql statement
-     */
-    private static final String TABLE_METERREADINGS_CREATE =
-        "create table " + DATABASE_TABLE_METERREADINGS + " (" + KEY_ROWID + " integer primary key autoincrement, "
-        + KEY_CONNECTIONINFO + " text not null, " + KEY_TIMESTAMP + " datetime not null, "
-        + KEY_METERNUMBER + " integer not null, " + KEY_METERVALUE + " integer not null, "
-        + KEY_METERTYPE + " integer not null, " + KEY_METERVALUEREVISED + " boolean not null, " // TODO add enum table for meter type
-        + KEY_SYNCHRONIZED + " boolean not null);";
+
 
     private final Context mCtx;
 	
@@ -172,21 +166,6 @@ public class MeterReadingsDbAdapter {
 	 
 		}
 		
-//		@Override
-//        public void onCreate(SQLiteDatabase db) {
-//			db.execSQL(TABLE_METERNUMBERS_CREATE);
-//            db.execSQL(TABLE_METERREADINGS_CREATE);
-//        }
-//
-//        @Override
-//        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-//            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
-//                    + newVersion + ", which will destroy all old data");
-//            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_METERREADINGS + ";"); // TODO implement update handling that preserves the old values
-//			db.execSQL("DROP TABLE IF EXISTS " + TABLE_METERNUMBERS_NAME + ";");
-//            onCreate(db);
-//        }
-		
 	}
 	
 	/**
@@ -195,7 +174,7 @@ public class MeterReadingsDbAdapter {
      * 
      * @param ctx the Context within which to work
      */
-	public MeterReadingsDbAdapter(Context ctx) {
+	public DbAdapter(Context ctx) {
 		this.mCtx = ctx;
 	}
 	
@@ -210,7 +189,7 @@ public class MeterReadingsDbAdapter {
      *         initialization call)
      * @throws SQLException if the database could be neither opened or created
      */
-    public MeterReadingsDbAdapter open() throws SQLException {
+    public DbAdapter open() throws SQLException {
         mDbHelper = new DatabaseHelper(mCtx);
  
         try {
@@ -265,7 +244,7 @@ public class MeterReadingsDbAdapter {
         initialValues.put(KEY_METERVALUEREVISED, isMeterValueRevised); 
         initialValues.put(KEY_SYNCHRONIZED, isSynchronized);
 
-        Log.d("MeterReadingsDbAdapter", "storing meter reading " + initialValues.toString());
+        Log.d("DbAdapter", "storing meter reading " + initialValues.toString());
         
         mDb.insert(DATABASE_TABLE_METERREADINGS, null, initialValues);
     }
@@ -319,14 +298,14 @@ public class MeterReadingsDbAdapter {
     	MeterReadingEntry retValue = null;
     	if (queryCursor.getCount() != 0) {
 			queryCursor.moveToFirst();
-	    	retValue = new MeterReadingEntry(queryCursor.getInt(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_ROWID)),
-	    			queryCursor.getString(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_CONNECTIONINFO)), 
-	    			new Date(new Long(queryCursor.getString(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_TIMESTAMP)))), 
-	    			queryCursor.getInt(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_METERNUMBER)), 
-	    			queryCursor.getInt(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_METERVALUE)), 
-	    			MeterType.get(queryCursor.getInt(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_METERTYPE))), 
-	    			Boolean.getBoolean(queryCursor.getString(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_METERVALUEREVISED))), 
-	    			Boolean.getBoolean(queryCursor.getString(queryCursor.getColumnIndexOrThrow(MeterReadingsDbAdapter.KEY_SYNCHRONIZED))));
+	    	retValue = new MeterReadingEntry(queryCursor.getInt(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_ROWID)),
+	    			queryCursor.getString(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_CONNECTIONINFO)), 
+	    			new Date(new Long(queryCursor.getString(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_TIMESTAMP)))), 
+	    			queryCursor.getInt(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_METERNUMBER)), 
+	    			queryCursor.getInt(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_METERVALUE)), 
+	    			MeterType.get(queryCursor.getInt(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_METERTYPE))), 
+	    			Boolean.getBoolean(queryCursor.getString(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_METERVALUEREVISED))), 
+	    			Boolean.getBoolean(queryCursor.getString(queryCursor.getColumnIndexOrThrow(DbAdapter.KEY_SYNCHRONIZED))));
     	}
     	queryCursor.close();
     	return retValue;
