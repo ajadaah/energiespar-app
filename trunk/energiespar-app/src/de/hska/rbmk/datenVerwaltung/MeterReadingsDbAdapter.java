@@ -1,5 +1,9 @@
 package de.hska.rbmk.datenVerwaltung;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Date;
 
 import android.content.ContentValues;
@@ -7,6 +11,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -16,6 +21,7 @@ public class MeterReadingsDbAdapter {
 	private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
     
+    private static final String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
     private static final String DATABASE_NAME = "AppDatenbank.db";
     private static final String DATABASE_TABLE_METERREADINGS = "meterReadings";
     private static final int DATABASE_VERSION = 2;
@@ -57,9 +63,86 @@ public class MeterReadingsDbAdapter {
     private final Context mCtx;
 	
 	private static class DatabaseHelper extends SQLiteOpenHelper {
+		
+	    private final Context myContext;
+	    
 		public DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+			this.myContext = context;
 		}
+		
+		public void createDataBase() throws IOException{
+			 
+	    	boolean dbExist = checkDataBase();
+	 
+	    	if(dbExist){
+	    		//do nothing - database already exist
+	    	}else{
+	 
+	    		//By calling this method and empty database will be created into the default system path
+	               //of your application so we are gonna be able to overwrite that database with our database.
+	        	this.getReadableDatabase();
+	 
+	        	try {
+	 
+	    			copyDataBase();
+	 
+	    		} catch (IOException e) {
+	 
+	        		throw new Error("Error copying database");
+	 
+	        	}
+	    	}
+	 
+	    }
+		
+		private boolean checkDataBase(){
+			 
+	    	SQLiteDatabase checkDB = null;
+	 
+	    	try{
+	    		String myPath = DATABASE_PATH + DATABASE_NAME;
+	    		checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+	 
+	    	}catch(SQLiteException e){
+	 
+	    		//database does't exist yet.
+	 
+	    	}
+	 
+	    	if(checkDB != null){
+	 
+	    		checkDB.close();
+	 
+	    	}
+	 
+	    	return checkDB != null ? true : false;
+	    }
+		
+		private void copyDataBase() throws IOException{
+			 
+	    	//Open your local db as the input stream
+	    	InputStream myInput = myContext.getAssets().open(DATABASE_NAME);
+	 
+	    	// Path to the just created empty db
+	    	String outFileName = DATABASE_PATH + DATABASE_NAME;
+	 
+	    	//Open the empty db as the output stream
+	    	OutputStream myOutput = new FileOutputStream(outFileName);
+	 
+	    	//transfer bytes from the inputfile to the outputfile
+	    	byte[] buffer = new byte[1024];
+	    	int length;
+	    	while ((length = myInput.read(buffer))>0){
+	    		myOutput.write(buffer, 0, length);
+	    	}
+	 
+	    	//Close the streams
+	    	myOutput.flush();
+	    	myOutput.close();
+	    	myInput.close();
+	 
+	    }
 		
 		@Override
         public void onCreate(SQLiteDatabase db) {
