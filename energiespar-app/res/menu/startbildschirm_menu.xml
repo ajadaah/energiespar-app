@@ -3,4 +3,7 @@
     <item android:id="@+id/menu_einstellungen"
         android:icon="@android:drawable/ic_menu_preferences"
           android:title="@string/menu_einstellungen" />
+        <item android:id="@+id/menu_diff"
+        android:icon="@android:drawable/ic_menu_revert"
+          android:title="@string/menu_diff" />
 </menu>
