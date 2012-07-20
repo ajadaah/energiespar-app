@@ -1,5 +1,12 @@
 package de.hska.rbmk;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,17 +19,21 @@ import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import de.hska.rbmk.statistik.*;
 import de.hska.rbmk.zaehlerstand.*;
 import de.hska.rbmk.verbrauchsrechner.*;
+import de.hska.rbmk.datenVerwaltung.DbAdapter;
 import de.hska.rbmk.geraetevergleich.*;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class StartbildschirmActivity extends Activity {
 	
@@ -63,6 +74,73 @@ public class StartbildschirmActivity extends Activity {
 	    switch (item.getItemId()) {
 	        case R.id.menu_einstellungen:
 	        	startActivity(new Intent(this, EinstellungenActivity.class));
+	            return true;
+	        case R.id.menu_diff:
+	            String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
+	            String DATABASE_NAME = "AppDatenbank.db";
+	            
+	            try {
+	            	//Open your local db as the input stream
+	            	InputStream myInput = this.getAssets().open(DATABASE_NAME);
+
+
+	            	// Path to the just created empty db
+	            	String outFileName = DATABASE_PATH + DATABASE_NAME + ".original";
+
+	            	//Open the empty db as the output stream
+	            	OutputStream myOutput = new FileOutputStream(outFileName);
+
+	            	//transfer bytes from the inputfile to the outputfile
+	            	byte[] mybuffer = new byte[1024];
+	            	int length;
+	            	while ((length = myInput.read(mybuffer))>0){
+	            		myOutput.write(mybuffer, 0, length);
+	            	}
+
+	            	//Close the streams
+	            	myOutput.flush();
+	            	myOutput.close();
+	            	myInput.close();
+
+	            	String command = DATABASE_PATH+"diff -u "+DATABASE_PATH+DATABASE_NAME+".original "+DATABASE_PATH+DATABASE_NAME;
+
+	            	Process proc = null;
+	            	ProcessBuilder pb = new ProcessBuilder();
+	            	proc = pb.command(command)
+	            	                    .redirectErrorStream(true).start();
+	            	BufferedReader bReader = new BufferedReader(new InputStreamReader(
+	            	                    proc.getInputStream()));
+	            	
+//	            	File wd = new File(DATABASE_PATH);
+	            	
+//	                Process process = Runtime.getRuntime().exec(command, null, null);
+
+	                // Reads stdout.
+	                // NOTE: You can write to stdin of the command using
+	                //       process.getOutputStream().
+//	                BufferedReader bReader = new BufferedReader(
+//	                        new InputStreamReader(process.getInputStream()));
+	                int read;
+	                char[] buffer = new char[4096];
+	                StringBuffer output = new StringBuffer();
+	                while ((read = bReader.read(buffer)) > 0) {
+	                    output.append(buffer, 0, read);
+	                }
+	                bReader.close();
+
+	                // Waits for the command to finish.
+	                proc.waitFor();
+	                
+	                Toast.makeText(this, output.toString(), Toast.LENGTH_SHORT).show();
+	            	
+
+	            } catch (IOException e) {
+	            	// TODO Auto-generated catch block
+	            	e.printStackTrace();
+	            } catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	            return true;
 	        default:
 	            return super.onOptionsItemSelected(item);

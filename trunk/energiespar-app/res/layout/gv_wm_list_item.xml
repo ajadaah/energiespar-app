@@ -12,7 +12,7 @@
         android:layout_width="80dp"
         android:layout_height="100dp"
         android:layout_column="0"
-        android:layout_gravity="center_vertical"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:layout_row="0"
         android:orientation="vertical" >
 
@@ -28,7 +28,7 @@
         android:id="@+id/new1"
         android:layout_column="1"
         android:layout_columnSpan="2"
-        android:layout_gravity="center_vertical|right"
+        android:layout_gravity="center_vertical|center_horizontal"
         android:layout_row="0"
         android:columnCount="2"
         android:orientation="horizontal" >
