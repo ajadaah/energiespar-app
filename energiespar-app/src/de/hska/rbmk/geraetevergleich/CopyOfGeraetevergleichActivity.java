@@ -2,12 +2,6 @@ package de.hska.rbmk.geraetevergleich;
 
 
 import java.text.DecimalFormat;
-import java.util.Date;
-
-import kankan.wheel.widget.OnWheelChangedListener;
-import kankan.wheel.widget.OnWheelScrollListener;
-import kankan.wheel.widget.WheelView;
-import kankan.wheel.widget.adapters.NumericWheelAdapter;
 import de.hska.rbmk.datenVerwaltung.*;
 import de.hska.rbmk.verbrauchsrechner.AuswertungWMActivity;
 import de.hska.rbmk.Constants;
@@ -17,7 +11,6 @@ import de.hska.rbmk.R;
 import android.app.ActionBar;
 import android.app.AlertDialog.Builder;
 import android.app.ListActivity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,8 +19,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Vibrator;
-import android.text.format.DateFormat;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,18 +27,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
-import android.view.animation.AnticipateOvershootInterpolator;
 import android.widget.AdapterView;
 import android.widget.CursorAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-public class GeraetevergleichActivtiy extends ListActivity {
+public class CopyOfGeraetevergleichActivity extends ListActivity {
     
 
 	private SQLiteDatabase db;
@@ -57,9 +45,6 @@ public class GeraetevergleichActivtiy extends ListActivity {
 	private static final int CONTEXT_OPEN_BROWSER = 1;
 
 	private long contextSelection = -1;
-	
-	private boolean wheelScrolled = false;
-	private boolean valueChanged = false;
 	
 	public DecimalFormat f = new DecimalFormat("#0.00");
 	
@@ -71,7 +56,7 @@ public class GeraetevergleichActivtiy extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.geraetevergleich_uebersicht);
+		setContentView(R.layout.geraetevergleich_wm);
 		
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
@@ -111,7 +96,7 @@ public class GeraetevergleichActivtiy extends ListActivity {
 	    		
 	        	Builder builder = new Builder(this);
 	        	builder
-	                .setIcon(android.R.drawable.ic_search_category_default)
+	                .setIcon(R.drawable.ic_sort)
 	                .setTitle(getString(R.string.menu_filter))
 	                .setView(textEntryView)
 	                .setPositiveButton(R.string.dialog_hinzufuegen, new DialogInterface.OnClickListener() {

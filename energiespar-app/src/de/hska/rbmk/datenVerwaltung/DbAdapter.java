@@ -46,9 +46,15 @@ public class DbAdapter {
     public static final String KEY_EEK = "energieeffizienzklasse";
     public static final String KEY_STRICHCODE = "strichcode";
     
+    public static final String KEY_MASSGEDECKE = "massgedecke";
+    public static final String KEY_NUTZINHALT = "nutzinhalt";
+    
     
 	public static final String TABLE_METERNUMBERS_NAME = "meternumbers";
 	public static final String TABLE_WM_NAME = "gv_waschmaschinen";
+	public static final String TABLE_KS_NAME = "gv_kuehlschraenke";
+	public static final String TABLE_SM_NAME = "gv_spuelmaschinen";
+	
     
 	public static final String KEY_ID = "_id";
 	public static final String KEY_NUMBER = "number";
