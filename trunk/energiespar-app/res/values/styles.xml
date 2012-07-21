@@ -2,43 +2,55 @@
 <resources>
 
 <!--  Theme  -->
-    <style name="CompanyTheme" parent="@android:style/Theme.Holo.Light">
+    <style name="CompanyTheme" parent="@android:style/Theme.Holo">
          <item name="android:textViewStyle">@style/textStyle</item>
          <item name="android:windowBackground">@drawable/background</item>
-		 <item name="android:imageButtonStyle">@style/ButtonRound</item>
+		 <item name="android:imageButtonStyle">@style/Button</item>
     </style> 
 
 
 
-<!-- Banner -->    
+<!-- Banner -->   
     <style name="banner">
+        	<!-- Dateinamen des Banner/Logo  -->
         <item name="android:src">@drawable/ic_platzhalter_logo</item>
+			<!-- Orientierung des Banner/Logo -->
         <item name="android:layout_gravity">center</item>
     </style>
     
+<!-- Farben -->    
+		<!-- Farbe des Text -->
+    <color name="text">#0765af</color>
+    
+		<!-- 2 Hintergrundfarben für einen Farbverlauf -->
+    <color name="background1">#82be1e</color>
+    <color name="background2">#e8f3d5</color>
+    
+		<!-- 2 Buttonfarben für einen Farbverlauf -->
+    <color name="button1">#f7b400</color>
+    <color name="button2">#f7b400</color>
+    
+		<!-- 2 Buttonfarben für einen Farbverlauf, wenn die Buttons gedrückt werden -->
+    <color name="buttonPressed1">#0765af</color>
+    <color name="buttonPressed2">#0765af</color>
+    
+		<!-- Farbe des Rahmens um die Buttons, sofern rahmenstärke > 0 -->
+    <color name="buttonRahmen">#0765af</color>
+    
+  		<!-- Rahmenstärke bei den Buttons, 0 = kein Rahmen -->
+   <dimen name="rahmenstaerke">1dp</dimen>
+   
+		<!-- Wie stark sollen die Ecken abgerundet sein? 0dp = eckig, 32dp = runde Buttons -->
+   <dimen name="rundheit">32dp</dimen>
+   
 <!-- Schrift -->    
 	<style name="textStyle" parent="@android:style/Widget.TextView">
 	    <item name="android:textColor">@color/text</item>
         <item name="android:paddingTop">4dp</item>
 	</style>    
- 
-  
-    
-<!-- Farben -->    
-    <color name="text">#0765af</color>
-    <color name="background1">#82be1e</color>
-    <color name="background2">#e8f3d5</color>
-    <color name="button1">#f7b400</color>
-    <color name="button2">#f7b400</color>
-    <color name="buttonPressed1">#0765af</color>
-    <color name="buttonPressed2">#0765af</color>
-    <color name="buttonRahmen">#0765af</color>
-    
-   <dimen name="rahmenstaerke">1dp</dimen>
-
 
  <!-- Buttons-->   
-    <style name="ButtonRound" parent="@android:style/Widget.ImageButton">
+    <style name="Button" parent="@android:style/Widget.ImageButton">
         <item name="android:background">@drawable/button</item>
         <item name="android:minHeight">@dimen/raster16</item>
         <item name="android:minWidth">@dimen/raster16</item>
