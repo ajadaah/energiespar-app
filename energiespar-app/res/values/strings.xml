@@ -19,11 +19,14 @@
     <string name="dialog_zaehlernummer">Zählernummer:</string>
     <string name="dialog_zaehlertyp">Zählerart:</string>
     <string name="dialog_hinzufuegen">Hinzufügen</string>
+    <string name="dialog_speichern">Speichern</string>
+    <string name="dialog_loeschen">Löschen</string>
     <string name="dialog_wm_filer_sortieren">Sortieren nach:</string>
     
     <string name="menu_zaehlerHinzufuegen">Neuer Zähler</string>
     <string name="title_zaehleruebersicht">Zählerübersicht</string>
     <string name="title_geraetevergleich">Gerätevergleich</string>
+    <string name="title_geraeteverwaltung">Geräteverwaltung</string>
     
 
     <string name="txt_zaehlerliste_leer">Es sind keine Zähler vorhanden.</string>
@@ -70,6 +73,13 @@
         <string name="gv_wm_list_item_sverbrauch">Stromverbrauch: %r kWh</string>
     <string name="gv_wm_list_item_wverbrauch">Wasserverbrauch: %r Liter</string>
     <string name="txt_geraete_fehlen">Keine Geräte gefunden.</string>
+    
+    <string name="meineWmWasserverbrauch">• %r Liter Wasser</string>
+    <string name="meineWmStromverbrauch">• %r kWh Strom</string>
+    <string name="meineWmFuellmenge">Füllmenge %r Liter</string>
+    
+    
+    
     
         
         

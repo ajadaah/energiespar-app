@@ -11,4 +11,6 @@ public class Constants {
 	public static final int ALARM_REQUEST_CODE = 731946825;
 	public static final int ALARM_SERVICE_CODE = 731946825;
 	public static final String SHARED_PREFERENCES = "AppEinstellungen";
+	
+	public static final String UmweltMeter = "meternumber";
 }
