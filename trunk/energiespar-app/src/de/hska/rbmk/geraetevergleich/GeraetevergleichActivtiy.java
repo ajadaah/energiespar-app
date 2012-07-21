@@ -10,6 +10,7 @@ import kankan.wheel.widget.WheelView;
 import kankan.wheel.widget.adapters.NumericWheelAdapter;
 import de.hska.rbmk.datenVerwaltung.*;
 import de.hska.rbmk.verbrauchsrechner.AuswertungWMActivity;
+import de.hska.rbmk.Constants;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.R;
 
@@ -20,6 +21,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -61,6 +63,9 @@ public class GeraetevergleichActivtiy extends ListActivity {
 	
 	public DecimalFormat f = new DecimalFormat("#0.00");
 	
+	SharedPreferences.Editor editor;
+	SharedPreferences prefs;
+	
 	/** Called when the activity is first created. */
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,12 +76,13 @@ public class GeraetevergleichActivtiy extends ListActivity {
 	    ActionBar actionBar = getActionBar();
 	    actionBar.setDisplayHomeAsUpEnabled(true);
 	    actionBar.setTitle(R.string.title_geraetevergleich);
-		
+	    
 		registerForContextMenu(getListView());
 		
 		dbAdapter = new DbAdapter(this);
 		
-//		mHelper = new MeterNumbersOpenHelper(this);
+	    prefs = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE);
+	    editor = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE).edit();
     }
 	
 	@Override
@@ -101,7 +107,8 @@ public class GeraetevergleichActivtiy extends ListActivity {
 	            LayoutInflater factory = LayoutInflater.from(this);
 	            final View textEntryView = factory.inflate(R.layout.dialog_wm_filter, null);
 	            final Spinner auswahl = (Spinner) textEntryView.findViewById(R.id.sortierungsAuswahl);
-	            
+	    		auswahl.setSelection(prefs.getInt("gv_sortierungs_filter",0));
+	    		
 	        	Builder builder = new Builder(this);
 	        	builder
 	                .setIcon(android.R.drawable.ic_search_category_default)
@@ -109,12 +116,10 @@ public class GeraetevergleichActivtiy extends ListActivity {
 	                .setView(textEntryView)
 	                .setPositiveButton(R.string.dialog_hinzufuegen, new DialogInterface.OnClickListener() {
 	                    public void onClick(DialogInterface dialog, int whichButton) {
-
-//	        				ContentValues values = new ContentValues();
-//	        				values.put(DbAdapter.KEY_NUMBER, et.getText().toString());
-//	        				values.put(DbAdapter.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
-//	        				db.insert(DbAdapter.TABLE_METERNUMBERS_NAME, null, values);
-//	        				loadData();
+	                		int selectedPosition = auswahl.getSelectedItemPosition();
+	                		editor.putInt("gv_sortierungs_filter", selectedPosition);
+	                		editor.commit();
+	        				loadData();
 	                    }
 	                })
 	                .show();
@@ -212,23 +217,6 @@ public class GeraetevergleichActivtiy extends ListActivity {
 		
 		Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
 		
-		/*
-		 * 
-		 * 	        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf(spinner_g2_stromverbrauch.getSelectedItem().toString()));
-	        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf(spinner_g2_wasserverbrauch.getSelectedItem().toString()));
-	        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf(edittext_g2_anschaffungspreis.getText().toString()));
-	    	}
-	
-	    	ausrechnen.putExtra("g1_stromverbrauch", Float.valueOf(spinner_g1_stromverbrauch.getSelectedItem().toString()));
-	    	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(spinner_g1_wasserverbrauch.getSelectedItem().toString()));
-	    	ausrechnen.putExtra("g1_anschaffungspreis", Float.valueOf(edittext_g1_anschaffungspreis.getText().toString()));
-	    	
-	    	ausrechnen.putExtra("jahreseinsaetze", Integer.valueOf(edittext_jahreinsaetze.getText().toString()));
-	    	ausrechnen.putExtra("stromkosten", Float.valueOf(edittext_stromkosten.getText().toString()));
-	    	ausrechnen.putExtra("eigenesGeraet", cbEigenesGeraet.isChecked());
-	    	
-		 */
-		
 		int jahreseinsaetze = 244;
 		float stromkosten = 0.25f;
 		
@@ -247,48 +235,15 @@ public class GeraetevergleichActivtiy extends ListActivity {
     	ausrechnen.putExtra("eigenesGeraet", true);
     	
     	startActivity(ausrechnen);
-		
-		
-//        LayoutInflater factory = LayoutInflater.from(this);
-//        final View textEntryView = factory.inflate(R.layout.dialog_zaehlerstand_erfassen, null);
-//        
-//    	Builder builder = new Builder(this);
-//    	builder
-//            .setIcon(iv_type.getDrawable())
-//            .setTitle(getString(R.string.title_zaehlerstanderfassen))
-//            .setView(textEntryView)
-//            .setPositiveButton(R.string.menu_zaehlerstand_speichern, new DialogInterface.OnClickListener() {
-//                public void onClick(DialogInterface dialog, int whichButton) {
-//
-//
-//                			
-//                				DbAdapter mRDBA = new DbAdapter(getApplicationContext());
-//                	        	
-//                	        	Date timeStamp = new Date(System.currentTimeMillis());
-//                				
-//                				mRDBA.open();
-////                				mRDBA.addReading("", timeStamp, zaehlerNummer, zaehlerWert , zaehlerArt, valueChanged, false);
-//                				mRDBA.close();
-//                				
-//                				//TODO better close activity
-//
-//                				loadData();
-//                				
-////                				TODO: Sync
-////                				Intent serviceIntent = new Intent(getApplicationContext(), SynchronizationService.class);
-////                	        	startService(serviceIntent);
-////                				Intent intent = new Intent(view.getContext(), ElectricMeterActivity.class);
-////                				startActivityForResult(intent, 0);
-//                			
-//
-//
-//            }})
-//            .show();
 	}
 	
 	private void loadData() {
+		int filterIndex = prefs.getInt("gv_sortierungs_filter",0);
+		
+		String[] filterText = this.getResources().getStringArray(R.array.SortierVerfahrenAuswahl);
+		
 		Cursor geraeteCursor = db.query(
-				DbAdapter.TABLE_WM_NAME,							// Tabellenname
+				DbAdapter.TABLE_WM_NAME,			// Tabellenname
 				new String[] { 						// anzuzeigende Spalten
 						DbAdapter.KEY_ROWID,
 						DbAdapter.KEY_HERSTELLER,
@@ -304,7 +259,7 @@ public class GeraetevergleichActivtiy extends ListActivity {
 				null, 								// WHERE-Argumente (für "?")
 				null, 								// GROUP BY
 				null, 								// HAVING
-				DbAdapter.KEY_ROWID	// ORDER BY
+				filterText[filterIndex]				// ORDER BY
 			);
 
 		CursorAdapter geraeteAdapter = new CursorAdapter(this, geraeteCursor, false) {
