@@ -10,10 +10,10 @@
                 android:angle="315" />
 
     		<corners
-     			android:bottomRightRadius="64dp"
-     			android:bottomLeftRadius="64dp"
- 	 			android:topLeftRadius="64dp"
- 	 			android:topRightRadius="64dp"/>
+     			android:bottomRightRadius="@dimen/rundheit"
+     			android:bottomLeftRadius="@dimen/rundheit"
+ 	 			android:topLeftRadius="@dimen/rundheit"
+ 	 			android:topRightRadius="@dimen/rundheit"/>
 
     		
         </shape>
@@ -28,10 +28,10 @@
                 android:angle="315" />
 
     		<corners
-     			android:bottomRightRadius="64dp"
-     			android:bottomLeftRadius="64dp"
- 	 			android:topLeftRadius="64dp"
- 	 			android:topRightRadius="64dp"/>
+     			android:bottomRightRadius="@dimen/rundheit"
+     			android:bottomLeftRadius="@dimen/rundheit"
+ 	 			android:topLeftRadius="@dimen/rundheit"
+ 	 			android:topRightRadius="@dimen/rundheit"/>
 
    		    <stroke
    	    	 	android:width="@dimen/rahmenstaerke"
