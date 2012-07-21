@@ -21,6 +21,7 @@ import de.hska.rbmk.zaehlerstand.*;
 import de.hska.rbmk.verbrauchsrechner.*;
 import de.hska.rbmk.datenVerwaltung.DbAdapter;
 import de.hska.rbmk.geraetevergleich.*;
+import de.hska.rbmk.geraeteverwaltung.GeraeteverwaltungActivity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
@@ -65,7 +66,12 @@ public class StartbildschirmActivity extends Activity {
     }
 
     public void geraetevergleich(View v) {
-    	final Intent i = new Intent(this, GeraetevergleichActivtiy.class);
+    	final Intent i = new Intent(this, GeraetevergleichActivity.class);
+    	startActivity(i);
+    }
+    
+    public void geraeteverwaltung(View v) {
+    	final Intent i = new Intent(this, GeraeteverwaltungActivity.class);
     	startActivity(i);
     }
 
