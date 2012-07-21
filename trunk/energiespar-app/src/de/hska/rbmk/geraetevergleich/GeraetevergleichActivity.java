@@ -1,40 +1,22 @@
 package de.hska.rbmk.geraetevergleich;
 
 
-import java.text.DecimalFormat;
-import de.hska.rbmk.datenVerwaltung.*;
-import de.hska.rbmk.verbrauchsrechner.AuswertungWMActivity;
 import de.hska.rbmk.Constants;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.R;
 
 import android.app.ActionBar;
 import android.app.AlertDialog.Builder;
-import android.app.ListActivity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.AdapterView;
-import android.widget.CursorAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
-
-import android.os.Bundle;  
 import android.support.v4.app.Fragment;  
 import android.support.v4.app.FragmentActivity;  
 import android.support.v4.app.FragmentManager;  

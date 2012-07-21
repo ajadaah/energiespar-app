@@ -1,9 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent" android:weightSum="1">
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="ANFANG" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+     >
 
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp" >
 
-</LinearLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/checkText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_gravity="left|center"
+                android:layout_row="0"
+                android:padding="5dp"
+                android:text="Gerät erfasst"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <ImageButton
+                android:id="@+id/editButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_gravity="right"
+                android:layout_row="0"
+                android:src="@android:drawable/ic_menu_edit" />
+
+            <ImageView
+                android:id="@+id/checkImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_gravity="left|center"
+                android:layout_row="0"
+                android:src="@drawable/ic_checked" />
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hideMe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verbrauch pro Washgang" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/meineWmWasser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• %r Liter Wasser"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                <TextView
+                    android:id="@+id/meineWmStrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="• %r kWh Strom"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/meineWmFuellmenge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Füllmenge %r Liter"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:layout_gravity="center"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Umwelt Rating" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Stand Juli 2012)"
+                android:textSize="9dp"/>
+
+            <RatingBar
+                android:id="@+id/sterneWM"
+                style="@style/leafRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="6"
+                android:rating="4.5"
+                android:isIndicator="true" />
+
+            <TextView
+                android:id="@+id/textViewUmweltrating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="sehr gut (1,7)" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="21dp"
+            android:layout_height="1dp" />
+
+        <LinearLayout
+            android:id="@+id/infoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="40dp" >
+
+            <TextView
+                android:id="@+id/infoTextTitel"
+                android:textAppearance="@style/infoTextTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipps zur Nutzung"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/infoTextSmall"
+                android:text="•	Die meisten Neugeräte fassen maximal 7 bis 8 kg Wäsche manche sogar bis zu 11 kg. Nutzen Sie möglichst das gesamte Fassungsvermögen der Waschtrommel aus. Achtung, die empfohlene Beladung differiert stark je nach Wäscheart, um empfindliche Gewebe zu schonen und/oder Knitter zu vermeiden. Empfohlen wird bei Koch- und Buntwäsche maximale Beladung, halbe Beladung bei pflegeleichter Wäsche und 1 bis 2 kg bei Feinwäsche/Wolle. Beachten Sie die Hinweise zu den einzelnen Programmen im Benutzerhandbuch Ihrer Maschine.
+•	Der Kochwaschgang benötigt gegenüber einem 60 °C Programm bis zu 50 % mehr Energie. Bei normaler Verschmutzung reicht ein 60 °C-Waschprogramm aus.
+•	Nutzen Sie das Fassungsvermögen des Wäschetrockners voll aus: bei Koch- und Buntwäsche bis zu 9 kg. Die maximale Füllmenge Ihres Gerätes entnehmen Sie dem Benutzerhandbuch.
+•	Der Stromverbrauch ist umso geringer, je stärker die Wäsche vorher beim Schleudern entfeuchtet wurde. Wird die Wäsche mit 1400 U/min statt mit 800 U/min geschleudert, sinkt der Stromverbrauch des Trockners um etwa 30 %.
+•	Wenn der Trockner mit Textilien gefüllt wird, deren Material, Größe und Dicke ähnlich sind, dann verkürzt sich die Trocknungsdauer und Energie wird eingespart.
+•	Durch die bewusste Wahl geeigneter Programme für verschiedene Textilien können Sie nicht nur Energie sparen, Sie schonen auch zusätzlich Ihre Wäsche. Moderne Waschmaschinen und Wäschetrockner bieten eine Vielzahl von entsprechenden Programmen.
+" />
+
+            <TextView
+                android:id="@+id/infoTextTitel2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Was Sie außerdem noch wissen sollten"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:layout_gravity="center"
+                android:textAppearance="@style/infoTextTitle2" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/infoTextSmall"
+                android:text="•	Der Wasser- und Stromverbrauch älterer Waschmaschinen bleibt stets gleich, egal wie voll die Maschine tatsächlich ist. Neuere Waschmaschinen dagegen verfügen über ein intelligentes System, das die Wäschemenge und die Wäscheart anhand ihrer Saugfähigkeit erkennt und danach die Wassermenge reguliert. Zusätzlich wird die optimale Zeit für Waschen, Spülen und Schleudern ermittelt. Deshalb gehen moderne Maschinen besonders sparsam mit Strom und Wasser um und entlasten damit auch den Geldbeutel.
+•	Besitzen Sie noch ein älteres Modell ohne elektronische Steuerung und mit sehr hohem Wasserverbrauch, kann sich eine Neuanschaffung lohnen.
+•	Dosieren Sie das Waschmittel bewusst nach Verschmutzung, Wasserhärte und Herstellerangaben. Überdosierung belastet die Umwelt unnötig - Unterdosierung kann zu Schmutz- und Kalk-Ablagerungen im Gewebe und auf Maschinenbauteilen führen. Manche Geräte bieten eine automatische Pulver- und Flüssigwaschmitteldosierung in Abhängigkeit des Verschmutzungsgrades und der Beladung.
+•	Besonders hartnäckige Flecken, z. B. Obst, Tee, Blut, Soße, Tinte möglichst mit speziellen Waschhilfsmitteln vorbehandeln.
+•	Für empfindliche, tierische Fasern wie Wolle und Seide sind Spezial-Waschmittel empfehlenswert. Sie sind pH-neutral und frei von Enzymen.
+•	Moderne Waschmaschinen bieten eine Vielzahl von Programmen, die Arbeit abnehmen und schonende Reinigung garantieren, z. B. Handwäsche, Wolle, Seide bzw. speziell auf besondere Anforderungen angepasst sind, z. B. Hygiene-/Allergiker-Programme, Mischwäsche, Sportbekleidung.
+" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
