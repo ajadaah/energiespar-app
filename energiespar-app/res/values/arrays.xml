@@ -14,6 +14,12 @@
         <item>Hersteller</item>
     </array>
     
+        <array name="SortierVerfahrenAuswahl">
+        <item>preis</item>
+        <item>stromverbrauch</item>
+        <item>hersteller</item>
+    </array>
+    
     <array name="ZaehlerTypBild">
         <item>ic_type_electricity</item>
         <item>ic_type_water</item>
