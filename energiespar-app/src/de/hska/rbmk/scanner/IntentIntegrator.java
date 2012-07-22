@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hska.rbmk.R;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -111,11 +113,12 @@ public class IntentIntegrator {
   public static final int REQUEST_CODE = 0x0000c0de; // Only use bottom 16 bits
   private static final String TAG = IntentIntegrator.class.getSimpleName();
 
-  public static final String DEFAULT_TITLE = "Install Barcode Scanner?";
+  public static final String DEFAULT_TITLE = "Installiere Barcode Scanner?";
   public static final String DEFAULT_MESSAGE =
-      "This application requires Barcode Scanner. Would you like to install it?";
-  public static final String DEFAULT_YES = "Yes";
-  public static final String DEFAULT_NO = "No";
+      "Diese Anwendung benötigt Barcode Scanner. Möchten Sie es installieren?";
+  //"This application requires Barcode Scanner. Would you like to install it?";
+  public static final String DEFAULT_YES = "Ja";
+  public static final String DEFAULT_NO = "Nein";
 
   private static final String BS_PACKAGE = "com.google.zxing.client.android";
   private static final String BSPLUS_PACKAGE = "com.srowen.bs.android";
@@ -299,6 +302,7 @@ public class IntentIntegrator {
   private AlertDialog showDownloadDialog() {
     AlertDialog.Builder downloadDialog = new AlertDialog.Builder(activity);
     downloadDialog.setTitle(title);
+    downloadDialog.setIcon(R.drawable.ic_scan); // Unser Symbol hinzugefügt
     downloadDialog.setMessage(message);
     downloadDialog.setPositiveButton(buttonYes, new DialogInterface.OnClickListener() {
       @Override

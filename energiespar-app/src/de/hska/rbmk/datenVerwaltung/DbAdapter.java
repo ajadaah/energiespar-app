@@ -23,7 +23,7 @@ public class DbAdapter {
     
     private static final String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
     private static final String DATABASE_NAME = "AppDatenbank.db";
-    private static final String DATABASE_TABLE_METERREADINGS = "meterReadings";
+    public static final String DATABASE_TABLE_METERREADINGS = "meterReadings";
     private static final int DATABASE_VERSION = 2;
     
     // Zählerstände Tabelle
