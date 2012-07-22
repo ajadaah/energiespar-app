@@ -1,11 +1,13 @@
 package de.hska.rbmk.verbrauchsrechner;
 
+import de.hska.rbmk.Constants;
 import de.hska.rbmk.R;
 import de.hska.rbmk.StartbildschirmActivity;
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +37,9 @@ public class WaschmaschinenActivity extends Activity {
 		edittext_jahreinsaetze,
 		edittext_stromkosten;
 	
+	SharedPreferences.Editor editor;
+	SharedPreferences prefs;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +52,9 @@ public class WaschmaschinenActivity extends Activity {
 	    actionBar.setIcon(R.drawable.ic_calc_washer);
 	   
 	    this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+	    
+		prefs = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE);
+		editor = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE).edit();
 	    
 	    // finde alle Eingabewerte
 	    cbEigenesGeraet = (CheckBox) findViewById(R.id.cbEigenesGeraet);
@@ -63,8 +71,15 @@ public class WaschmaschinenActivity extends Activity {
 	
     public void onCheckBoxClickEigenesGeraet(View v) {
     	if (cbEigenesGeraet.isChecked())
-    	{
+    	{    		
+    		boolean meineWmVorhanden = prefs.getBoolean("meineWmVorhanden",false);
+    		if (!meineWmVorhanden) {
+    			cbEigenesGeraet.setChecked(false);
+    			Toast.makeText(this, getString(R.string.auswertung_wm_keingeraet), Toast.LENGTH_SHORT).show();
+    		}
+    		else {	
     		hiddenLL.setVisibility(LinearLayout.GONE);
+    		}
     	}
     	else {
     		hiddenLL.setVisibility(LinearLayout.VISIBLE);
@@ -107,7 +122,7 @@ public class WaschmaschinenActivity extends Activity {
     	float g2_anschaffungspreis;
     	
     	if (cbEigenesGeraet.isChecked())
-    		g2_anschaffungspreis = 0; // TODO: hole wert aus sharedpreference
+    		g2_anschaffungspreis = 0;
     	else
     		g2_anschaffungspreis = Float.valueOf(edittext_g2_anschaffungspreis.getText().toString());
     	
@@ -117,10 +132,12 @@ public class WaschmaschinenActivity extends Activity {
 		
 	    	if (cbEigenesGeraet.isChecked()) // // vergleiche mit Spezifikation aus Datensatz
 	    	{
-	    		// TODO: hole werte aus sharedpreference
-	        	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf("1.2"));
-	        	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf("67"));
-	        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
+	    		int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
+	    		float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
+	    		
+	        	ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
+	        	ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
+	        	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));	
 	    	}
 	    	else // vergleiche mit Eingabe für Gerät 2
 	    	{

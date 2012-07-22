@@ -71,13 +71,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
-                android:text="•	Die meisten Neugeräte fassen maximal 7 bis 8 kg Wäsche manche sogar bis zu 11 kg. Nutzen Sie möglichst das gesamte Fassungsvermögen der Waschtrommel aus. Achtung, die empfohlene Beladung differiert stark je nach Wäscheart, um empfindliche Gewebe zu schonen und/oder Knitter zu vermeiden. Empfohlen wird bei Koch- und Buntwäsche maximale Beladung, halbe Beladung bei pflegeleichter Wäsche und 1 bis 2 kg bei Feinwäsche/Wolle. Beachten Sie die Hinweise zu den einzelnen Programmen im Benutzerhandbuch Ihrer Maschine.
-•	Der Kochwaschgang benötigt gegenüber einem 60 °C Programm bis zu 50 % mehr Energie. Bei normaler Verschmutzung reicht ein 60 °C-Waschprogramm aus.
-•	Nutzen Sie das Fassungsvermögen des Wäschetrockners voll aus: bei Koch- und Buntwäsche bis zu 9 kg. Die maximale Füllmenge Ihres Gerätes entnehmen Sie dem Benutzerhandbuch.
-•	Der Stromverbrauch ist umso geringer, je stärker die Wäsche vorher beim Schleudern entfeuchtet wurde. Wird die Wäsche mit 1400 U/min statt mit 800 U/min geschleudert, sinkt der Stromverbrauch des Trockners um etwa 30 %.
-•	Wenn der Trockner mit Textilien gefüllt wird, deren Material, Größe und Dicke ähnlich sind, dann verkürzt sich die Trocknungsdauer und Energie wird eingespart.
-•	Durch die bewusste Wahl geeigneter Programme für verschiedene Textilien können Sie nicht nur Energie sparen, Sie schonen auch zusätzlich Ihre Wäsche. Moderne Waschmaschinen und Wäschetrockner bieten eine Vielzahl von entsprechenden Programmen.
-" />
+                android:text="•	Eine Lagertemperatur von +5 °C bis +7 °C im Kühlschrank und -18 °C im Gefriergerät reicht im Allgemeinen aus.
+•	Bei jedem Öffnen entweicht Kälte – das kostet Energie. Öffnen Sie daher so wenig und so kurz wie möglich. Die übersichtliche Lagerung der Lebensmittel im Kühl- und Gefriergerät beugt langem Suchen vor.
+•	Lebensmittel gehören nur gut abgekühlt und abgedeckt bzw. gut verpackt in den Kühlschrank. Eine Ausnahme bilden Obst und Gemüse bei der Lagerung knapp über 0 °C. Sie sollten zur optimalen Feuchtigkeitszirkulation stets unverpackt eingelagert werden.
+•	Lebensmittel benötigen unterschiedliche klimatische Verhältnisse. Ein Mehr-Zonen-Gerät bietet hier für alle Bedürfnisse optimale Lagerbedingungen. Lebensmittel in der niedrig temperierten Zone knapp über 0 °C bleiben bis zu dreimal länger frisch als im normalen Kühlbereich." />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,13 +89,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
-                android:text="•	Der Wasser- und Stromverbrauch älterer Waschmaschinen bleibt stets gleich, egal wie voll die Maschine tatsächlich ist. Neuere Waschmaschinen dagegen verfügen über ein intelligentes System, das die Wäschemenge und die Wäscheart anhand ihrer Saugfähigkeit erkennt und danach die Wassermenge reguliert. Zusätzlich wird die optimale Zeit für Waschen, Spülen und Schleudern ermittelt. Deshalb gehen moderne Maschinen besonders sparsam mit Strom und Wasser um und entlasten damit auch den Geldbeutel.
-•	Besitzen Sie noch ein älteres Modell ohne elektronische Steuerung und mit sehr hohem Wasserverbrauch, kann sich eine Neuanschaffung lohnen.
-•	Dosieren Sie das Waschmittel bewusst nach Verschmutzung, Wasserhärte und Herstellerangaben. Überdosierung belastet die Umwelt unnötig - Unterdosierung kann zu Schmutz- und Kalk-Ablagerungen im Gewebe und auf Maschinenbauteilen führen. Manche Geräte bieten eine automatische Pulver- und Flüssigwaschmitteldosierung in Abhängigkeit des Verschmutzungsgrades und der Beladung.
-•	Besonders hartnäckige Flecken, z. B. Obst, Tee, Blut, Soße, Tinte möglichst mit speziellen Waschhilfsmitteln vorbehandeln.
-•	Für empfindliche, tierische Fasern wie Wolle und Seide sind Spezial-Waschmittel empfehlenswert. Sie sind pH-neutral und frei von Enzymen.
-•	Moderne Waschmaschinen bieten eine Vielzahl von Programmen, die Arbeit abnehmen und schonende Reinigung garantieren, z. B. Handwäsche, Wolle, Seide bzw. speziell auf besondere Anforderungen angepasst sind, z. B. Hygiene-/Allergiker-Programme, Mischwäsche, Sportbekleidung.
-" />
+                android:text="•	Während eines Urlaubs den Kühlschrank auf kleinste Stufe stellen oder sogar ganz abschalten. Wird abgeschaltet, muss die Tür offen bleiben, sonst können sich unangenehme Gerüche oder Schimmel bilden.
+•	Die “Lagerzeit bei Störung” gibt die Anzahl der Stunden an, während derer Lebensmittel im Gefriergerät bei Ausfall keine Qualitätseinbuße erleiden. Dabei dürfen sich die Lebensmittel bei voll beladenem Gerät von -18 °C auf -9 °C erwärmen. Die “Lagerzeit bei Störung“ ist in der Gebrauchsanweisung angegeben. Bei Teilbeladung ist die Zeit kürzer." />
 
         </LinearLayout>
     </LinearLayout>
