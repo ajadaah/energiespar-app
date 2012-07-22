@@ -91,7 +91,11 @@
                 android:textAppearance="@style/infoTextSmall"
                 android:text="•	Während eines Urlaubs den Kühlschrank auf kleinste Stufe stellen oder sogar ganz abschalten. Wird abgeschaltet, muss die Tür offen bleiben, sonst können sich unangenehme Gerüche oder Schimmel bilden.
 •	Die “Lagerzeit bei Störung” gibt die Anzahl der Stunden an, während derer Lebensmittel im Gefriergerät bei Ausfall keine Qualitätseinbuße erleiden. Dabei dürfen sich die Lebensmittel bei voll beladenem Gerät von -18 °C auf -9 °C erwärmen. Die “Lagerzeit bei Störung“ ist in der Gebrauchsanweisung angegeben. Bei Teilbeladung ist die Zeit kürzer." />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="vertical" >
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

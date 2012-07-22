@@ -47,7 +47,7 @@
                 android:inputType="number"
                 android:hint="z.B. 80"
                 android:gravity="center_horizontal"
-                android:maxLength="10" />
+                android:maxLength="3"><requestFocus /></EditText>
 
         </TableRow>
 
@@ -68,10 +68,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="z.B. 0.23"
+                android:hint="z.B. 0.89"
                 android:inputType="numberDecimal"
                 android:gravity="center_horizontal"
-                android:maxLength="10" />
+                android:maxLength="5" />
 
         </TableRow>
 
@@ -108,7 +108,7 @@
                 android:hint="z.B. 7"
                 android:inputType="number"
                 android:gravity="center_horizontal"
-                android:maxLength="10" />
+                android:maxLength="2" />
 
         </TableRow>
 
