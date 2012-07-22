@@ -36,7 +36,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
-                android:src="@drawable/ic_clock_red" />
+                android:src="@drawable/ic_clock_blue" />
 
             <TextView
                 android:id="@+id/auswertung_wm_text"
@@ -63,7 +63,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
                 android:padding="5dp"
-                android:src="@drawable/ic_currency_euro_red" />
+                android:src="@drawable/ic_currency_euro_blue" />
 
             <LinearLayout
                 android:id="@+id/blubbb"
@@ -124,7 +124,7 @@
                 android:layout_height="48dp"
                 android:padding="5dp"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_questionmark_red" />
+                android:src="@drawable/ic_questionmark_blue" />
 
             <TextView
                 android:id="@+id/empfehlungsText"

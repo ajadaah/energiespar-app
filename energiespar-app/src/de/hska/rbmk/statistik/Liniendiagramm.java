@@ -168,7 +168,7 @@ public class Liniendiagramm extends AbstractChart {
 	  //    values.add(new double[] { 152, 123, 122, 140, 135, 115, 120, 115, 112, 106, 100, 107 });
 	  values.add(new double[] { 0, -15, -2, -17.75, 29.25 });
 	  length = values.get(0).length;
-	  int[] colors = new int[] { Color.DKGRAY };
+	  int[] colors = new int[] { Color.WHITE };
 	  PointStyle[] styles = new PointStyle[] { PointStyle.POINT };
 	  XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
 	  renderer.setMarginsColor(Color.WHITE);

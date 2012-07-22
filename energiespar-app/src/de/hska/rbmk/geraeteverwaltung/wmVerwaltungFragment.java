@@ -183,7 +183,7 @@ public class wmVerwaltungFragment extends Fragment {
 		.setPositiveButton(R.string.dialog_speichern, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 
-				if (!et_wasser.getText().toString().isEmpty() && !et_strom.getText().toString().isEmpty()) { // auf vollständigkeit prüfen
+				if (!et_wasser.getText().toString().isEmpty() && !et_strom.getText().toString().isEmpty() && !et_fuellmenge.getText().toString().isEmpty()) { // auf vollständigkeit prüfen
 					editor.putInt("meineWmWasserverbrauch", Integer.parseInt(et_wasser.getText().toString()));
 					editor.putInt("meineWmFuellmenge", Integer.parseInt(et_fuellmenge.getText().toString()));
 					editor.putFloat("meineWmStromverbrauch", Float.parseFloat(et_strom.getText().toString()));
