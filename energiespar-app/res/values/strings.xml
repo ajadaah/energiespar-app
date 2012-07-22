@@ -9,6 +9,7 @@
     <string name="button2">Statistik</string>
     <string name="button3">Rechner</string>
     <string name="button4">Gerätevergleich</string>
+    <string name="button5">Geräteverwaltung</string>
     
     <string name="zaehlerHinzufuegen">Zähler hinzufügen</string>
     <string name="zaehlerUebersicht">Zählerübersicht:</string>
