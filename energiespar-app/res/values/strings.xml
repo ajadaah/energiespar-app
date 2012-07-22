@@ -65,6 +65,8 @@
     <string name="auswertung_wm_text_anderes">dauert es, bis sich der Kauf eines Neugeräts oder des teureren und sparsameren Geräts gegenüber des günstigeren weniger sparsameren Geräts amortisiert hat.</string>
     <string name="auswertung_wm_text_eigenes">dauert es, bis sich der Kauf des Neugeräts gegenüber Ihrem alten, weniger sparsameren Geräts amortisiert hat.</string>
     <string name="auswertung_wm_text_unmoeglich">Auswertung nicht möglich, da das Gerät welches mehr Energie verbraucht teuerer ist, als das sparsamere Gerät.</string>
+    
+    <string name="auswertung_wm_keingeraet">Es ist kein eigenes Gerät erfasst.</string>
     <string name="auswertung_wm_kwh_info">Was ist eine Kilowattstunde?</string>
     <string name="dialog_kwh_info_titel">Eine Kilowattstunde</string>
     <string name="gv_wm_list_item_preis">%r €</string>

@@ -232,9 +232,11 @@ public class wmFragment extends ListFragment {
 		int jahreseinsaetze = 244;
 		float stromkosten = 0.25f;
 		
-		// TODO: eigenes gerät mit sharedpreference ermitteln
-    	ausrechnen.putExtra("g2_stromverbrauch", Float.valueOf("1.2"));
-    	ausrechnen.putExtra("g2_wasserverbrauch", Integer.valueOf("67"));
+		int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
+		float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
+		
+    	ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
+    	ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
     	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
     	
     	ausrechnen.putExtra("g1_stromverbrauch", (float)(Float.valueOf(stromverbrauch)/100.0f));
