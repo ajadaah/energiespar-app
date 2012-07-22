@@ -20,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_height="320dp"
         android:layout_gravity="center_vertical|center_horizontal"
         android:orientation="vertical" >
 
@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="zaehlerstandErfassen"
-                    android:src="@android:drawable/ic_menu_preferences" />
+                    android:src="@drawable/ic_refresh_red" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -67,7 +67,7 @@
                     android:id="@+id/imageButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_gallery"
+                    android:src="@drawable/ic_poll_yellow"
                     android:onClick="verbrauchsstatistik" />
 
                 <TextView
@@ -98,7 +98,7 @@
                     android:id="@+id/imageButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_calculator_red_s"
+                    android:src="@drawable/ic_calculator_red_small"
                     android:onClick="verbrauchsrechner"/>
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:id="@+id/imageButton4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_menu_search"
+                    android:src="@drawable/ic_shopping_cart_red_small"
                     android:onClick="geraetevergleich" />
 
                 <TextView
@@ -133,13 +133,31 @@
                     android:textAppearance="@style/mainMenuButtonText" />
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+<LinearLayout
+                android:id="@+id/buttonlayout_4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="10sp" 
+                android:layout_weight="1">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Geräteverwaltung"
-        android:onClick="geraeteverwaltung" />
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_gear_red"
+            android:onClick="geraeteverwaltung" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button5"
+                    android:textAppearance="@style/mainMenuButtonText" />
+            </LinearLayout>
+
+
+    </LinearLayout>
 
 </LinearLayout>
