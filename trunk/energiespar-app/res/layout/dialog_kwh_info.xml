@@ -9,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        style="@style/darkStyle"
         android:text="Die elektrische Leistung ist ein Momentwert. Sie gibt an, wie viel Energie ein Gerät in einer bestimmten Zeit benötigt. Die Maßeinheit dafür ist Watt (W). Die Maßeinheit für elektrische Energie (= elektrische Arbeit) ist Wattsekunde (Ws). Da diese Einheit sehr klein ist, werden in der Praxis größere Einheiten benutzt, Wattstunden (Wh). Elektrische Leistung: 1.000 Watt (W) = 1 Kilowatt (kW) Elektrische Arbeit: 1.000 Watt (W) x 1 Stunde (h) = 1 Kilowattstunde (kWh)
 Menschliche Leistung im Vergleich: Die verwertbare Leistung des Menschen beträgt etwa 40 Watt. Leistungssportler bringen es kurzfristig (= maximal drei Minuten) auf etwa 400 Watt. Um also eine Kilowattstunde elektrische Arbeit zu erzeugen, müsste der Sportler seine Höchstleistung kontinuierlich 2½ Stunden erbringen.
 \n\n

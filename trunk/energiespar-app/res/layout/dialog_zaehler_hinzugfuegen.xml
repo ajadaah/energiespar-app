@@ -13,7 +13,8 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_zaehlertyp" />
+            android:text="@string/dialog_zaehlertyp"
+            style="@style/darkStyle" />
 
         <Spinner
             android:id="@+id/zaehlerTypAuswahl"
@@ -30,7 +31,8 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/dialog_zaehlernummer" />
+            android:text="@string/dialog_zaehlernummer"
+            style="@style/darkStyle" />
 
         <EditText
             android:id="@+id/eingetippte_zaehlernummer"

@@ -56,10 +56,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="40dp" >
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rechner_rahmen"
+            android:padding="8dp" >
 
             <TextView
-                android:textAppearance="@style/infoTextTitle"
+                style="@style/infoTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tipps zur Nutzung"
@@ -71,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
+                style="@style/darkStyle"
                 android:text="•	Vorspülen unter fließendem Wasser ist nicht notwendig. Es ist ausreichend, grobe Essensreste zum Beispiel mit einem Löffel zu entfernen, das Geschirr im Geschirrspüler zu sammeln und die Gerätetür schließen, damit die Essensreste nicht antrocknen.
 •	“Eco” Programme arbeiten bei niedrigen Temperaturen. Bei starker Verschmutzung des Geschirrs kann dies nicht ausreichend sein.
 •	Beachten Sie beim Einräumen des Geschirrspülers, dass Glas und Porzellan fest stehen und nicht aneinander anstoßen. Besteck sollte unsortiert in den Korb gestellt werden und Geschirr mit Einbuchtungen angewickelt stehen. Die Sprüharme müssen sich ungehindert drehen können." />
@@ -82,12 +85,13 @@
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
                 android:layout_gravity="center"
-                android:textAppearance="@style/infoTextTitle2" />
+                style="@style/infoTextTitle2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
+                style="@style/darkStyle"
                 android:text="Die meisten Geräte können an die Kalt- oder Warmwasserversorgung angeschlossen werden. Ein Warmwasseranschluss ist vor allem bei der Nutzung regenerativer Energien z. B. bei Verwendung einer Wärmepumpe sinnvoll. Die Zuleitung sollte kurz und gut isoliert sein und es sollten nicht mehr als 3 Liter kaltes Wasser fließen, bevor warmes Wasser kommt. Das Wasser sollte allerdings nicht wärmer als 60 °C sein.
                 
 Milchige Gläser entstehen durch Calcium-Ablagerungen und können durch Zitronensäure entfernt werden. Das gilt auch für Calciumablagerungen in der Maschine." />
