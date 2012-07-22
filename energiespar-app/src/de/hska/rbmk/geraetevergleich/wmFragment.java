@@ -33,7 +33,6 @@ public class wmFragment extends ListFragment {
 
 
 	private SQLiteDatabase db;
-//	private MeterNumbersOpenHelper mHelper;
 	private DbAdapter dbAdapter;
 	View view;
 	public DecimalFormat f = new DecimalFormat("#0.00");

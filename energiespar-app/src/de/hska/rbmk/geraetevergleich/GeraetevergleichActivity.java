@@ -1,37 +1,52 @@
 package de.hska.rbmk.geraetevergleich;
 
 
+import java.text.DecimalFormat;
+
 import de.hska.rbmk.Constants;
 import de.hska.rbmk.StartbildschirmActivity;
 import de.hska.rbmk.R;
+import de.hska.rbmk.datenVerwaltung.DbAdapter;
+import de.hska.rbmk.scanner.*;
+import de.hska.rbmk.verbrauchsrechner.*;
+import de.hska.rbmk.zaehlerstand.ZaehlerstandErfassenActivity;
 
 import android.app.ActionBar;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.support.v4.app.Fragment;  
 import android.support.v4.app.FragmentActivity;  
 import android.support.v4.app.FragmentManager;  
 import android.support.v4.app.FragmentPagerAdapter;  
 import android.support.v4.view.ViewPager;  
+import java.util.List;
 
 public class GeraetevergleichActivity extends FragmentActivity {  
 
-	private static final String[] titel = new String [] { "Waschmaschinen", "Kühlschränke", "Spülmaschinen" };
-
-	private static final int NUMBER_OF_PAGES = 3;
+	private SQLiteDatabase db;
+	private DbAdapter dbAdapter;
+	View view;
+	public DecimalFormat f = new DecimalFormat("#0.00");
 
 	SharedPreferences.Editor editor;
 	SharedPreferences prefs;
 
+	private static final String[] titel = new String [] { "Waschmaschinen", "Kühlschränke", "Spülmaschinen" };
+	private static final int NUMBER_OF_PAGES = 3;
 	private ViewPager mViewPager;  
 	private MyFragmentPagerAdapter mMyFragmentPagerAdapter;  
 
@@ -41,7 +56,8 @@ public class GeraetevergleichActivity extends FragmentActivity {
 
 		prefs = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE);
 		editor = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE).edit();
-
+		dbAdapter = new DbAdapter(this);
+		
 		ActionBar actionBar = getActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setTitle(R.string.title_geraetevergleich);
@@ -87,14 +103,16 @@ public class GeraetevergleichActivity extends FragmentActivity {
 		return true;
 	}
 
+	
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.menu_strichcode_einlesen:
 		{
-			// app icon in action bar clicked; go home
-			//		    	Intent intent = new Intent(this, ZaehlerErinnerungActivity.class);
-			//		    	startActivity(intent);
+			// Strichcode einlesen
+			IntentIntegrator integrator = new IntentIntegrator(this);
+            integrator.initiateScan();
 			return true;
 		}
 		case R.id.menu_filter_auswaehlen:
@@ -135,4 +153,78 @@ public class GeraetevergleichActivity extends FragmentActivity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+	
+	public void onActivityResult(int requestCode, int resultCode, Intent intent) {  
+		  switch (requestCode) {
+		  case IntentIntegrator.REQUEST_CODE:
+		     if (resultCode == this.RESULT_OK) {
+
+		        IntentResult intentResult = 
+		           IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
+
+		        if (intentResult != null) {
+
+		           String contents = intentResult.getContents();
+		           String format = intentResult.getFormatName();
+
+		           geraetAuswerten(contents);
+		        } else {
+		        	// Leerer Intent
+		        }
+		     } else if (resultCode == this.RESULT_CANCELED) {
+		    	 // Benutzerabbruch
+		     }
+		  }
+		}
+	
+	private void geraetAuswerten(String strichcode)
+	{
+		boolean meineWmVorhanden = prefs.getBoolean("meineWmVorhanden",false);
+
+		if (meineWmVorhanden) 
+		{
+			dbAdapter.open();
+			db = dbAdapter.getDb();
+	    	String query = "SELECT "+DbAdapter.KEY_STROMVERBRAUCH+","+DbAdapter.KEY_WASSERVERBRAUCH+","+DbAdapter.KEY_PREIS+" FROM "+DbAdapter.TABLE_WM_NAME+" WHERE "+DbAdapter.KEY_STRICHCODE+" = ?";
+	    	Cursor queryCursor = db.rawQuery(query, new String[] { strichcode });
+	    	queryCursor.moveToFirst();
+	
+			String preisText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_PREIS));
+			String stromverbrauchText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_STROMVERBRAUCH));
+			String wasserverbrauchText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_WASSERVERBRAUCH));
+	
+			queryCursor.close();
+			dbAdapter.close();
+			
+			int jahreseinsaetze = 244;
+			float stromkosten = 0.25f;
+	
+			int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
+			float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
+	
+			Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
+	
+			ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
+			ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
+			ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
+	
+			ausrechnen.putExtra("g1_stromverbrauch", (float)(Float.valueOf(stromverbrauchText)/100.0f));
+			ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(wasserverbrauchText));
+			ausrechnen.putExtra("g1_anschaffungspreis", (float)(Float.valueOf(preisText)/100.0f));
+	
+			ausrechnen.putExtra("jahreseinsaetze", jahreseinsaetze);
+			ausrechnen.putExtra("stromkosten", stromkosten);
+	
+			ausrechnen.putExtra("eigenesGeraet", true);
+	
+			startActivity(ausrechnen);
+		}
+		else
+		{
+			Toast.makeText(this, "Ein eigenes Gerät muss zuerst angelegt werden.", Toast.LENGTH_LONG).show();
+		}
+	}
+
+
+
 }
