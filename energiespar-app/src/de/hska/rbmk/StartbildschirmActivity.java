@@ -74,7 +74,7 @@ public class StartbildschirmActivity extends Activity {
     	final Intent i = new Intent(this, GeraeteverwaltungActivity.class);
     	startActivity(i);
     }
-
+/*
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
@@ -159,4 +159,5 @@ public class StartbildschirmActivity extends Activity {
 	    inflater.inflate(R.menu.startbildschirm_menu, menu);
 	    return true;
 	}	
+	*/
 }
