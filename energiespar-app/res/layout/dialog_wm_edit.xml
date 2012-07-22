@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left"
         android:text="Verbrauch pro Waschgang"
+        style="@style/darkStyle"
         />
 
     <LinearLayout
@@ -37,7 +38,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Wasser in Liter"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/darkStyle" />
 
             <EditText
                 android:id="@+id/eingetippter_wasserverbrauch"
@@ -61,7 +63,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Strom in kWh"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/darkStyle" />
 
             <EditText
                 android:id="@+id/eingetippter_stromverbrauch"
@@ -98,7 +101,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Füllmenge in Liter"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/darkStyle" />
             
             <EditText
                 android:id="@+id/eingetippte_fuellmenge"

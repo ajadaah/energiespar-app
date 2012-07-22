@@ -2,7 +2,7 @@
 <resources>
 
     <string name="mainTitle">Hauptmenü</string>
-    <string name="app_name">EnergieBerater</string>
+    <string name="app_name">EnergieDienst</string>
     
     <!-- Namen der Buttons im Hauptmenü -->
     <string name="button1">Zählerverwaltung</string>

@@ -148,7 +148,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:onClick="onClickButtonInfo"
-            android:text="@string/auswertung_wm_kwh_info" />
+            android:text="@string/auswertung_wm_kwh_info"
+            style="@style/textStyle" />
     </LinearLayout>
 
 </ScrollView>

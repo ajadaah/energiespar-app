@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Gerätespezifikationen zur Ermittlung der Amortisationszeit festlegen"
-            android:width="230dp" />
+             />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,13 +58,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Energieverbrauch"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/darkStyle" />
 
                     <TextView
                         android:id="@+id/textView5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="pro Waschgang" />
+                        android:text="pro Waschgang"
+                        style="@style/darkStyle" />
                 </LinearLayout>
 
                 <Spinner
@@ -92,13 +94,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Wasserverbrauch"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/darkStyle" />
 
                     <TextView
                         android:id="@+id/TextView01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="pro Waschgang" />
+                        android:text="pro Waschgang"
+                        style="@style/darkStyle" />
                 </LinearLayout>
 
                 <Spinner
@@ -125,12 +129,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Anschaffungspreis"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        style="@style/darkStyle" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="in Euro" />
+                        android:text="in Euro"
+                        style="@style/darkStyle" />
                 </LinearLayout>
 
                 <EditText
@@ -172,7 +178,7 @@
                 android:id="@+id/cbEigenesGeraet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
+                android:checked="false"
                 android:onClick="onCheckBoxClickEigenesGeraet"
                 android:text="mit eigenem Gerät vergleichen" />
 
@@ -181,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone" >
+                android:visibility="visible" >
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -198,13 +204,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Energieverbrauch"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            style="@style/darkStyle" />
 
                         <TextView
                             android:id="@+id/textView52"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pro Waschgang" />
+                            android:text="pro Waschgang"
+                            style="@style/darkStyle" />
                     </LinearLayout>
 
                     <Spinner
@@ -232,13 +240,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Wasserverbrauch"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            style="@style/darkStyle" />
 
                         <TextView
                             android:id="@+id/TextView33"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="pro Waschgang" />
+                            android:text="pro Waschgang"
+                            style="@style/darkStyle" />
                     </LinearLayout>
 
                     <Spinner
@@ -265,13 +275,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Anschaffungspreis"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            style="@style/darkStyle" />
 
                         <TextView
                             android:id="@+id/TextView01"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="in Euro" />
+                            android:text="in Euro"
+                            style="@style/darkStyle" />
                     </LinearLayout>
 
                     <EditText

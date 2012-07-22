@@ -56,10 +56,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="40dp" >
+            android:layout_marginTop="40dp"
+            android:padding="8dp"
+            android:background="@drawable/rechner_rahmen" >
 
             <TextView
-                android:textAppearance="@style/infoTextTitle"
+                style="@style/infoTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tipps zur Nutzung"
@@ -71,6 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
+                style="@style/darkStyle"
                 android:text="•	Eine Lagertemperatur von +5 °C bis +7 °C im Kühlschrank und -18 °C im Gefriergerät reicht im Allgemeinen aus.
 •	Bei jedem Öffnen entweicht Kälte – das kostet Energie. Öffnen Sie daher so wenig und so kurz wie möglich. Die übersichtliche Lagerung der Lebensmittel im Kühl- und Gefriergerät beugt langem Suchen vor.
 •	Lebensmittel gehören nur gut abgekühlt und abgedeckt bzw. gut verpackt in den Kühlschrank. Eine Ausnahme bilden Obst und Gemüse bei der Lagerung knapp über 0 °C. Sie sollten zur optimalen Feuchtigkeitszirkulation stets unverpackt eingelagert werden.
@@ -83,12 +86,13 @@
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
                 android:layout_gravity="center"
-                android:textAppearance="@style/infoTextTitle2" />
+                style="@style/infoTextTitle2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
+                style="@style/darkStyle"
                 android:text="•	Während eines Urlaubs den Kühlschrank auf kleinste Stufe stellen oder sogar ganz abschalten. Wird abgeschaltet, muss die Tür offen bleiben, sonst können sich unangenehme Gerüche oder Schimmel bilden.
 •	Die “Lagerzeit bei Störung” gibt die Anzahl der Stunden an, während derer Lebensmittel im Gefriergerät bei Ausfall keine Qualitätseinbuße erleiden. Dabei dürfen sich die Lebensmittel bei voll beladenem Gerät von -18 °C auf -9 °C erwärmen. Die “Lagerzeit bei Störung“ ist in der Gebrauchsanweisung angegeben. Bei Teilbeladung ist die Zeit kürzer." />
             <LinearLayout

@@ -37,39 +37,42 @@
             android:id="@+id/gv_wm_list_geraetetitel"
             android:layout_gravity="left"
             android:text="Siemens WS776XM"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+			style="@style/darkStyle" />
 
         <TextView
             android:id="@+id/gv_wm_list_item_ladevolumen"
-            style="@style/zaehler_list_item_untertitel"
+            android:textAppearance="@style/zaehler_list_item_untertitel"
             android:layout_column="0"
             android:layout_gravity="left"
-            android:text="@string/gv_wm_list_item_ladevolumen" />
+            android:text="@string/gv_wm_list_item_ladevolumen" style="@style/darkStyle" />
 
         <TextView
             android:id="@+id/gv_wm_list_item_sverbrauch"
-            style="@style/zaehler_list_item_untertitel"
+            android:textAppearance="@style/zaehler_list_item_untertitel"
             android:layout_column="0"
             android:layout_gravity="left"
-            android:text="@string/gv_wm_list_item_sverbrauch" />
+            android:text="@string/gv_wm_list_item_sverbrauch" style="@style/darkStyle" />
 
         <TextView
             android:id="@+id/gv_wm_list_item_wverbrauch"
-            style="@style/zaehler_list_item_untertitel"
+            android:textAppearance="@style/zaehler_list_item_untertitel"
             android:layout_column="0"
             android:layout_gravity="left"
-            android:text="@string/gv_wm_list_item_wverbrauch" />
+            android:text="@string/gv_wm_list_item_wverbrauch" style="@style/darkStyle" />
 
         <TextView
             android:id="@+id/gv_wm_list_item_eek"
-            style="@style/zaehler_list_item_untertitel"
+            android:textAppearance="@style/zaehler_list_item_untertitel"
+            style="@style/darkStyle"
             android:layout_column="0"
             android:layout_gravity="left"
             android:text="@string/gv_wm_list_item_eek" />
 
         <TextView
             android:id="@+id/gv_wm_list_item_strichcode"
-            style="@style/zaehler_list_item_untertitel"
+            android:textAppearance="@style/zaehler_list_item_untertitel"
+            style="@style/darkStyle"
             android:layout_column="0"
             android:layout_gravity="left"
             android:text=""
@@ -77,7 +80,8 @@
 
         <TextView
             android:id="@+id/gv_wm_list_item_preis"
-            style="@style/zaehler_list_item_untertitel"
+            android:textAppearance="@style/zaehler_list_item_untertitel"
+            style="@style/darkStyle"
             android:layout_column="0"
             android:layout_columnSpan="2"
             android:layout_gravity="right"

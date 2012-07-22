@@ -16,7 +16,9 @@
             android:layout_height="wrap_content"
             android:onClick="onClickToggleButtonErinnerung"
             android:textOff="Keine Erinnerung aktiv"
-            android:textOn="Erinnerung aktiv" />
+            android:textOn="Erinnerung aktiv"
+            style="@style/textStyle"
+             />
 
         <TextView
             android:id="@+id/naechsteErinnerungTV"
@@ -49,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:inputType="date" />
+                android:inputType="date"
+                style="@style/textStyle" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -57,7 +60,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:inputType="time" />
+                android:inputType="time"
+                style="@style/textStyle" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,7 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vibrieren bei Erinnerung"
-            android:onClick="onCheckBoxClickVibration" />
+            android:onClick="onCheckBoxClickVibration"
+            style="@style/textStyle" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -100,7 +105,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onCheckBoxClickWiederholung"
-            android:text="Erinnerung in einem ausgewählten Zeitraum wiederholen" />
+            android:text="Erinnerung in einem ausgewählten Zeitraum wiederholen"
+            style="@style/textStyle" />
 
         <LinearLayout
             android:layout_width="match_parent"

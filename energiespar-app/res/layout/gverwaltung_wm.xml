@@ -136,11 +136,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="40dp" >
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rechner_rahmen"
+            android:padding="8dp" >
 
             <TextView
                 android:id="@+id/infoTextTitel"
-                android:textAppearance="@style/infoTextTitle"
+                style="@style/infoTextTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tipps zur Nutzung"
@@ -153,6 +155,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
+                style="@style/darkStyle"
                 android:text="•	Die meisten Neugeräte fassen maximal 7 bis 8 kg Wäsche manche sogar bis zu 11 kg. Nutzen Sie möglichst das gesamte Fassungsvermögen der Waschtrommel aus. Achtung, die empfohlene Beladung differiert stark je nach Wäscheart, um empfindliche Gewebe zu schonen und/oder Knitter zu vermeiden. Empfohlen wird bei Koch- und Buntwäsche maximale Beladung, halbe Beladung bei pflegeleichter Wäsche und 1 bis 2 kg bei Feinwäsche/Wolle. Beachten Sie die Hinweise zu den einzelnen Programmen im Benutzerhandbuch Ihrer Maschine.
 •	Der Kochwaschgang benötigt gegenüber einem 60 °C Programm bis zu 50 % mehr Energie. Bei normaler Verschmutzung reicht ein 60 °C-Waschprogramm aus.
 •	Nutzen Sie das Fassungsvermögen des Wäschetrockners voll aus: bei Koch- und Buntwäsche bis zu 9 kg. Die maximale Füllmenge Ihres Gerätes entnehmen Sie dem Benutzerhandbuch.
@@ -169,13 +172,14 @@
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp"
                 android:layout_gravity="center"
-                android:textAppearance="@style/infoTextTitle2" />
+                style="@style/infoTextTitle2" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/infoTextSmall"
+                style="@style/darkStyle"
                 android:text="•	Der Wasser- und Stromverbrauch älterer Waschmaschinen bleibt stets gleich, egal wie voll die Maschine tatsächlich ist. Neuere Waschmaschinen dagegen verfügen über ein intelligentes System, das die Wäschemenge und die Wäscheart anhand ihrer Saugfähigkeit erkennt und danach die Wassermenge reguliert. Zusätzlich wird die optimale Zeit für Waschen, Spülen und Schleudern ermittelt. Deshalb gehen moderne Maschinen besonders sparsam mit Strom und Wasser um und entlasten damit auch den Geldbeutel.
 •	Besitzen Sie noch ein älteres Modell ohne elektronische Steuerung und mit sehr hohem Wasserverbrauch, kann sich eine Neuanschaffung lohnen.
 •	Dosieren Sie das Waschmittel bewusst nach Verschmutzung, Wasserhärte und Herstellerangaben. Überdosierung belastet die Umwelt unnötig - Unterdosierung kann zu Schmutz- und Kalk-Ablagerungen im Gewebe und auf Maschinenbauteilen führen. Manche Geräte bieten eine automatische Pulver- und Flüssigwaschmitteldosierung in Abhängigkeit des Verschmutzungsgrades und der Beladung.

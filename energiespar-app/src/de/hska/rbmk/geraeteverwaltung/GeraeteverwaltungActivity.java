@@ -39,8 +39,8 @@ public class GeraeteverwaltungActivity extends FragmentActivity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.geraetevergleich_main);  
-
+		setContentView(R.layout.geraetevergleich_main);
+		
 		prefs = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE);
 		editor = getSharedPreferences(Constants.SHARED_PREFERENCES,MODE_PRIVATE).edit();
 
@@ -51,6 +51,8 @@ public class GeraeteverwaltungActivity extends FragmentActivity {
 		mViewPager = (ViewPager) findViewById(R.id.viewpager);  
 		mMyFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager());  
 		mViewPager.setAdapter(mMyFragmentPagerAdapter);  
+		
+		mViewPager.setBackgroundResource(R.drawable.background);
 	}  
 
 	private static class MyFragmentPagerAdapter extends FragmentPagerAdapter {  
