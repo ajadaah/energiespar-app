@@ -184,6 +184,12 @@
 •	Moderne Waschmaschinen bieten eine Vielzahl von Programmen, die Arbeit abnehmen und schonende Reinigung garantieren, z. B. Handwäsche, Wolle, Seide bzw. speziell auf besondere Anforderungen angepasst sind, z. B. Hygiene-/Allergiker-Programme, Mischwäsche, Sportbekleidung.
 " />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="vertical" >
+            </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 

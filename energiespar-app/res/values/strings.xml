@@ -66,6 +66,10 @@
     <string name="auswertung_wm_text_eigenes">dauert es, bis sich der Kauf des Neugeräts gegenüber Ihrem alten, weniger sparsameren Geräts amortisiert hat.</string>
     <string name="auswertung_wm_text_unmoeglich">Auswertung nicht möglich, da das Gerät welches mehr Energie verbraucht teuerer ist, als das sparsamere Gerät.</string>
     
+    <string name="auswertung_text_empf_negativ">Auf Grund der langen Amortisationszeit gibt es keine Kaufemfpehlung.</string>
+    <string name="auswertung_text_empf_positiv">Kaufemfpehlung! Der Kauf dieser Maschine rechnet sich bereits nach kurzer Zeit.</string>
+    <string name="auswertung_text_empf_mittel">Der Kauf dieser Maschine rechnet in einem relativ kurzem Zeitraum.</string>
+    
     <string name="auswertung_wm_keingeraet">Es ist kein eigenes Gerät erfasst.</string>
     <string name="auswertung_wm_kwh_info">Was ist eine Kilowattstunde?</string>
     <string name="dialog_kwh_info_titel">Eine Kilowattstunde</string>

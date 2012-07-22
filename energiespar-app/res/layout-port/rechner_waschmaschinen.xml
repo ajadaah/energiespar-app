@@ -345,12 +345,12 @@
                 android:text="0.25"/>
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button1"
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ausrechnen"
-            android:onClick="onButtonClick" />
+            android:onClick="onButtonClick"
+            android:src="@drawable/ic_calculator_red" />
+
     </LinearLayout>
 
 </ScrollView>

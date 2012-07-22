@@ -91,7 +91,11 @@
                 android:text="Die meisten Geräte können an die Kalt- oder Warmwasserversorgung angeschlossen werden. Ein Warmwasseranschluss ist vor allem bei der Nutzung regenerativer Energien z. B. bei Verwendung einer Wärmepumpe sinnvoll. Die Zuleitung sollte kurz und gut isoliert sein und es sollten nicht mehr als 3 Liter kaltes Wasser fließen, bevor warmes Wasser kommt. Das Wasser sollte allerdings nicht wärmer als 60 °C sein.
                 
 Milchige Gläser entstehen durch Calcium-Ablagerungen und können durch Zitronensäure entfernt werden. Das gilt auch für Calciumablagerungen in der Maschine." />
-
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:orientation="vertical" >
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

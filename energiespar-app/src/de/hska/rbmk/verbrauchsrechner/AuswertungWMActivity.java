@@ -35,7 +35,8 @@ public class AuswertungWMActivity extends Activity {
 	auswertung_wm_text,
 	auswertung_wm_literErsparnis,
 	auswertung_wm_kwhErsparnis,
-	auswertung_wm_euroErsparnis;
+	auswertung_wm_euroErsparnis,
+	auswertung_wm_empfehlungsText;
 
 	Boolean
 	eigenesGeraet;
@@ -69,6 +70,7 @@ public class AuswertungWMActivity extends Activity {
 		auswertung_wm_literErsparnis = (TextView) findViewById(R.id.auswertung_wm_literErsparnis);
 		auswertung_wm_kwhErsparnis = (TextView) findViewById(R.id.auswertung_wm_kwhErsparnis);
 		auswertung_wm_euroErsparnis = (TextView) findViewById(R.id.auswertung_wm_euroErsparnis);
+		auswertung_wm_empfehlungsText = (TextView) findViewById(R.id.empfehlungsText);
 		ratingBar = (RatingBar) findViewById(R.id.sterneWM);
 
 		Intent auswertung = this.getIntent();
@@ -132,9 +134,16 @@ public class AuswertungWMActivity extends Activity {
 		auswertung_wm_literErsparnis.setText(literErsparnis);
 		auswertung_wm_euroErsparnis.setText(euroErsparnis);
 		auswertung_wm_text.setText(text);
-
-		// TODO: formel erstellen
-		ratingBar.setRating(4.5F);
+		
+		if (jahre <= 5) {
+			auswertung_wm_empfehlungsText.setText(getResources().getString(R.string.auswertung_text_empf_positiv));
+		}
+		else if ((jahre > 5) && (jahre <= 10)) {
+			auswertung_wm_empfehlungsText.setText(getResources().getString(R.string.auswertung_text_empf_mittel));
+		}
+		else {
+			auswertung_wm_empfehlungsText.setText(getResources().getString(R.string.auswertung_text_empf_negativ));
+		}
 
 	}
 	

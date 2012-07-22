@@ -160,7 +160,7 @@ public class wmVerwaltungFragment extends Fragment {
 		final EditText et_wasser = (EditText) textEntryView.findViewById(R.id.eingetippter_wasserverbrauch);
 		final EditText et_strom = (EditText) textEntryView.findViewById(R.id.eingetippter_stromverbrauch);
 		final EditText et_fuellmenge = (EditText) textEntryView.findViewById(R.id.eingetippte_fuellmenge);
-
+		
 		int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
 		int meineWmFuellmenge = prefs.getInt("meineWmFuellmenge",0);
 		float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
@@ -172,6 +172,8 @@ public class wmVerwaltungFragment extends Fragment {
 			et_strom.setText(String.valueOf(meineWmStromverbrauch));
 			et_fuellmenge.setText(String.valueOf(meineWmFuellmenge));
 		}
+		
+		et_wasser.requestFocus();
 
 		Builder builder = new Builder(getActivity());
 		builder
