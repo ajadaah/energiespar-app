@@ -28,6 +28,7 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;  
+import android.widget.Toast;
 
 public class wmFragment extends ListFragment {  
 
@@ -212,42 +213,51 @@ public class wmFragment extends ListFragment {
 	}
 	
 	private void geraetAuswerten(final String strichcode)
-	{		
-		dbAdapter.open();
-		db = dbAdapter.getDb();
-    	String query = "SELECT "+DbAdapter.KEY_STROMVERBRAUCH+","+DbAdapter.KEY_WASSERVERBRAUCH+","+DbAdapter.KEY_PREIS+" FROM "+DbAdapter.TABLE_WM_NAME+" WHERE "+DbAdapter.KEY_STRICHCODE+" = ?";
-    	Cursor queryCursor = db.rawQuery(query, new String[] { strichcode });
-    	queryCursor.moveToFirst();
-    	
-		String preis = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_PREIS));
-		String stromverbrauch = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_STROMVERBRAUCH));
-		String wasserverbrauch = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_WASSERVERBRAUCH));
+	{
+		boolean meineWmVorhanden = prefs.getBoolean("meineWmVorhanden",false);
 		
-    	queryCursor.close();
-    	dbAdapter.close();
-		
-		Intent ausrechnen = new Intent(getActivity(), AuswertungWMActivity.class);
-		
-		int jahreseinsaetze = 244;
-		float stromkosten = 0.25f;
-		
-		int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
-		float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
-		
-    	ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
-    	ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
-    	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
-    	
-    	ausrechnen.putExtra("g1_stromverbrauch", (float)(Float.valueOf(stromverbrauch)/100.0f));
-    	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(wasserverbrauch));
-    	ausrechnen.putExtra("g1_anschaffungspreis", (float)(Float.valueOf(preis)/100.0f));
-    	
-    	ausrechnen.putExtra("jahreseinsaetze", jahreseinsaetze);
-    	ausrechnen.putExtra("stromkosten", stromkosten);
-    	
-    	ausrechnen.putExtra("eigenesGeraet", true);
-    	
-    	startActivity(ausrechnen);
+		if (meineWmVorhanden) 
+		{
+			dbAdapter.open();
+			db = dbAdapter.getDb();
+	    	String query = "SELECT "+DbAdapter.KEY_STROMVERBRAUCH+","+DbAdapter.KEY_WASSERVERBRAUCH+","+DbAdapter.KEY_PREIS+" FROM "+DbAdapter.TABLE_WM_NAME+" WHERE "+DbAdapter.KEY_STRICHCODE+" = ?";
+	    	Cursor queryCursor = db.rawQuery(query, new String[] { strichcode });
+	    	queryCursor.moveToFirst();
+	    	
+			String preis = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_PREIS));
+			String stromverbrauch = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_STROMVERBRAUCH));
+			String wasserverbrauch = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_WASSERVERBRAUCH));
+			
+	    	queryCursor.close();
+	    	dbAdapter.close();
+			
+			Intent ausrechnen = new Intent(getActivity(), AuswertungWMActivity.class);
+			
+			int jahreseinsaetze = 244;
+			float stromkosten = 0.25f;
+			
+			int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
+			float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
+			
+	    	ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
+	    	ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
+	    	ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
+	    	
+	    	ausrechnen.putExtra("g1_stromverbrauch", (float)(Float.valueOf(stromverbrauch)/100.0f));
+	    	ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(wasserverbrauch));
+	    	ausrechnen.putExtra("g1_anschaffungspreis", (float)(Float.valueOf(preis)/100.0f));
+	    	
+	    	ausrechnen.putExtra("jahreseinsaetze", jahreseinsaetze);
+	    	ausrechnen.putExtra("stromkosten", stromkosten);
+	    	
+	    	ausrechnen.putExtra("eigenesGeraet", true);
+	    	
+	    	startActivity(ausrechnen);
+		}
+		else
+		{
+			Toast.makeText(getActivity(), "Ein eigenes Gerät muss zuerst angelegt werden.", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	@Override

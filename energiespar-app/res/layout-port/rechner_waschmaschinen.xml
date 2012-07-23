@@ -296,8 +296,6 @@
                         android:hint="Euro"
                         android:inputType="numberDecimal" 
                         android:text="650">
-
-                        <requestFocus />
                     </EditText>
                 </LinearLayout>
             </LinearLayout>
@@ -319,7 +317,7 @@
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jahreseinsatz"
+                android:text="Jahreseinsätze"
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText

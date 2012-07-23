@@ -189,35 +189,48 @@ public class GeraetevergleichActivity extends FragmentActivity {
 	    	Cursor queryCursor = db.rawQuery(query, new String[] { strichcode });
 	    	queryCursor.moveToFirst();
 	
-			String preisText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_PREIS));
-			String stromverbrauchText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_STROMVERBRAUCH));
-			String wasserverbrauchText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_WASSERVERBRAUCH));
-	
-			queryCursor.close();
-			dbAdapter.close();
-			
-			int jahreseinsaetze = 244;
-			float stromkosten = 0.25f;
-	
-			int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
-			float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
-	
-			Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
-	
-			ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
-			ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
-			ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
-	
-			ausrechnen.putExtra("g1_stromverbrauch", (float)(Float.valueOf(stromverbrauchText)/100.0f));
-			ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(wasserverbrauchText));
-			ausrechnen.putExtra("g1_anschaffungspreis", (float)(Float.valueOf(preisText)/100.0f));
-	
-			ausrechnen.putExtra("jahreseinsaetze", jahreseinsaetze);
-			ausrechnen.putExtra("stromkosten", stromkosten);
-	
-			ausrechnen.putExtra("eigenesGeraet", true);
-	
-			startActivity(ausrechnen);
+			if (queryCursor.getCount() > 0)
+			{
+				String preisText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_PREIS));
+				String stromverbrauchText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_STROMVERBRAUCH));
+				String wasserverbrauchText = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_WASSERVERBRAUCH));
+
+
+
+				queryCursor.close();
+				dbAdapter.close();
+
+
+
+				int jahreseinsaetze = 244;
+				float stromkosten = 0.25f;
+
+				int meineWmWasserverbrauch = prefs.getInt("meineWmWasserverbrauch",0);
+				float meineWmStromverbrauch = prefs.getFloat("meineWmStromverbrauch",0.0f);
+
+				Intent ausrechnen = new Intent(this, AuswertungWMActivity.class);
+
+				ausrechnen.putExtra("g2_stromverbrauch", meineWmStromverbrauch);
+				ausrechnen.putExtra("g2_wasserverbrauch", meineWmWasserverbrauch);
+				ausrechnen.putExtra("g2_anschaffungspreis", Float.valueOf("0"));
+
+				ausrechnen.putExtra("g1_stromverbrauch", (float)(Float.valueOf(stromverbrauchText)/100.0f));
+				ausrechnen.putExtra("g1_wasserverbrauch", Integer.valueOf(wasserverbrauchText));
+				ausrechnen.putExtra("g1_anschaffungspreis", (float)(Float.valueOf(preisText)/100.0f));
+
+				ausrechnen.putExtra("jahreseinsaetze", jahreseinsaetze);
+				ausrechnen.putExtra("stromkosten", stromkosten);
+
+				ausrechnen.putExtra("eigenesGeraet", true);
+
+				startActivity(ausrechnen);
+			}
+			else {
+				queryCursor.close();
+				dbAdapter.close();
+
+				Toast.makeText(this, "Gerät wurde nicht in der Datenbank gefunden.", Toast.LENGTH_LONG).show();
+			}
 		}
 		else
 		{
