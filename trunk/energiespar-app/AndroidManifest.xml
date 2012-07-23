@@ -40,7 +40,7 @@
         <activity android:name=".verbrauchsrechner.SpuelmaschinenActivity" android:launchMode="singleTask"></activity>
         <activity android:name=".verbrauchsrechner.KuehlschraenkeActivity" android:launchMode="singleTask"></activity>
         
-        <activity android:name=".verbrauchsrechner.AuswertungWMActivity"></activity>
+        <activity android:name=".verbrauchsrechner.AuswertungWMActivity" android:screenOrientation="portrait"></activity>
         
         <activity android:name=".zaehlerstand.ZaehlerstandErfassenActivity"></activity>
         <activity android:name=".zaehlerstand.ZaehlerErinnerungActivity"></activity>
