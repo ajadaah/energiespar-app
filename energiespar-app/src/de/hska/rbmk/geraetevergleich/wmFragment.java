@@ -82,6 +82,7 @@ public class wmFragment extends ListFragment {
 		
 		String[] filterText = this.getResources().getStringArray(R.array.SortierVerfahrenAuswahl);
 		
+		
 		dbAdapter.open();
 		db = dbAdapter.getDb();
 		
