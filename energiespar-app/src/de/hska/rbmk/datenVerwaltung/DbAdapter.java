@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
+import java.util.UUID;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -24,6 +25,7 @@ public class DbAdapter {
     private static final String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
     private static final String DATABASE_NAME = "AppDatenbank.db";
     public static final String DATABASE_TABLE_METERREADINGS = "meterReadings";
+    public static final String DATABASE_TABLE_CHANGES = "veraenderungsTabelle";
     private static final int DATABASE_VERSION = 2;
     
     // Zählerstände Tabelle
@@ -241,6 +243,7 @@ public class DbAdapter {
      */
     public void addReading(String connectionInfo, Date timeStamp, int meterNumber, 
     		int meterValue, MeterType meterType, boolean isMeterValueRevised, boolean isSynchronized) {
+    	
     	ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_CONNECTIONINFO, connectionInfo);
         initialValues.put(KEY_TIMESTAMP, timeStamp.getTime());
@@ -253,6 +256,22 @@ public class DbAdapter {
         Log.d("DbAdapter", "storing meter reading " + initialValues.toString());
         
         mDb.insert(DATABASE_TABLE_METERREADINGS, null, initialValues);
+        
+        // Cheat sheet for SQL INSERT
+        // INSERT INTO Persons VALUES (4,'Nilsen', 'Johan', 'Bakken 2', 'Stavanger')
+        
+        String insertString = 
+        		"INSERT INTO " + DATABASE_TABLE_METERREADINGS + " VALUES ('" + connectionInfo + "'," + timeStamp.getTime() + "," + meterNumber + "," + meterValue + "," + meterType.getValue() + "," + isMeterValueRevised + "," + isSynchronized + ");";
+        
+        initialValues.clear();
+        
+        UUID idOne = UUID.randomUUID();
+        
+        initialValues.put("UID", idOne.toString());
+        initialValues.put("timestamp", timeStamp.getTime());
+        initialValues.put("sqlstatement", insertString);
+        
+        mDb.insert(DATABASE_TABLE_CHANGES, null, initialValues);
     }
     
     /**

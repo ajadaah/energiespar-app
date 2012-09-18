@@ -2,6 +2,7 @@ package de.hska.rbmk.zaehlerstand;
 
 
 import java.util.Date;
+import java.util.UUID;
 
 import kankan.wheel.widget.OnWheelChangedListener;
 import kankan.wheel.widget.OnWheelScrollListener;
@@ -107,10 +108,28 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	                    public void onClick(DialogInterface dialog, int whichButton) {
 
 	                    	if (!et.getText().toString().isEmpty()) {
+	                    		
+	                    		// Zählertabelle
 		        				ContentValues values = new ContentValues();
 		        				values.put(DbAdapter.KEY_NUMBER, et.getText().toString());
 		        				values.put(DbAdapter.KEY_METERTYPE, auswahl.getSelectedItemPosition());	    
 		        				db.insert(DbAdapter.TABLE_METERNUMBERS_NAME, null, values);
+		        				
+		        				
+		        				// Veränderungs Tabelle (synchronisationszwecke)
+		        				values.clear();
+		        				
+		        				String insertString = 
+		        		        		"INSERT INTO " + DbAdapter.TABLE_METERNUMBERS_NAME + " VALUES (" + et.getText().toString() + "," + auswahl.getSelectedItemPosition() + ");";
+		        				
+		        		        UUID idOne = UUID.randomUUID();
+		        		        
+		        		        values.put("UID", idOne.toString());
+		        		        values.put("timestamp", new Date().getTime());
+		        		        values.put("sqlstatement", insertString);
+		        		        
+		        		        db.insert(DbAdapter.DATABASE_TABLE_CHANGES, null, values);
+		        				
 		        				loadData();
 	                    	}
 	                    	else
