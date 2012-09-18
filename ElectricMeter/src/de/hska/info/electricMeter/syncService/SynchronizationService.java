@@ -190,7 +190,7 @@ public class SynchronizationService extends IntentService {
 		
 		//Intent notificationIntent = new Intent(context, ElectricMeterActivity.class);
 		//PendingIntent contentIntent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, null, 0);//getActivity(context, 0, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
+		PendingIntent contentIntent = PendingIntent.getActivity(context, 0, new Intent(), 0);//getActivity(context, 0, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
 
 		notification.setLatestEventInfo(context, contentTitle, contentText, contentIntent);
 		try {
