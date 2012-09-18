@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project ElectricMeterServerAgent with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="./dist/ElectricMeterServerAgent.jar">
+            <manifest>
+                <attribute name="Main-Class" value="de.hska.info.electricMeter.ServerAgent.ServerAgentMain"/>
+                <attribute name="Class-Path" value=". lib/hsqldb-2.2.5.jar lib/commons-configuration-1.7.jar lib/log4j-1.2.16.jar lib/jcommander-1.19.jar"/>
+            </manifest>
+            <fileset dir="./bin"/>
+        </jar>
+        <delete dir="./dist/lib"/>
+        <mkdir dir="./dist/lib"/>
+        <copy file="./lib/hsqldb-2.2.5.jar" todir="./dist/lib"/>
+        <copy file="./lib/commons-configuration-1.7.jar" todir="./dist/lib"/>
+        <copy file="./lib/log4j-1.2.16.jar" todir="./dist/lib"/>
+        <copy file="./lib/jcommander-1.19.jar" todir="./dist/lib"/>
+    	
+    	<delete dir="./dist/etc"/>
+    	<mkdir dir="./dist/etc"/>
+    	<copy todir="./dist/etc">
+    		<fileset dir="./etc"/>
+    	</copy>
+    </target>
+</project>
