@@ -37,127 +37,145 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class StartbildschirmActivity extends Activity {
-	
+
 	ImageButton b1, b2;
-	
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.startbildschirm);
-        
-	    ActionBar actionBar = getActionBar();
-	    actionBar.setTitle(R.string.app_name);
-    }
-    
-    public void zaehlerstandErfassen(View v) {
-    	final Intent i = new Intent(this, ZaehlerstandErfassenActivity.class);
-    	startActivity(i);
-    }
 
-    public void verbrauchsstatistik(View v) {
-        final Intent chart = new Liniendiagramm().execute(this);
-    	startActivity(chart);
-    }
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.startbildschirm);
 
-    public void verbrauchsrechner(View v) {
-    	final Intent i = new Intent(this, WaschmaschinenActivity.class);
-    	startActivity(i);
-    }
+		ActionBar actionBar = getActionBar();
+		actionBar.setTitle(R.string.app_name);
+	}
 
-    public void geraetevergleich(View v) {
-    	final Intent i = new Intent(this, GeraetevergleichActivity.class);
-    	startActivity(i);
-    }
-    
-    public void geraeteverwaltung(View v) {
-    	final Intent i = new Intent(this, GeraeteverwaltungActivity.class);
-    	startActivity(i);
-    }
-/*
+	public void zaehlerstandErfassen(View v) {
+		final Intent i = new Intent(this, ZaehlerstandErfassenActivity.class);
+		startActivity(i);
+	}
+
+	public void verbrauchsstatistik(View v) {
+		final Intent chart = new Liniendiagramm().execute(this);
+		startActivity(chart);
+	}
+
+	public void verbrauchsrechner(View v) {
+		final Intent i = new Intent(this, WaschmaschinenActivity.class);
+		startActivity(i);
+	}
+
+	public void geraetevergleich(View v) {
+		final Intent i = new Intent(this, GeraetevergleichActivity.class);
+		startActivity(i);
+	}
+
+	public void geraeteverwaltung(View v) {
+		final Intent i = new Intent(this, GeraeteverwaltungActivity.class);
+		startActivity(i);
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    switch (item.getItemId()) {
-	        case R.id.menu_einstellungen:
-	        	startActivity(new Intent(this, EinstellungenActivity.class));
-	            return true;
-	        case R.id.menu_diff:
-	            String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
-	            String DATABASE_NAME = "AppDatenbank.db";
-	            
-	            try {
-	            	//Open your local db as the input stream
-	            	InputStream myInput = this.getAssets().open(DATABASE_NAME);
+		switch (item.getItemId()) 
+		{
+		case R.id.menu_sync:
+		{
+			Toast.makeText(this, "Synchronisation", Toast.LENGTH_SHORT).show();
+			return true;
+		}
+
+		case R.id.menu_einstellungen:
+		{
+			startActivity(new Intent(this, EinstellungenActivity.class));
+			return true;
+		}
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+		/*
+		case R.id.menu_diff:
+		{
+			
+			String DATABASE_PATH = "/data/data/de.hska.rbmk/databases/";
+			String DATABASE_NAME = "AppDatenbank.db";
+
+			try {
+				//Open your local db as the input stream
+				InputStream myInput = this.getAssets().open(DATABASE_NAME);
 
 
-	            	// Path to the just created empty db
-	            	String outFileName = DATABASE_PATH + DATABASE_NAME + ".original";
+				// Path to the just created empty db
+				String outFileName = DATABASE_PATH + DATABASE_NAME + ".original";
 
-	            	//Open the empty db as the output stream
-	            	OutputStream myOutput = new FileOutputStream(outFileName);
+				//Open the empty db as the output stream
+				OutputStream myOutput = new FileOutputStream(outFileName);
 
-	            	//transfer bytes from the inputfile to the outputfile
-	            	byte[] mybuffer = new byte[1024];
-	            	int length;
-	            	while ((length = myInput.read(mybuffer))>0){
-	            		myOutput.write(mybuffer, 0, length);
-	            	}
-
-	            	//Close the streams
-	            	myOutput.flush();
-	            	myOutput.close();
-	            	myInput.close();
-
-	            	String command = DATABASE_PATH+"diff -u "+DATABASE_PATH+DATABASE_NAME+".original "+DATABASE_PATH+DATABASE_NAME;
-
-	            	Process proc = null;
-	            	ProcessBuilder pb = new ProcessBuilder();
-	            	proc = pb.command(command)
-	            	                    .redirectErrorStream(true).start();
-	            	BufferedReader bReader = new BufferedReader(new InputStreamReader(
-	            	                    proc.getInputStream()));
-	            	
-//	            	File wd = new File(DATABASE_PATH);
-	            	
-//	                Process process = Runtime.getRuntime().exec(command, null, null);
-
-	                // Reads stdout.
-	                // NOTE: You can write to stdin of the command using
-	                //       process.getOutputStream().
-//	                BufferedReader bReader = new BufferedReader(
-//	                        new InputStreamReader(process.getInputStream()));
-	                int read;
-	                char[] buffer = new char[4096];
-	                StringBuffer output = new StringBuffer();
-	                while ((read = bReader.read(buffer)) > 0) {
-	                    output.append(buffer, 0, read);
-	                }
-	                bReader.close();
-
-	                // Waits for the command to finish.
-	                proc.waitFor();
-	                
-	                Toast.makeText(this, output.toString(), Toast.LENGTH_SHORT).show();
-	            	
-
-	            } catch (IOException e) {
-	            	// TODO Auto-generated catch block
-	            	e.printStackTrace();
-	            } catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				//transfer bytes from the inputfile to the outputfile
+				byte[] mybuffer = new byte[1024];
+				int length;
+				while ((length = myInput.read(mybuffer))>0){
+					myOutput.write(mybuffer, 0, length);
 				}
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+
+				//Close the streams
+				myOutput.flush();
+				myOutput.close();
+				myInput.close();
+
+				String command = DATABASE_PATH+"diff -u "+DATABASE_PATH+DATABASE_NAME+".original "+DATABASE_PATH+DATABASE_NAME;
+
+				Process proc = null;
+				ProcessBuilder pb = new ProcessBuilder();
+				proc = pb.command(command)
+						.redirectErrorStream(true).start();
+				BufferedReader bReader = new BufferedReader(new InputStreamReader(
+						proc.getInputStream()));
+
+				//	            	File wd = new File(DATABASE_PATH);
+
+				//	                Process process = Runtime.getRuntime().exec(command, null, null);
+
+				// Reads stdout.
+				// NOTE: You can write to stdin of the command using
+				//       process.getOutputStream().
+				//	                BufferedReader bReader = new BufferedReader(
+				//	                        new InputStreamReader(process.getInputStream()));
+				int read;
+				char[] buffer = new char[4096];
+				StringBuffer output = new StringBuffer();
+				while ((read = bReader.read(buffer)) > 0) {
+					output.append(buffer, 0, read);
+				}
+				bReader.close();
+
+				// Waits for the command to finish.
+				proc.waitFor();
+
+				Toast.makeText(this, output.toString(), Toast.LENGTH_SHORT).show();
+
+
+				break;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			 
+			return true;
+		}
+		*/
+
 	}
-    
+
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    MenuInflater inflater = getMenuInflater();
-	    inflater.inflate(R.menu.startbildschirm_menu, menu);
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.startbildschirm_menu, menu);
+		return true;
 	}	
-	*/
+
 }

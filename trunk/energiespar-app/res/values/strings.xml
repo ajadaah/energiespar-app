@@ -84,6 +84,15 @@
     <string name="meineWmWasserverbrauch">• %r Liter Wasser</string>
     <string name="meineWmStromverbrauch">• %r kWh Strom</string>
     <string name="meineWmFuellmenge">Füllmenge %r Liter</string>
+    <string name="menu_synchronisieren">Synchronisieren</string>
+    
+    <!-- Settings -->
+    <string name="setup_cat_ip_address">IP Addresse</string>
+    <string name="setup_cat_port_number">Port</string>
+    <string name="setup_default_ip_address">192.168.0.1</string>
+    <string name="setup_default_port_number">7676</string>
+    <string name="setup_ip_address">IP Addresse ändern</string>
+    <string name="setup_port_number">Port ändern</string>
     
     
     

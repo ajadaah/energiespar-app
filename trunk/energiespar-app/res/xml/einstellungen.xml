@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/einstellungen_theme_titel" >
+    <PreferenceCategory android:title="@string/einstellungen_theme_titel">
         <ListPreference
             android:defaultValue="@string/einstellungen_default_theme"
             android:dialogTitle="@string/einstellungen_theme_list_titel"
@@ -11,4 +11,25 @@
             android:title="@string/einstellungen_theme_list_titel" />
     </PreferenceCategory>
 
+      <PreferenceCategory android:title="@string/setup_cat_ip_address">
+    <EditTextPreference
+      android:inputType="phone"
+      android:digits="0123456789."
+      android:key="ip_address"
+      android:title="@string/setup_ip_address"
+      android:defaultValue="@string/setup_default_ip_address"
+    />
+
+  </PreferenceCategory>
+  
+  <PreferenceCategory android:title="@string/setup_cat_port_number">
+    <EditTextPreference
+	  android:inputType="phone"
+	  android:digits="0123456789"
+      android:key="port_number"
+      android:defaultValue="@string/setup_default_port_number"
+      android:title="@string/setup_port_number"
+	/> 
+  </PreferenceCategory>
+    
 </PreferenceScreen>
