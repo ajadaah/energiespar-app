@@ -17,6 +17,7 @@ import org.achartengine.renderer.SimpleSeriesRenderer;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
 import de.hska.rbmk.statistik.*;
+import de.hska.rbmk.sync.*;
 import de.hska.rbmk.zaehlerstand.*;
 import de.hska.rbmk.verbrauchsrechner.*;
 import de.hska.rbmk.datenVerwaltung.DbAdapter;
@@ -25,6 +26,7 @@ import de.hska.rbmk.geraeteverwaltung.GeraeteverwaltungActivity;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -34,11 +36,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class StartbildschirmActivity extends Activity {
 
 	ImageButton b1, b2;
+	
+	public String server_ip, server_port;
+	
+	public SharedPreferences settings;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -81,7 +88,18 @@ public class StartbildschirmActivity extends Activity {
 		{
 		case R.id.menu_sync:
 		{
-			Toast.makeText(this, "Synchronisation", Toast.LENGTH_SHORT).show();
+	        settings = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
+	        
+	        server_ip = settings.getString("ip_address", "192.168.0.1");
+	        server_port = settings.getString("port_number", "7676");
+			
+	    	// start connection service and set extras (IP and PORT)
+	    	Intent serviceIntent = new Intent(this, ConnectionService.class);
+	    	serviceIntent.putExtra("ip address", server_ip);
+	    	serviceIntent.putExtra("port number", server_port);
+	    	startService(serviceIntent);
+	    	
+//			Toast.makeText(this, "Synchronisation"+server_ip+" "+server_port, Toast.LENGTH_SHORT).show();
 			return true;
 		}
 

@@ -1,24 +1,32 @@
 package de.hska.rbmk.sync;
 
 import de.hska.rbmk.R;
+import de.hska.rbmk.datenVerwaltung.DbAdapter;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -33,16 +41,19 @@ public class ConnectionService extends Service {
 	
 	public boolean serviceRunning;
 	
-    Socket serverSocket = null;  
+    Socket serverSocket;  
     DataOutputStream outS = null;
     DataInputStream inS = null;
 	
+	private SQLiteDatabase db;
+	private DbAdapter dbAdapter;
+    
     public String server_ip;
 	public String server_port;
 	public byte[] transmission;
 	
 	Intent updateIntent;
-
+	
 	@Override
 	public IBinder onBind(Intent intent) {
 		return(myConnectionServiceStub);
@@ -103,10 +114,12 @@ public class ConnectionService extends Service {
 	public void onCreate() {
 		super.onCreate();
 
-		final Notification notification = new Notification(R.drawable.ic_launcher, "Synchronisations Service", System.currentTimeMillis());
+		dbAdapter = new DbAdapter(this);
+		
+		final Notification notification = new Notification(R.drawable.ic_launcher, "Synchronisiere Zählerstände", System.currentTimeMillis());
 		Intent notificationIntent = new Intent();//this, DualAdvancerControlActivity.class);
 	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-	    notification.setLatestEventInfo(this, "Synchronisation", "Zählerstände werden synchronisiert...", pendingIntent); 
+	    notification.setLatestEventInfo(this, "EnergieBerater", "Zählerstände werden synchronisiert...", pendingIntent); 
 	    startForeground(NOTIFICATION_ID, notification);
 	}
 
@@ -115,7 +128,7 @@ public class ConnectionService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         // The service is starting, due to a call to startService()
         serviceRunning = true;
-    	
+        
         // extras in this case are the IP and Port
 		Bundle extras = intent.getExtras();
     	
@@ -125,70 +138,122 @@ public class ConnectionService extends Service {
     	}
 		
     	// this is for logging purposes
-		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-		updateIntent.putExtra("notification", "Trying to connect to "+server_ip+":"+server_port);
-		sendBroadcast(updateIntent);
+//		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//		updateIntent.putExtra("notification", "Trying to connect to "+server_ip+":"+server_port);
+//		sendBroadcast(updateIntent);
 		
 		// the actual thread in which the connection is established
 		new Thread(new Runnable() {
 		    public void run() {
 
 		    	try {
-					byte[] streamData = new byte[28];
+//					byte[] streamData = new byte[28];
 					
 		    		serverSocket = new Socket(server_ip, Integer.parseInt(server_port));
 		    		
-		    		if (serverSocket.isBound())
-		    		{
-		    			updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-	    	    		updateIntent.putExtra("connectionStatus", true);
-	    	    		updateIntent.putExtra("notification", "Connection established.");
-		        		sendBroadcast(updateIntent);
-		    		}
+//		    		if (serverSocket.isBound())
+//		    		{
+//		    			updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//	    	    		updateIntent.putExtra("connectionStatus", true);
+//	    	    		updateIntent.putExtra("notification", "Connection established.");
+//		        		sendBroadcast(updateIntent);
+//		    		}
 		    		
 		    		
-		            outS = new DataOutputStream(serverSocket.getOutputStream());
-		            inS = new DataInputStream(serverSocket.getInputStream());
+//		            outS = new DataOutputStream(serverSocket.getOutputStream());
+//		            inS = new DataInputStream(serverSocket.getInputStream());
 		            
-		            while (serviceRunning) {
-    		            inS.readFully(streamData, 0, 28);
+		            
+		            
+		            PrintWriter out = null;
+		            out = new PrintWriter(serverSocket.getOutputStream(), true);
+		            BufferedReader in = new BufferedReader(new InputStreamReader(serverSocket.getInputStream()));
+		            
+					String charString = "Welcome";
+//					byte[] charArray = {};
+//					for (int i = 0; i < charString.length(); i++) {
+//						charArray[i] = (byte) charString.charAt(i);
+//					}
+//					outS.write(charArray);
+		            
+//		            out.println(charString);
+		            String msg;
+		            
+//		            while (serviceRunning) {
+		            	while((msg = in.readLine()) != null)
+		            	{
+		            		Log.d("SERVICE Incoming", msg);
+		            		
+		            		try {
+								Long.parseLong(msg);
+								
+								DbAdapter mRDBA = new DbAdapter(getApplicationContext());
 
-    		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-    		    		updateIntent.putExtra("transmission", streamData);
-    		    		sendBroadcast(updateIntent);
-		            }
+								mRDBA.open();
+								ArrayList<String> statements = mRDBA.getDatebaseChangesByDate(msg);
+								mRDBA.close();
+								
+								for (int i = 0; i < statements.size(); i++)
+								{
+									Log.d("SERVICE Sending", statements.get(i)); 
+									out.println(statements.get(i));
+								}
+								
+								out.println("END");
+								
+								Log.d("SERVICE", "Transfer complete");
+								
+//								serviceRunning = false;
+								
+							} catch (NumberFormatException e) {
+								Log.d("SERVICE Check", "(NumberFormatException: not a long)");
+								// do nothing
+							}
+		            		
+		            		
+		            	}
+
+//    		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//    		    		updateIntent.putExtra("transmission", streamData);
+//    		    		sendBroadcast(updateIntent);
+		            	
+//		            }
 		            
 					serverSocket.close();
-					outS.close();
-					inS.close();
+					out.close();
+					in.close();
 		    		stopSelf();
 					
 				} catch (ConnectException ce) {
 					// connection refused by server
-		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-		    		updateIntent.putExtra("notification", "Connection refused."); // logging
-		    		sendBroadcast(updateIntent);
+//		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//		    		updateIntent.putExtra("notification", "Connection refused."); // logging
+//		    		sendBroadcast(updateIntent);
+					Log.d("SERVICE", "Connection refused");
 		    		stopSelf();
 				} catch (EOFException eof) {
 					// EOF reached, connection terminated by server
-		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-		    		updateIntent.putExtra("notification", "Connection terminated by server."); // logging
-		    		updateIntent.putExtra("connectionStatus", false);
-		    		sendBroadcast(updateIntent);
+//		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//		    		updateIntent.putExtra("notification", "Connection terminated by server."); // logging
+//		    		updateIntent.putExtra("connectionStatus", false);
+//		    		sendBroadcast(updateIntent);
+					Log.d("SERVICE", "Connection terminated by server");
 		    		stopSelf();
 				} catch (SocketException se) {
 					// socket exception
-		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-		    		updateIntent.putExtra("notification", "Connection: "+se.getMessage()); // logging
-		    		updateIntent.putExtra("connectionStatus", false);
-		    		sendBroadcast(updateIntent);
+//		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//		    		updateIntent.putExtra("notification", "Connection: "+se.getMessage()); // logging
+//		    		updateIntent.putExtra("connectionStatus", false);
+//		    		sendBroadcast(updateIntent);
+					Log.d("SERVICE", "Socket exception");
 		    		stopSelf();
 				} catch (Exception e) {
 					// any other exception
-		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
-		    		updateIntent.putExtra("notification", "Error: "+e.getMessage()); // logging
-		    		updateIntent.putExtra("connectionStatus", false);
-		    		sendBroadcast(updateIntent);
+//		    		updateIntent = new Intent();//DualAdvancerControlActivity.NEW_TRANSMISSION);
+//		    		updateIntent.putExtra("notification", "Error: "+e.getMessage()); // logging
+//		    		updateIntent.putExtra("connectionStatus", false);
+//		    		sendBroadcast(updateIntent);
+					Log.d("SERVICE", "Other error");
 		    		stopSelf();
 				}
 		    }
@@ -212,7 +277,7 @@ public class ConnectionService extends Service {
 			e.printStackTrace();
 		}
 
-		Toast.makeText(this, "Service Disconnected", Toast.LENGTH_SHORT).show();
+//		Toast.makeText(this, "Verbindung getrennt", Toast.LENGTH_SHORT).show();
 	}
 }
 

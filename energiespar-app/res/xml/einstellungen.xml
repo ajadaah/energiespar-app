@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="@string/einstellungen_theme_titel">
+<!--    <PreferenceCategory android:title="@string/einstellungen_theme_titel">
         <ListPreference
             android:defaultValue="@string/einstellungen_default_theme"
             android:dialogTitle="@string/einstellungen_theme_list_titel"
@@ -10,6 +10,7 @@
             android:key="ausgewaehltes_theme"
             android:title="@string/einstellungen_theme_list_titel" />
     </PreferenceCategory>
+    -->
 
       <PreferenceCategory android:title="@string/setup_cat_ip_address">
     <EditTextPreference
