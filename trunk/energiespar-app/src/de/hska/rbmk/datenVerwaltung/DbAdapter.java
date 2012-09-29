@@ -4,7 +4,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.UUID;
 
 import android.content.ContentValues;
@@ -308,6 +313,26 @@ public class DbAdapter {
     	long retValue = queryCursor.getLong(queryCursor.getColumnIndex(KEY_TIMESTAMP + "Max"));
     	queryCursor.close();
     	return retValue;
+    }
+    
+    public ArrayList<String> getDatebaseChangesByDate(String date_parameter) {
+    	String query = "SELECT sqlstatement FROM " + DATABASE_TABLE_CHANGES + " WHERE " + "timestamp" + " > ?";
+    	Cursor queryCursor = mDb.rawQuery(query, new String[] {date_parameter});
+    	
+    	ArrayList<String> returnList = new ArrayList<String>();
+    	
+    	if (queryCursor.moveToFirst())
+    	{
+    		returnList.add(queryCursor.getString(queryCursor.getColumnIndex("sqlstatement")));
+    	}
+
+    	while (queryCursor.moveToNext())
+    	{
+    		returnList.add(queryCursor.getString(queryCursor.getColumnIndex("sqlstatement")));
+    	}
+    	
+    	queryCursor.close();
+    	return returnList;
     }
     
     /**
