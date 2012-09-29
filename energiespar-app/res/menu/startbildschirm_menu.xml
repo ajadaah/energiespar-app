@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_sync"
+          android:icon="@drawable/ic_sync"
+          android:title="@string/menu_synchronisieren"
+          android:showAsAction="ifRoom|withText" />
     <item android:id="@+id/menu_einstellungen"
-        android:icon="@android:drawable/ic_menu_preferences"
-          android:title="@string/menu_einstellungen" />
-        <item android:id="@+id/menu_diff"
-        android:icon="@android:drawable/ic_menu_revert"
-          android:title="@string/menu_diff" />
+	      android:icon="@android:drawable/ic_menu_preferences"
+	      android:title="@string/menu_einstellungen"
+	      android:showAsAction="ifRoom|withText" />
 </menu>
