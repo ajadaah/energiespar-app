@@ -265,8 +265,20 @@ public class DbAdapter {
         // Cheat sheet for SQL INSERT
         // INSERT INTO Persons VALUES (4,'Nilsen', 'Johan', 'Bakken 2', 'Stavanger')
         
-        String insertString = 
-        		"INSERT INTO " + DATABASE_TABLE_METERREADINGS + " VALUES ('" + connectionInfo + "'," + timeStamp.getTime() + "," + meterNumber + "," + meterValue + "," + meterType.getValue() + "," + isMeterValueRevised + "," + isSynchronized + ");";
+        String isMeterValueRevisedString, isSynchronizedString;
+        
+        if (isMeterValueRevised)
+        	isMeterValueRevisedString = "1";
+        else
+        	isMeterValueRevisedString = "0";
+
+        if (isSynchronized)
+        	isSynchronizedString = "1";
+        else
+        	isSynchronizedString = "0";
+        
+        String insertString =
+        		"INSERT INTO " + DATABASE_TABLE_METERREADINGS + " (connectionInfo,timestamp,meterNumber,meterValue,meterType,meterValueRevised,synchronized) VALUES ('" + connectionInfo + "'," + timeStamp.getTime() + "," + meterNumber + "," + meterValue + "," + meterType.getValue() + "," + isMeterValueRevisedString + "," + isSynchronizedString + ");";
         
         initialValues.clear();
         

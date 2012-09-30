@@ -120,7 +120,7 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 		        				values.clear();
 		        				
 		        				String insertString = 
-		        		        		"INSERT INTO " + DbAdapter.TABLE_METERNUMBERS_NAME + " VALUES (" + et.getText().toString() + "," + auswahl.getSelectedItemPosition() + ");";
+		        		        		"INSERT INTO " + DbAdapter.TABLE_METERNUMBERS_NAME + " (number,meterType) VALUES (" + et.getText().toString() + "," + auswahl.getSelectedItemPosition() + ");";
 		        				
 		        		        UUID idOne = UUID.randomUUID();
 		        		        
