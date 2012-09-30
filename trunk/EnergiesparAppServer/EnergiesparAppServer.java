@@ -129,7 +129,7 @@ class EnergiesparAppServer {
 	        }
 	        
 	        System.out.println("* Der Klient hat die Verbindung getrennt.");
-	        System.out.println("* ");
+	        System.out.println("");
 	        
 	        letztesDatum = String.valueOf(Calendar.getInstance().getTimeInMillis());
 	        stat.executeUpdate("INSERT INTO letzteVeraenderung (datum) VALUES ("+ letztesDatum +");");
