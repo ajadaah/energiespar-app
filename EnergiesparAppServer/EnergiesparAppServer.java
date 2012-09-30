@@ -8,6 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
@@ -29,6 +30,7 @@ class EnergiesparAppServer {
     private static int port = 7676; /* port the server listens on */
  
     public static void main (String[] args) throws IOException, Exception {
+        String letztesDatum;
     	
     	// Öffnen der lokalen Datenbank auf dem Server
         Class.forName("org.sqlite.JDBC");
@@ -37,34 +39,9 @@ class EnergiesparAppServer {
         
         ArrayList<String> statements = new ArrayList<String>();
         
-//        stat.executeUpdate("create table people (name, occupation);");
-//        PreparedStatement prep = conn.prepareStatement("insert into people values (?, ?);");
-//     
-//        prep.setString(1, "Gandhi");
-//        prep.setString(2, "politics");
-//        prep.addBatch();
-//     
-//        prep.setString(1, "Turing");
-//        prep.setString(2, "computers");
-//        prep.addBatch();
-//     
-//        prep.setString(1, "Wittgenstein");
-//        prep.setString(2, "smartypants");
-//        prep.addBatch();
-//     
-//        conn.setAutoCommit(false);
-//        prep.executeBatch();
-//        conn.setAutoCommit(true);
-//     
-//        ResultSet rs = stat.executeQuery("select * from people;");
-//        while (rs.next())
-//        {
-//          System.out.println("name = " + rs.getString("name"));
-//          System.out.println("job = " + rs.getString("occupation"));
-//        }
-//        rs.close();
-
-        
+        ResultSet rs = stat.executeQuery("select MAX(datum) as datumMax from letzteVeraenderung;");
+        letztesDatum = String.valueOf(rs.getLong("datumMax"));
+        rs.close();
     	
         ServerSocket server = null;
         try {
@@ -95,9 +72,17 @@ class EnergiesparAppServer {
 	        out = new PrintWriter(client.getOutputStream(), true);
 	        
 	        String msg;
+
 	        
-	    	// TODO: datenbankzugriff
-	        String letztesDatum = "1348953933670";
+//	        letztesDatum = "1348953933670";
+	        
+//	    	String query = "SELECT MAX(" + KEY_TIMESTAMP + ") AS " + KEY_TIMESTAMP +"Max FROM " + DATABASE_TABLE_METERREADINGS + " WHERE " + KEY_METERNUMBER + " = ?";
+//	    	Cursor queryCursor = mDb.rawQuery(query, new String[] {String.valueOf(meterNumber)});
+//	    	queryCursor.moveToFirst();
+//	    	long retValue = queryCursor.getLong(queryCursor.getColumnIndex(KEY_TIMESTAMP + "Max"));
+//	    	queryCursor.close();
+//	    	
+//	    	stat.executeUpdate(
 	        
 			Calendar letzteSync = Calendar.getInstance();
 			letzteSync.setTimeInMillis(Long.parseLong(letztesDatum));
@@ -144,6 +129,11 @@ class EnergiesparAppServer {
 	        }
 	        
 	        System.out.println("* Der Klient hat die Verbindung getrennt.");
+	        System.out.println("* ");
+	        
+	        letztesDatum = String.valueOf(Calendar.getInstance().getTimeInMillis());
+	        stat.executeUpdate("INSERT INTO letzteVeraenderung (datum) VALUES ("+ letztesDatum +");");
+	        
 	    }
         
         // TODO:wann? wann nicht?
