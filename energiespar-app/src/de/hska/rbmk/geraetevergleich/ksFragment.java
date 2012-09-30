@@ -197,7 +197,6 @@ public class ksFragment extends ListFragment {
 				queryCursor.close();
 				dbAdapter.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    	

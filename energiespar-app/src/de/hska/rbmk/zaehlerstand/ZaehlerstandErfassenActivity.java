@@ -180,6 +180,7 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 		switch(item.getItemId()) {
 		case CONTEXT_DELETE:
 			db.delete(DbAdapter.TABLE_METERNUMBERS_NAME, DbAdapter.KEY_ID + "=" + contextSelection, null);
+			// TODO: SQL statement in der Tabelle speichern
 			loadData();
 			break;
 		}
@@ -280,7 +281,6 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
         while(letzterWertString.length() < 7) {
         	letzterWertString = "0" + letzterWertString;
         }
-        //TODO affirm that length is 7
     	initWheel(w1, Character.getNumericValue(letzterWertString.charAt(0)), false);
     	initWheel(w2, Character.getNumericValue(letzterWertString.charAt(1)), false);
     	initWheel(w3, Character.getNumericValue(letzterWertString.charAt(2)), false);
@@ -314,16 +314,8 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
                 				mRDBA.open();
                 				mRDBA.addReading("", timeStamp, zaehlerNummer, zaehlerWert , zaehlerArt, valueChanged, false);
                 				mRDBA.close();
-                				
-                				//TODO better close activity
 
                 				loadData();
-                				
-//                				TODO: Sync
-//                				Intent serviceIntent = new Intent(getApplicationContext(), SynchronizationService.class);
-//                	        	startService(serviceIntent);
-//                				Intent intent = new Intent(view.getContext(), ElectricMeterActivity.class);
-//                				startActivityForResult(intent, 0);
                 			}
                 			else { // Der Wert ist kleiner als der zuletzt erfasste Zählerstand
                 				
