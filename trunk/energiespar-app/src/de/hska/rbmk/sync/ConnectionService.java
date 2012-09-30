@@ -40,6 +40,7 @@ public class ConnectionService extends Service {
 	Handler mHandler;
 	
 	public boolean serviceRunning;
+	public boolean wasSuccess;
 	
     Socket serverSocket;  
     DataOutputStream outS = null;
@@ -117,9 +118,9 @@ public class ConnectionService extends Service {
 		dbAdapter = new DbAdapter(this);
 		
 		final Notification notification = new Notification(R.drawable.ic_launcher, "Synchronisiere Zählerstände", System.currentTimeMillis());
-		Intent notificationIntent = new Intent();//this, DualAdvancerControlActivity.class);
-	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-	    notification.setLatestEventInfo(this, "EnergieBerater", "Zählerstände werden synchronisiert...", pendingIntent); 
+//		Intent notificationIntent = new Intent();//this, DualAdvancerControlActivity.class);
+//	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+	    notification.setLatestEventInfo(this, "EnergieBerater", "Zählerstände werden synchronisiert...", null); //pendingintent
 	    startForeground(NOTIFICATION_ID, notification);
 	}
 
@@ -128,6 +129,8 @@ public class ConnectionService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         // The service is starting, due to a call to startService()
         serviceRunning = true;
+        
+        wasSuccess = false;
         
         // extras in this case are the IP and Port
 		Bundle extras = intent.getExtras();
@@ -203,7 +206,12 @@ public class ConnectionService extends Service {
 								
 								Log.d("SERVICE", "Transfer complete");
 								
-//								serviceRunning = false;
+								wasSuccess = true;
+								serviceRunning = false;
+								
+
+								
+								break;
 								
 							} catch (NumberFormatException e) {
 								Log.d("SERVICE Check", "(NumberFormatException: not a long)");
@@ -278,6 +286,14 @@ public class ConnectionService extends Service {
 		}
 
 //		Toast.makeText(this, "Verbindung getrennt", Toast.LENGTH_SHORT).show();
+		if (wasSuccess)
+		{
+			final Notification notification = new Notification(R.drawable.ic_launcher, "Zählerstände erfolgreich synchronisiert", System.currentTimeMillis());
+	//		Intent notificationIntent = new Intent();//this, DualAdvancerControlActivity.class);
+	//	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+		    notification.setLatestEventInfo(this, "EnergieBerater", "Zählerstände wurden synchronisiert.", null); //pendingintent
+		    startForeground(NOTIFICATION_ID, notification);
+		}
 	}
 }
 
