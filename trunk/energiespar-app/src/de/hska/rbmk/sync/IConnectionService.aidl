@@ -1,3 +1,5 @@
+// currently not used
+
 package de.hska.rbmk.sync;
 
 interface IConnectionService {
