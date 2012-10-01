@@ -208,7 +208,7 @@ public class ConnectionService extends Service {
 								
 								wasSuccess = true;
 								serviceRunning = false;
-								
+
 
 								
 								break;
@@ -288,11 +288,7 @@ public class ConnectionService extends Service {
 //		Toast.makeText(this, "Verbindung getrennt", Toast.LENGTH_SHORT).show();
 		if (wasSuccess)
 		{
-			final Notification notification = new Notification(R.drawable.ic_launcher, "Zählerstände erfolgreich synchronisiert", System.currentTimeMillis());
-	//		Intent notificationIntent = new Intent();//this, DualAdvancerControlActivity.class);
-	//	    final PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-		    notification.setLatestEventInfo(this, "EnergieBerater", "Zählerstände wurden synchronisiert.", null); //pendingintent
-		    startForeground(NOTIFICATION_ID, notification);
+			Toast.makeText(this, "Synchronisierung erfolgreich", Toast.LENGTH_LONG).show();
 		}
 	}
 }
