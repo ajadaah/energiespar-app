@@ -46,7 +46,7 @@
     
     <string name="einstellungen_theme_titel">Aussehen</string>
     <string name="einstellungen_theme_list_titel">Theme auswählen</string>
-    <string name="einstellungen_titel">Einstellungen</string>
+    <string name="einstellungen_titel">Einstellungen für Synchronisation</string>
     <string name="einstellungen_default_theme">darkTheme</string>
     <string name="einstellungen_theme_list_untertitel">Aussehen der Benutzeroberfläche</string>
     <string name="list_item_letzte_ablesung">Letzte Ablesung: %d</string>

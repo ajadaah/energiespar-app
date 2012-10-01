@@ -179,8 +179,28 @@ public class ZaehlerstandErfassenActivity extends ListActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		switch(item.getItemId()) {
 		case CONTEXT_DELETE:
-			db.delete(DbAdapter.TABLE_METERNUMBERS_NAME, DbAdapter.KEY_ID + "=" + contextSelection, null);
-			// TODO: SQL statement in der Tabelle speichern
+			
+			// Speichern des SQL Statements
+	    	String query = "SELECT " + DbAdapter.KEY_NUMBER + " FROM " + DbAdapter.TABLE_METERNUMBERS_NAME + " WHERE " + DbAdapter.KEY_ID + " = ?";
+	    	Cursor queryCursor = db.rawQuery(query, new String[] {String.valueOf(contextSelection)});
+	    	queryCursor.moveToFirst();
+	    	String zaehlerNummer = queryCursor.getString(queryCursor.getColumnIndex(DbAdapter.KEY_NUMBER));
+	    	queryCursor.close();
+			
+			String insertString = 
+	        		"DELETE FROM " + DbAdapter.TABLE_METERNUMBERS_NAME + " WHERE " + DbAdapter.KEY_NUMBER + "=" + zaehlerNummer + ";";
+			
+	        UUID idOne = UUID.randomUUID();
+	        
+	        ContentValues values = new ContentValues();
+	        values.put("UID", idOne.toString());
+	        values.put("timestamp", new Date().getTime());
+	        values.put("sqlstatement", insertString);
+	        
+	        db.insert(DbAdapter.DATABASE_TABLE_CHANGES, null, values);
+	        
+	        db.delete(DbAdapter.TABLE_METERNUMBERS_NAME, DbAdapter.KEY_ID + "=" + contextSelection, null);
+			
 			loadData();
 			break;
 		}

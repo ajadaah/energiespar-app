@@ -90,14 +90,21 @@ public class StartbildschirmActivity extends Activity {
 		{
 	        settings = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
 	        
-	        server_ip = settings.getString("ip_address", "192.168.0.1");
-	        server_port = settings.getString("port_number", "7676");
+	        server_ip = settings.getString("ip_address", "Error");
+	        server_port = settings.getString("port_number", "Error");
 			
-	    	// start connection service and set extras (IP and PORT)
-	    	Intent serviceIntent = new Intent(this, ConnectionService.class);
-	    	serviceIntent.putExtra("ip address", server_ip);
-	    	serviceIntent.putExtra("port number", server_port);
-	    	startService(serviceIntent);
+	        if (server_ip.compareTo("Error") == 0 || server_port.compareTo("Error") == 0 )
+	        {
+	        	Toast.makeText(this, "Serveradresse für die Synchronisation muss eingestellt werden.", Toast.LENGTH_LONG).show();
+	        }
+	        else
+	        {
+	        	// start connection service and set extras (IP and PORT)
+	        	Intent serviceIntent = new Intent(this, ConnectionService.class);
+	        	serviceIntent.putExtra("ip address", server_ip);
+	        	serviceIntent.putExtra("port number", server_port);
+	        	startService(serviceIntent);
+	        }
 	    	
 //			Toast.makeText(this, "Synchronisation"+server_ip+" "+server_port, Toast.LENGTH_SHORT).show();
 			return true;
